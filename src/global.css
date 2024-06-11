@@ -16,6 +16,10 @@
   --blue-50: #1877f2;
   --yellow-50: #fee500;
   --red-50: #b93333;
+  /* shadow */
+  --shadow-1pt: 0 0.4rem 0.4rem 0 rgba(140, 140, 140, 0.25);
+  --shadow-2pt: 0 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.25);
+  --shadow-3pt: 0 1.6rem 2rem 0 rgba(48, 48, 48, 0.62);
 }
 
 * {
@@ -35,11 +39,11 @@ html {
 }
 
 .shadow-1pt {
-  box-shadow: 0 0.4rem 0.4rem 0 rgba(48, 48, 48, 0.62);
+  box-shadow: 0 0.4rem 0.4rem 0 rgba(140, 140, 140, 0.25);
 }
 
 .shadow-2pt {
-  box-shadow: 0 0.4rem 0.4rem 0 rgba(48, 48, 48, 0.62);
+  box-shadow: 0 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.25);
 }
 
 .shadow-3pt {
