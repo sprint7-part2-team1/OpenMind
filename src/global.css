@@ -29,8 +29,6 @@ html {
 .shadow-1pt,
 .shadow-2pt,
 .shadow-3pt {
-  width: 16.2rem;
-  height: 16.2rem;
   background-color: var(--gray-10);
   border: 0.1rem solid var(--gray-30);
   border-radius: 1.6rem;
