@@ -1,6 +1,5 @@
 import styles from './FeedCard.module.css';
-
-// Function to calculate the relative time
+import '../global.css';
 
 const FeedCard = ({
   status,
