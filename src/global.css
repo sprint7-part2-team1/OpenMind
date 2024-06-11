@@ -1,0 +1,49 @@
+:root {
+  /* gray */
+  --gray-10: #ffffff;
+  --gray-20: #f9f9f9;
+  --gray-30: #cfcfcf;
+  --gray-40: #818181;
+  --gray-50: #515151;
+  --gray-60: #000000;
+  /* brown */
+  --brown-10: #f5f1ee;
+  --brown-20: #e4d5c9;
+  --brown-30: #c7bbb5;
+  --brown-40: #542f1a;
+  --brown-50: #341909;
+  /* etc */
+  --blue-50: #1877f2;
+  --yellow-50: #fee500;
+  --red-50: #b93333;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+.shadow-1pt,
+.shadow-2pt,
+.shadow-3pt {
+  width: 16.2rem;
+  height: 16.2rem;
+  background-color: var(--gray-10);
+  border: 0.1rem solid var(--gray-30);
+  border-radius: 1.6rem;
+}
+
+.shadow-1pt {
+  box-shadow: 0 0.4rem 0.4rem 0 rgba(48, 48, 48, 0.62);
+}
+
+.shadow-2pt {
+  box-shadow: 0 0.4rem 0.4rem 0 rgba(48, 48, 48, 0.62);
+}
+
+.shadow-3pt {
+  box-shadow: 0 1.6rem 2rem 0 rgba(48, 48, 48, 0.62);
+}
