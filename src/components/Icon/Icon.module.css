@@ -1,0 +1,68 @@
+.sprite {
+  background-image: url('../../assets/images/sprite_icon.png');
+  background-repeat: no-repeat;
+}
+
+.bg-Arrow_down {
+  background: url('../../assets/images/sprite_icon.png') -0 -0;
+}
+
+.bg-Arrow_left {
+  background: url('../../assets/images/sprite_icon.png') -24px -0;
+}
+
+.bg-Arrow_right {
+  background: url('../../assets/images/sprite_icon.png') -0 -24px;
+}
+
+.bg-Arrow_up {
+  background: url('../../assets/images/sprite_icon.png') -24px -24px;
+}
+
+.bg-arrow_right_page {
+  background: url('../../assets/images/sprite_icon.png') -48px -0;
+}
+
+.bg-Edit {
+  background: url('../../assets/images/sprite_icon.png') -48px -24px;
+}
+
+.bg-Facebook {
+  background: url('../../assets/images/sprite_icon.png') -0 -48px;
+}
+
+.bg-Close {
+  background: url('../../assets/images/sprite_icon.png') -24px -48px;
+}
+
+.bg-Kakaotalk {
+  background: url('../../assets/images/sprite_icon.png') -48px -48px;
+}
+
+.bg-Link {
+  background: url('../../assets/images/sprite_icon.png') -72px -0;
+}
+
+.bg-Messages {
+  background: url('../../assets/images/sprite_icon.png') -72px -24px;
+}
+
+.bg-More {
+  background: url('../../assets/images/sprite_icon.png') -72px -48px;
+}
+
+.bg-Rejection {
+  background: url('../../assets/images/sprite_icon.png') -0 -72px;
+}
+
+.bg-thumbs_down {
+  background: url('../../assets/images/sprite_icon.png') -24px -72px;
+}
+
+.bg-thumbs_up {
+  background: url('../../assets/images/sprite_icon.png') -48px -72px;
+}
+
+.bg-Person {
+  background: url('../../assets/images/sprite_icon.png') -72px -72px;
+}
