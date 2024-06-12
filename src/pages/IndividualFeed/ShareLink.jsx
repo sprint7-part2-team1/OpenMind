@@ -28,11 +28,15 @@ function ShareLink() {
     });
   };
 
+  const shareFacebook = () => {
+    window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`);
+  };
+
   return (
     <div>
       <button onClick={copyToClipboard}>link공유하기</button>
       <button onClick={shareKakaoTalk}>카카오톡으로 공유하기</button>
-      <button></button>
+      <button onClick={shareFacebook}>페이스북으로 공유하기</button>
     </div>
   );
 }
