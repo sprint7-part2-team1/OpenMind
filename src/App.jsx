@@ -1,8 +1,11 @@
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
+import ShareLink from './pages/IndividualFeed/ShareLink';
 
 function App() {
-  return <></>;
+  return (
+    <>
+      <ShareLink />
+    </>
+  );
 }
 
 export default App;
