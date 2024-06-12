@@ -1,4 +1,5 @@
 import styles from './FeedCard.module.css';
+import ReactionButton from './ReactionButton';
 import '../global.css';
 
 const getTimeDiff = (dateString) => {
@@ -70,8 +71,8 @@ const FeedCard = ({
       </div>
       <div className={styles.separator}></div>
       <div className={styles['feedcard-buttons']}>
-        <button className={styles['like-button']}>좋아요</button>
-        <button className={styles['dislike-button']}>싫어요</button>
+        <ReactionButton type='like' />
+        <ReactionButton type='dislike' />
       </div>
     </div>
   );
