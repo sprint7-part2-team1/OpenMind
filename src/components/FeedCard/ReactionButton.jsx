@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import styles from './ReactionButton.module.css';
-import Icon from './Icon/Icon';
+import Icon from '../Icon/Icon';
 
 const ReactionButton = ({ type, initialCount = 0 }) => {
   const [count, setCount] = useState(initialCount);
