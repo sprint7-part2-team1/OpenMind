@@ -30,14 +30,15 @@
   color: var(--gray-40);
 }
 
-.feedcard-date {
+.feedcard-question-date,
+.feedcard-answer-date {
   font-size: 1.4rem;
   color: var(--gray-40);
 }
 
 .feedcard-question-text {
-  font-size: 1.8rem;
-  margin-bottom: 1.6rem;
+  font-size: 1.6rem;
+  margin-bottom: 3.2rem;
 }
 
 .feedcard-answer-box {
@@ -53,13 +54,19 @@
   margin-right: 1.6rem;
 }
 
-.feedcard-user-name {
-  font-size: 1.8rem;
+.feedcard-answer-content-header {
+  display: flex;
+  align-items: center;
   margin-bottom: 0.8rem;
 }
 
+.feedcard-user-name {
+  font-size: 1.8rem;
+  margin-right: 1rem;
+}
+
 .feedcard-user-answer {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   line-height: 1.5;
 }
 

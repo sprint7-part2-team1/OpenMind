@@ -17,7 +17,7 @@ const FeedCard = ({
       </div>
       <div className={styles['feedcard-question-header']}>
         <span className={styles['feedcard-question-label']}>질문 · &nbsp;</span>
-        <span className={styles['feedcard-date']}>{questionDate}</span>
+        <span className={styles['feedcard-question-date']}>{questionDate}</span>
       </div>
       <div className={styles['feedcard-question-text']}>{question}</div>
       <div className={styles['feedcard-answer-box']}>
@@ -27,8 +27,10 @@ const FeedCard = ({
           className={styles['feedcard-user-image']}
         />
         <div className={styles['feedcard-answer-content']}>
-          <div className={styles['feedcard-user-name']}>{username}</div>
-          <span className={styles['feedcard-date']}>{answerDate}</span>
+          <div className={styles['feedcard-answer-content-header']}>
+            <div className={styles['feedcard-user-name']}>{username}</div>
+            <span className={styles['feedcard-answer-date']}>{answerDate}</span>
+          </div>
           <div className={styles['feedcard-user-answer']}>{answer}</div>
         </div>
       </div>
