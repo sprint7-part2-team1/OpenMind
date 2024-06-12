@@ -9,7 +9,7 @@
 .Button_TakeQs {
   width: 100%;
   background-color: var(--brown-40);
-  color: white;
+  color: var(--gray-10);
   font-weight: 400;
   font-size: 1rem;
   line-height: 1.375rem;
@@ -21,14 +21,14 @@
   }
   &:active {
     background-color: var(--brown-50);
-    color: white;
+    color: var(--gray-10);
   }
   &:disabled {
     background-color: var(--brown-30);
     cursor: not-allowed;
   }
   &:hover:disabled {
-    color: white;
+    color: var(--gray-10);
     border: 0.125rem solid transparent;
   }
 }
@@ -51,12 +51,12 @@
   }
   &:hover {
     background-color: var(--brown-40);
-    color: var(--brwon-10);
+    color: var(--gray-10);
     border: 0.125rem solid var(--brwon-10);
   }
   &:active {
     background-color: var(--brown-50);
-    color: white;
+    color: var(--gray-10);
   }
   &:disabled {
     background-color: var(--brwon-10);
@@ -74,7 +74,7 @@
   height: 2.1875rem;
   font-size: 0.8125rem;
   line-height: 1.5625rem;
-  color: #ffffff;
+  color: var(--gray-10);
   background-color: var(--brown-40);
   border: 0.0625rem solid transparent;
   padding: 0.3125rem 1.25rem;
@@ -92,7 +92,7 @@
   }
   &:active {
     background-color: #542f1a;
-    color: white;
+    color: var(--gray-10);
   }
 }
 
@@ -114,12 +114,12 @@
   }
   &:hover {
     background-color: var(--brown-40);
-    color: var(--brwon-10);
+    color: var(--gray-10);
     border: 0.125rem solid var(--brwon-10);
   }
   &:active {
     background-color: var(--brown-50);
-    color: white;
+    color: var(--gray-10);
   }
   &:disabled {
     background-color: var(--brwon-10);
@@ -141,7 +141,7 @@
   font-size: 1.25rem;
   font-weight: 400;
   line-height: 1.5625rem;
-  color: #ffffff;
+  color: var(--gray-10);
   box-shadow: var(--shadow-3pt);
   &:hover {
     background-color: var(--brwon-10);
@@ -150,7 +150,7 @@
   }
   &:active {
     background-color: var(--brown-40);
-    color: white;
+    color: var(--gray-10);
   }
   &.mobile {
     width: 7.6875rem;
@@ -163,7 +163,7 @@
 .Button_DoneFix {
   width: 100%;
   background-color: var(--brown-40);
-  color: white;
+  color: var(--gray-10);
   font-weight: 400;
   font-size: 1rem;
   line-height: 1.375rem;
@@ -171,18 +171,18 @@
   &:hover {
     background-color: var(--brwon-10);
     color: var(--brown-40);
-    border: 0.125rem solid var(--br own-40);
+    border: 0.125rem solid var(--brown-40);
   }
   &:active {
     background-color: var(--brown-50);
-    color: white;
+    color: var(--gray-10);
   }
   &:disabled {
     background-color: var(--brown-30);
     cursor: not-allowed;
   }
   &:hover:disabled {
-    color: white;
+    color: var(--gray-10);
     border: 0.125rem solid transparent;
   }
 }
