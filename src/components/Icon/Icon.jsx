@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './Icon.module.css';
 
 const Icon = ({ iconName, width = 24, height = 24 }) => {
