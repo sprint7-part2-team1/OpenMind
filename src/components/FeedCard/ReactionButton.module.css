@@ -9,16 +9,21 @@
 }
 
 .button:hover {
-  color: #333;
+  color: var(--blue-50);
 }
 
 .icon {
   display: inline-block;
-  vertical-align: middle;
   margin-right: 1rem;
 }
 
 .text {
   margin-left: 0.5rem;
-  margin-right: 0.8rem;
+  margin-right: 0.5rem;
+  line-height: 1rem;
+}
+
+.icon,
+.text {
+  vertical-align: middle;
 }
