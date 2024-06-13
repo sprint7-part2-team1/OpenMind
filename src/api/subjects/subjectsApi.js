@@ -56,11 +56,14 @@ export const getSubjectDetail = async (id) => {
   }
 };
 
-export const getSubjectQuestions = async (id, limit, offset) => {
-  const queryString = new URLSearchParams({ limit, offset }).toString();
+export const getSubjectQuestions = async (id, limit = 999, offset = 0) => {
+  const queryString = new URLSearchParams({
+    limit,
+    offset,
+  }).toString();
   try {
     const response = await fetchApi(
-      `subjects/${id}/questions/${queryString}/`,
+      `subjects/${id}/questions/?${queryString}/`,
       {
         method: 'GET',
       }
