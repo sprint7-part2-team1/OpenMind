@@ -1,7 +1,7 @@
 import styles from './FeedCard.module.css';
 import ReactionButton from './ReactionButton';
 import '../../global.css';
-import formatTimeDiff from '../../utils/\bformatTimeDiff.js';
+import formatTimeDiff from '../../utils/formatTimeDiff.js';
 
 const FeedCard = ({
   answerStatus,
