@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import styles from './Toast.module.css';
 
 function Toast({ message, duration, onClose }) {
   useEffect(() => {
@@ -7,7 +8,7 @@ function Toast({ message, duration, onClose }) {
     return () => clearTimeout(timer);
   }, [duration, onClose]);
 
-  return <div className='toast'>{message}</div>;
+  return <div className={styles.toast}>{message}</div>;
 }
 
 export default Toast;
