@@ -40,12 +40,16 @@ function Modal({onClose}) {
     setContent('');
   }
 
-  useEffect(() => {
+  const contentButtonOnOff = () => {
     if (content.trim() !== ''){
       setHasContent(true);
     } else {
       setHasContent(false);
     };
+  }
+
+  useEffect(() => {
+    contentButtonOnOff();
   },[content])
   
   return (
