@@ -1,15 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { createQuestion } from "../api/modalApi";
 import Icon from './Icon/Icon'
 import Styles from './Modal.module.css';
 
+const TEAM = '7-1'
+
 function Modal({onClose}) {
   const [content, setContent] = useState('');
-  const subjectId = '6716';
-  const TEAM = '7-1'
-  
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submittingError, setSubmittingError] = useState(null);
+  const [hasContent, setHasContent] = useState(false);
+  const subjectId = '6716';
 
   const handleContentChange = (e) => {
     setContent(e.target.value);
@@ -38,6 +39,14 @@ function Modal({onClose}) {
     }
     setContent('');
   }
+
+  useEffect(() => {
+    if (content.trim() !== ''){
+      setHasContent(true);
+    } else {
+      setHasContent(false);
+    };
+  },[content])
   
   return (
     <div className={Styles.modalOverlay} onClick={onClose}>
@@ -52,7 +61,7 @@ function Modal({onClose}) {
         </section>
         <form onSubmit={handleSubmit}>
           <textarea value={content} onChange={handleContentChange} placeholder="질문을 입력해주세요"></textarea>
-          <button type="submit" disabled={isSubmitting}>질문 보내기</button>
+          <button type="submit" disabled={isSubmitting || !hasContent}>질문 보내기</button>
           {submittingError?.message && <div>{submittingError.message}</div>}
         </form>
       </div>
