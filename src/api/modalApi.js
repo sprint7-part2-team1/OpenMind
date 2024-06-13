@@ -1,6 +1,6 @@
 export const createQuestion = async (formData, id) => {
   try {
-    const response = await fetch(`https://openmind-api.vercel.app/7-1/subjects/6716/questions/`, {
+    const response = await fetch(`https://openmind-api.vercel.app/7-1/subjects/6742/questions/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -9,7 +9,7 @@ export const createQuestion = async (formData, id) => {
     });
 
     if (response.status !== 201) {
-      throw new Error('질문 하기 실패 !');
+      throw new Error('질문 보내기에 실패했습니다.');
     }
 
     return response.json();
