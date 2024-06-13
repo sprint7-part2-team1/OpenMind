@@ -3,7 +3,7 @@ export const postReaction = async (questionId, type = 'like') => {
 
   try {
     const response = await fetch(
-      `https://openmind-api.vercel.app/7-1/questions/${questionId}/reaction/`,
+      `${baseURL}/questions/${questionId}/reaction/`,
       {
         method: 'POST',
         headers: {

@@ -1,6 +1,5 @@
 export const getUserData = async (userId) => {
   const baseURL = import.meta.env.VITE_API_BASE_URL;
-  //   const baseURL = 'https://openmind-api.vercel.app/7-1';
 
   try {
     const response = await fetch(`${baseURL}/subjects/${userId}/`);
