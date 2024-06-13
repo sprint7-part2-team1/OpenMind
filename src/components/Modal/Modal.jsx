@@ -2,6 +2,7 @@ import '../../global.css';
 import Icon from '../Icon/Icon'
 import Styles from './Modal.module.css';
 import ModalForm from './ModalForm';
+import ModalProfile from './ModalProfile';
 
 const TEAM = '7-1'
 const subjectId = '6742';
@@ -21,9 +22,7 @@ function Modal({ onClose }) {
             <h2>질문을 작성하세요</h2>
             <button onClick={onClose} className={Styles.button}><Icon iconName={"Close"}/></button>
           </header>
-          <section>
-
-          </section>
+          <ModalProfile team={TEAM} subjectId={subjectId}/>
           <ModalForm team={TEAM} subjectId={subjectId} onClose={onClose}/>
         </div>
       </div>

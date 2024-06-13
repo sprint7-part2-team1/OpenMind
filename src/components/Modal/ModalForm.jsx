@@ -24,7 +24,7 @@ function ModalForm({  team, subjectId, onClose }) {
     try {
       setSubmittingError(null);
       setIsSubmitting(true);
-      await createQuestion(formData)
+      await createQuestion(formData, subjectId)
     } catch (error) {
       setSubmittingError(error);
       return;

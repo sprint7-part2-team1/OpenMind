@@ -1,6 +1,6 @@
 export const createQuestion = async (formData, id) => {
   try {
-    const response = await fetch(`https://openmind-api.vercel.app/7-1/subjects/6742/questions/`, {
+    const response = await fetch(`https://openmind-api.vercel.app/7-1/subjects/${id}/questions/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -18,3 +18,9 @@ export const createQuestion = async (formData, id) => {
     throw error;
   }
 };
+
+export const getModalProfile = async(id) => {
+  const response = await fetch(`https://openmind-api.vercel.app/7-1/subjects/${id}/`)
+  const body = await response.JSON()
+  return body;
+}
