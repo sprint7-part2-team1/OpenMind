@@ -28,7 +28,7 @@ export const getSubjects = async (limit, offset) => {
   }).toString();
 
   try {
-    const response = await fetchApi(`subjects?${queryString}`, {
+    const response = await fetchApi(`subjects/?${queryString}`, {
       method: 'GET',
     });
 
@@ -58,7 +58,9 @@ export const getSubjectDetail = async (id) => {
 
 export const getSubjectQuestions = async (id, limit, offset) => {
   try {
-    const response = await fetchApi(`subjects/${id}`, { method: 'GET' });
+    const response = await fetchApi(`subjects/${id}/questions/`, {
+      method: 'GET',
+    });
 
     if (!response.ok) {
       throw new Error('fetch failed');
@@ -70,14 +72,39 @@ export const getSubjectQuestions = async (id, limit, offset) => {
   }
 };
 
-export const postSubjects = async (newSubjects) => {
+export const postSubject = async (name) => {
   try {
-    const response = await fetchApi('subjects', {
+    const response = await fetchApi('subjects/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(newSubjects),
+      body: JSON.stringify({ name }),
+    });
+
+    if (!response.ok) {
+      throw new Error('fetch failed');
+    }
+
+    return response.json();
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const postSubjectQuestion = async (subjectId, content) => {
+  const updateData = {
+    subjectId,
+    content,
+  };
+
+  try {
+    const response = await fetchApi(`subjects/${subjectId}/questions/`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(updateData),
     });
 
     if (!response.ok) {

@@ -4,7 +4,7 @@ import { fetchApi } from '../instance/fetchInstance';
 
 export const getQuestionDetail = async (id) => {
   try {
-    const response = await fetchApi(`/questions/${id}`, { method: 'GET' });
+    const response = await fetchApi(`questions/${id}/`, { method: 'GET' });
 
     if (!response.ok) {
       throw new Error('fetch failed');
@@ -18,7 +18,7 @@ export const getQuestionDetail = async (id) => {
 
 export const deleteQuestionDetail = async (id) => {
   try {
-    const response = await fetchApi(`/questions/${id}`, { method: 'DELETE' });
+    const response = await fetchApi(`questions/${id}/`, { method: 'DELETE' });
 
     if (!response.ok) {
       throw new Error('fetch failed');
@@ -32,7 +32,7 @@ export const deleteQuestionDetail = async (id) => {
 
 export const postReaction = async (id, type) => {
   try {
-    const response = await fetchApi(`/questions/${id}/reaction/`, {
+    const response = await fetchApi(`questions/${id}/reaction/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -50,14 +50,20 @@ export const postReaction = async (id, type) => {
   }
 };
 
-export const postNewAnswer = async (id, type) => {
+export const postNewAnswer = async (questionId, content, isRejected) => {
+  const updateData = {
+    questionId,
+    content,
+    isRejected,
+  };
+
   try {
-    const response = await fetchApi(`/questions/${id}/answers/`, {
+    const response = await fetchApi(`questions/${questionId}/answers/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ type }),
+      body: JSON.stringify(updateData),
     });
 
     if (!response.ok) {
