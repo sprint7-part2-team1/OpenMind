@@ -1,6 +1,5 @@
 export const deleteUser = async (userId) => {
-  //   const baseURL = import.meta.env.VITE_API_BASE_URL;
-  const baseURL = 'https://openmind-api.vercel.app/7-1';
+  const baseURL = import.meta.env.VITE_API_BASE_URL;
 
   try {
     const response = await fetch(`${baseURL}/${userId}/`, {

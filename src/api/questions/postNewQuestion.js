@@ -1,15 +1,13 @@
 export const postNewQuestion = async (content, id) => {
+  const baseURL = import.meta.env.VITE_API_BASE_URL;
   try {
-    const response = await fetch(
-      `https://openmind-api.vercel.app/7-1/subjects/${id}/questions/`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ content }),
-      }
-    );
+    const response = await fetch(`${baseURL}/subjects/${id}/questions/`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ content }),
+    });
 
     if (response.status !== 201) {
       throw new Error('질문 하기 실패 !');
