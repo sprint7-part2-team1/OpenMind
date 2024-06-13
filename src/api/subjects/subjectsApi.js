@@ -57,10 +57,14 @@ export const getSubjectDetail = async (id) => {
 };
 
 export const getSubjectQuestions = async (id, limit, offset) => {
+  const queryString = new URLSearchParams({ limit, offset }).toString();
   try {
-    const response = await fetchApi(`subjects/${id}/questions/`, {
-      method: 'GET',
-    });
+    const response = await fetchApi(
+      `subjects/${id}/questions/${queryString}/`,
+      {
+        method: 'GET',
+      }
+    );
 
     if (!response.ok) {
       throw new Error('fetch failed');
