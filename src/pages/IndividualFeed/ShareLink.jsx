@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import Toast from './Toast';
+import styles from './ShareLink.module.css';
+import Icon from '../../components/Icon/Icon';
 
 function ShareLink() {
   const url = window.location.href;
@@ -44,9 +46,16 @@ function ShareLink() {
 
   return (
     <div>
-      <button onClick={copyToClipboard}>link공유하기</button>
-      <button onClick={shareKakaoTalk}>카카오톡으로 공유하기</button>
-      <button onClick={shareFacebook}>페이스북으로 공유하기</button>
+      <button className={styles.linkImg} onClick={copyToClipboard}>
+        <Icon className={styles.icon} iconName={'Link'} />
+      </button>
+      <button className={styles.kakaoImg} onClick={shareKakaoTalk}>
+        <Icon className={styles.icon} iconName={'Kakaotalk'} />
+      </button>
+
+      <button className={styles.facebookImg} onClick={shareFacebook}>
+        <Icon className={styles.icon} iconName={'Facebook'} />
+      </button>
       {toastMessage && (
         <Toast message={toastMessage} duration={5000} onClose={closeToast} />
       )}
