@@ -46,16 +46,12 @@ function ShareLink() {
 
   return (
     <div>
-      <button className={styles.linkImg} onClick={copyToClipboard}>
-        <Icon className={styles.icon} iconName={'Link'} />
-      </button>
-      <button className={styles.kakaoImg} onClick={shareKakaoTalk}>
-        <Icon className={styles.icon} iconName={'Kakaotalk'} />
-      </button>
+      <div className={styles.shareBox}>
+        <button className={styles.linkImg} onClick={copyToClipboard} />
+        <button className={styles.kakaoImg} onClick={shareKakaoTalk} />
+        <button className={styles.facebookImg} onClick={shareFacebook} />
+      </div>
 
-      <button className={styles.facebookImg} onClick={shareFacebook}>
-        <Icon className={styles.icon} iconName={'Facebook'} />
-      </button>
       {toastMessage && (
         <Toast message={toastMessage} duration={5000} onClose={closeToast} />
       )}
