@@ -6,6 +6,7 @@ import {
   getSubjectQuestions,
 } from '../../api/subjects/subjectsApi';
 import { useEffect, useState } from 'react';
+import NoQuestionFeed from '../noQuestionFeed/NoQuestionFeed';
 
 const FeedCardList = ({ subjectId }) => {
   const [questions, setQuestions] = useState([]);
@@ -41,7 +42,9 @@ const FeedCardList = ({ subjectId }) => {
     return <div>Error: {error}</div>;
   }
 
-  return (
+  return questions.length === 0 ? (
+    <NoQuestionFeed />
+  ) : (
     <div className={styles.container}>
       <div className={styles.header}>
         <Icon className={styles.icon} iconName={'Messages'} />
