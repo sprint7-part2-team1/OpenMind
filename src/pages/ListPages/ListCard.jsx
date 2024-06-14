@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import ListCardItem from './ListCardItem';
 import Pagination from 'react-js-pagination';
 import './PagiNation.css'
+import styles from './ListCard.module.css'
 
 const ListCard = ({ searchValue, onlyForMount, sortOrder }) => {
   const [subjectList, setSubjectList] = useState([]);

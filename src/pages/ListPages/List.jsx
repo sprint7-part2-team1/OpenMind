@@ -26,7 +26,7 @@ const List = () => {
         <button>버튼</button>
       </header>
       <h1>누구에게 질문할까요?</h1>
-      <div>
+      <div className={styles.ListNav}>
         <input
           type="text"
           placeholder="이름을 입력하세요"

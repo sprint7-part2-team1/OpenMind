@@ -14,3 +14,18 @@ h1{
     height: 57px;
     cursor: pointer;
 } 
+
+.ListNav{
+    display: flex;
+    justify-content: space-between;
+}
+
+.ListNav input{
+    border-radius: 8px;
+    border : 1px solid 
+}
+
+.ListNav select{
+    border-radius: 8px;
+}
+
