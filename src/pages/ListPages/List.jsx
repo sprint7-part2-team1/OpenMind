@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import ListCard from './ListCard';
+import styles from './List.module.css'
 
 const List = () => {
   const [searchValue, setSearchValue] = useState('');
@@ -21,7 +22,7 @@ const List = () => {
   return (
     <div>
       <header>
-        <img src="src/assets/images/List-logo.png" alt="List-logo" />
+        <img  className={styles.logo} src="src\assets\images\logo.png" alt="List-logo" />
         <button>버튼</button>
       </header>
       <h1>누구에게 질문할까요?</h1>

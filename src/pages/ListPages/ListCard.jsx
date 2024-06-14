@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import ListCardItem from './ListCardItem';
 import Pagination from 'react-js-pagination';
-import './ListCard.css'
+import './PagiNation.css'
 
 const ListCard = ({ searchValue, onlyForMount, sortOrder }) => {
   const [subjectList, setSubjectList] = useState([]);
@@ -24,7 +24,7 @@ const ListCard = ({ searchValue, onlyForMount, sortOrder }) => {
   }, [onlyForMount]);
 
 
-//  정렬기준 변경시, 현재페이지 1로이동
+//  정렬기준 변경시, 현재페이지 1로이동n
   useEffect(() => {
     setCurrentPage(1); 
   }, [sortOrder]);

@@ -1,0 +1,16 @@
+header{
+    display: flex;
+    justify-content:space-between;
+}
+
+h1{
+     font-size: 40px;
+     font-weight: 400;
+     line-height: 47.73px;
+     text-align: center;
+}
+.logo{
+    width: 146px;
+    height: 57px;
+    cursor: pointer;
+} 
