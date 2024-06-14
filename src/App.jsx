@@ -1,4 +1,10 @@
+import NoQuestionFeed from './components/noQuestionFeed/NoQuestionFeed';
+
 function App() {
-  return <></>;
+  return (
+    <>
+      <NoQuestionFeed />
+    </>
+  );
 }
 export default App;
