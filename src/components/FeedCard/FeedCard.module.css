@@ -70,6 +70,10 @@
   line-height: 1.5;
 }
 
+.answer-rejected {
+  color: var(--red-50);
+}
+
 .separator {
   border-top: 0.1rem solid var(--gray-30);
   margin: 1.6rem 0;
