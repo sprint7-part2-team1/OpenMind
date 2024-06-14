@@ -1,13 +1,15 @@
+import styles from './ListCardItem.module.css'
+import Icon from '../../components/Icon/Icon'
 const ListCardItem = ({ id, name, imageSource, questionCount, createAt }) => {
   return (
-    <div>
-      <div>
-        <img src={`${imageSource}`} alt="프로필사진" />
+    <div >
+      <div className={styles.container}>
+        <img className={styles.img} src={`${imageSource}`} alt="프로필사진" />
         <div>{name}</div>
-        <div>
-          <div>
-            <img src="" alt="이미지자리" />
-            <span>받은 질문</span>
+        <div className={styles.cardBottom}>
+          <div className={styles.takeQs}>
+            <Icon iconName={'Messages'}/>
+            <span className={styles.takeQsText}>받은 질문</span>
           </div>
           <div>{`${questionCount}개`}</div>
         </div>

@@ -1,0 +1,16 @@
+.container{
+    display: flex;
+    flex-direction: column;
+}
+
+.img{
+    width: 60px;
+    height: 60px;
+    border-radius: 99px;
+}
+.cardBottom{
+    display: flex;
+}
+.takeQs{
+    display: flex;
+}
