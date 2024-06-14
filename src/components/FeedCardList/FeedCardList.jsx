@@ -7,7 +7,7 @@ import {
 } from '../../api/subjects/subjectsApi';
 import { useEffect, useState } from 'react';
 
-const AnswerPage = ({ subjectId }) => {
+const FeedCardList = ({ subjectId }) => {
   const [questions, setQuestions] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -62,4 +62,4 @@ const AnswerPage = ({ subjectId }) => {
   );
 };
 
-export default AnswerPage;
+export default FeedCardList;
