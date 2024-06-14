@@ -5,12 +5,13 @@ import formatTimeDiff from '../../utils/formatTimeDiff.js';
 
 const FeedCard = ({
   answerStatus,
-  question,
+  questionContent,
   questionDate,
   userProfileImage,
   username,
-  answerDate,
   answer,
+  answerDate = answer?.createdAt,
+  answerContent = answer?.content,
 }) => {
   return (
     <div className={styles.feedcard}>
@@ -23,23 +24,27 @@ const FeedCard = ({
           {formatTimeDiff(questionDate)}
         </span>
       </div>
-      <div className={styles['feedcard-question-text']}>{question}</div>
-      <div className={styles['feedcard-answer-box']}>
-        <img
-          src={userProfileImage}
-          alt={`${username}'s profile`}
-          className={styles['feedcard-user-image']}
-        />
-        <div className={styles['feedcard-answer-content']}>
-          <div className={styles['feedcard-answer-content-header']}>
-            <div className={styles['feedcard-user-name']}>{username}</div>
-            <span className={styles['feedcard-answer-date']}>
-              {formatTimeDiff(answerDate)}
-            </span>
+      <div className={styles['feedcard-question-text']}>{questionContent}</div>
+      {answerStatus === 'true' && (
+        <div className={styles['feedcard-answer-box']}>
+          <img
+            src={userProfileImage}
+            alt={`${username}'s profile`}
+            className={styles['feedcard-user-image']}
+          />
+          <div className={styles['feedcard-answer-content']}>
+            <div className={styles['feedcard-answer-content-header']}>
+              <div className={styles['feedcard-user-name']}>{username}</div>
+              <span className={styles['feedcard-answer-date']}>
+                {formatTimeDiff(answerDate)}
+              </span>
+            </div>
+            <div className={styles['feedcard-user-answer']}>
+              {answerStatus === 'true' ? answerContent : '답변이 없습니다'}
+            </div>
           </div>
-          <div className={styles['feedcard-user-answer']}>{answer}</div>
         </div>
-      </div>
+      )}
       <div className={styles.separator}></div>
       <div className={styles['feedcard-buttons']}>
         <ReactionButton type='like' />

@@ -1,18 +1,26 @@
-import FeedCard from '../../components/FeedCard/FeedCard';
-import styles from './AnswerPage.module.css';
-import Icon from '../../components/Icon/Icon';
-import { getSubjectQuestions } from '../../api/subjects/subjectsApi';
+import FeedCard from '../FeedCard/FeedCard';
+import styles from './FeedCardList.module.css';
+import Icon from '../Icon/Icon';
+import {
+  getSubjectDetail,
+  getSubjectQuestions,
+} from '../../api/subjects/subjectsApi';
 import { useEffect, useState } from 'react';
-
 
 const AnswerPage = ({ subjectId }) => {
   const [questions, setQuestions] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [userProfileImage, setUserProfileImage] = useState('');
+  const [username, setUsername] = useState('');
 
   useEffect(() => {
-    const fetchQuestions = async () => {
+    const fetchDetails = async () => {
       try {
+        const subjectDetail = await getSubjectDetail(subjectId);
+        setUsername(subjectDetail.name);
+        setUserProfileImage(subjectDetail.imageSource);
+
         const questionData = await getSubjectQuestions(subjectId);
         setQuestions(questionData.results);
       } catch (err) {
@@ -22,7 +30,7 @@ const AnswerPage = ({ subjectId }) => {
       }
     };
 
-    fetchQuestions();
+    fetchDetails();
   }, [subjectId]);
 
   if (loading) {
@@ -42,11 +50,12 @@ const AnswerPage = ({ subjectId }) => {
       {questions.map((data) => (
         <FeedCard
           key={data.id}
-          question={data.content}
+          questionContent={data.content}
           questionDate={data.createdAt}
-          userProfileImage={'path_to_profile_image.jpg'}
-          username={data.id}
-          answerStatus={data.answer}
+          userProfileImage={userProfileImage}
+          username={username}
+          answerStatus={data.answer ? 'true' : 'false'}
+          answer={data.answer}
         />
       ))}
     </div>
