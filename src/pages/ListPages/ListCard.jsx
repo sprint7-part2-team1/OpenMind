@@ -30,7 +30,7 @@ const ListCard = ({ searchValue, onlyForMount, sortOrder }) => {
 //  정렬기준 변경시, 현재페이지 1로이동n
   useEffect(() => {
     setCurrentPage(1); 
-  }, [sortOrder]);
+  }, [sortOrder, searchValue]);
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
