@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Actor&display=swap');
+
 :root {
   /* gray */
   --gray-10: #ffffff;
@@ -24,6 +26,7 @@
 
 * {
   box-sizing: border-box;
+  font-family: 'Actor', Arial, Helvetica, sans-serif;
 }
 
 html {
