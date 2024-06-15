@@ -1,15 +1,70 @@
-.bg {
-  background-image: url(../assets/images/loginPageImg.jpg);
-  background-repeat: no-repeat;
-  background-position: center;
+.header {
   width: 100%;
-  height: 100vh;
+}
+
+.header_box {
+  height: 16.6rem;
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 4.5rem;
+  padding-right: 13rem;
+}
+
+.header_right {
+  width: 16.1rem;
+  height: 4.6rem;
+  background-color: var(--brown-10);
+}
+
+.main {
+  width: 46rem;
   margin: 0 auto;
 }
 
-.content {
-  background: rgba(255, 255, 255, 0.8);
-  padding: 20px;
-  border-radius: 10px;
-  text-align: center;
+.main_logo {
+  width: 100%;
+  margin-bottom: 5.6rem;
+}
+
+.form {
+  width: 33.6rem;
+  position: relative;
+  margin: 0 auto;
+}
+
+.input_personIcon {
+  position: absolute;
+  left: 1.6rem;
+  top: 10%;
+}
+
+.nickName_input,
+.login_btn {
+  width: 100%;
+  height: 4.6rem;
+  border-radius: 0.8rem;
+}
+
+.nickName_input {
+  border: 0.1rem solid var(--gray-40);
+  margin-bottom: 1.6rem;
+  padding-left: 4rem;
+}
+
+.login_btn {
+  background-color: var(--brown-40);
+  color: var(--gray-10);
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 2.2rem;
+}
+
+.footer {
+  width: 120rem;
+  margin: 0 auto;
+}
+
+.footer_backgroundImg {
+  width: 100%;
+  object-fit: cover;
 }
