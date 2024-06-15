@@ -27,9 +27,10 @@ const List = () => {
       </header>
       <h1>누구에게 질문할까요?</h1>
       <div className={styles.ListNav}>
+        <div className={styles.ListNavInnerConatiner}>
         <input
           type="text"
-          placeholder="이름을 입력하세요"
+          placeholder="질문하고 싶은 아이디를 검색하세요!"
           value={searchValue}
           onChange={handleInputChange}
         />
@@ -37,6 +38,7 @@ const List = () => {
           <option value="newest">최신순</option>
           <option value="questions">질문순</option>
         </select>
+        </div>
       </div>
       
       <ListCard

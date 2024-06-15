@@ -1,6 +1,7 @@
 header{
     display: flex;
     justify-content:space-between;
+    margin: 40px 130px;
 }
 
 h1{
@@ -16,16 +17,11 @@ h1{
 } 
 
 .ListNav{
+    width: 100%;
+    display: flex;
+}
+
+.ListNavInnerConatiner{
     display: flex;
     justify-content: space-between;
 }
-
-.ListNav input{
-    border-radius: 8px;
-    border : 1px solid 
-}
-
-.ListNav select{
-    border-radius: 8px;
-}
-
