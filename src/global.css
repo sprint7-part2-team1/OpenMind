@@ -29,6 +29,7 @@
 
 html {
   font-size: 62.5%;
+  background-color: var(--gray-20);
 }
 
 body {
