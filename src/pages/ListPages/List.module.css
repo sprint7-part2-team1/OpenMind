@@ -1,27 +1,90 @@
-header{
-    display: flex;
-    justify-content:space-between;
-    margin: 40px 130px;
+/* List.module.css */
+header {
+  display: flex;
+  justify-content: space-between;
+  margin: 40px 130px;
 }
 
-h1{
-     font-size: 40px;
-     font-weight: 400;
-     line-height: 47.73px;
-     text-align: center;
-}
-.logo{
-    width: 146px;
-    height: 57px;
-    cursor: pointer;
-} 
-
-.ListNav{
-    width: 100%;
-    display: flex;
+h1 {
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 47.73px;
+  text-align: center;
 }
 
-.ListNavInnerConatiner{
-    display: flex;
-    justify-content: space-between;
+.logo {
+  width: 146px;
+  height: 57px;
+  cursor: pointer;
+}
+
+.ListNav {
+  width: 100%;
+  display: flex;
+}
+
+.ListNavInnerConatiner {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* ListCard.module.css */
+.outContainer {
+  display: flex;
+  width: 940px;
+  max-width: 100%;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.containerListCard {
+  /* Changed to avoid conflict */
+  display: flex;
+  width: 940px;
+  max-width: 100%;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* ListCardItem.module.css */
+.containerListCardItem {
+  /* Changed to avoid conflict */
+  display: flex;
+  flex-direction: column;
+  border: 1px solid;
+  border-radius: 16px;
+  width: 220px;
+  height: 187px;
+  padding: 10px;
+}
+
+.profile {
+  flex-grow: 1;
+}
+
+.nameListCardItem {
+  /* Changed to avoid conflict */
+  margin-top: 10px;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.img {
+  width: 60px;
+  height: 60px;
+  border-radius: 99px;
+}
+
+.cardBottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.takeQs {
+  display: flex;
+  align-items: center;
 }

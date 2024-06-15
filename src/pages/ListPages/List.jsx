@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import ListCard from './ListCard';
-import styles from './List.module.css'
+import styles from './Combined.module.css';
 
 const List = () => {
   const [searchValue, setSearchValue] = useState('');
@@ -22,30 +22,34 @@ const List = () => {
   return (
     <div>
       <header>
-        <img  className={styles.logo} src="src\assets\images\logo.png" alt="List-logo" />
+        <img
+          className={styles.logo}
+          src='src\assets\images\logo.png'
+          alt='List-logo'
+        />
         <button>버튼</button>
       </header>
       <h1>누구에게 질문할까요?</h1>
       <div className={styles.ListNav}>
         <div className={styles.ListNavInnerConatiner}>
-        <input
-          type="text"
-          placeholder="질문하고 싶은 아이디를 검색하세요!"
-          value={searchValue}
-          onChange={handleInputChange}
-        />
-        <select onChange={handleSelectChange}>
-          <option value="newest">최신순</option>
-          <option value="questions">질문순</option>
-        </select>
+          <input
+            type='text'
+            placeholder='질문하고 싶은 아이디를 검색하세요!'
+            value={searchValue}
+            onChange={handleInputChange}
+          />
+          <select onChange={handleSelectChange}>
+            <option value='newest'>최신순</option>
+            <option value='questions'>질문순</option>
+          </select>
         </div>
       </div>
-      
+
       <ListCard
         searchValue={searchValue}
         onlyForMount={onlyForMount}
         sortOrder={sortOrder}
-    />
+      />
     </div>
   );
 };
