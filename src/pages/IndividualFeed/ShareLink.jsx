@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import Toast from './Toast';
 import styles from './ShareLink.module.css';
-import Icon from '../../components/Icon/Icon';
 
 function ShareLink() {
   const url = window.location.href;
