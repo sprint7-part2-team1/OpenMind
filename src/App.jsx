@@ -1,11 +1,9 @@
 import Header from './components/Header';
-
-import FeedCard from './components/FeedCard';
-
+import IndividualFeed from './pages/IndividualFeed/IndividualFeed';
 function App() {
   return (
     <>
-      <Header subjectId='6767' />
+      <IndividualFeed />
     </>
   );
 }

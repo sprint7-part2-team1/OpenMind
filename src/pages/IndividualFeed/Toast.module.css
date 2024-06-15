@@ -9,4 +9,5 @@
   bottom: 6rem;
   left: 50%;
   transform: translateX(-50%);
+  box-shadow: var(--shadow-3pt);
 }
