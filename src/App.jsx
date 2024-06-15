@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Modal from './components/modal/Modal.jsx';
-import useModal from './components/modal/useModal.jsx';
+import Modal from './pages/modal/Modal.jsx';
+import useModal from './pages/modal/useModal.jsx';
 
 function App() {
   const { isOpen, openModal, closeModal} = useModal();
