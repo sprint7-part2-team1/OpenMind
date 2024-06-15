@@ -54,36 +54,35 @@ h1 {
   justify-self: center;
 }
 
-/* Grid layout for ListCard */
 .containerListCard {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(1fr));
   max-width: 940px;
-  margin: 0 auto; /* Centering the container horizontally */
+  margin: 0 auto;
 }
 .ListNav {
   max-width: 940px;
   margin: 0 auto;
 }
 
-/* Styles for ListCardItem */
 .containerListCardItem {
   display: flex;
   flex-direction: column;
   border: 1px solid var(--gray-40);
   border-radius: 16px;
   padding: 10px;
-  width: auto; /* Adjusted to 100% to fit its parent */
-  height: auto; /* Height set to auto to adjust according to content */
+  width: auto;
+  height: auto;
   background-color: var(--gray-10);
   cursor: pointer;
+  position: relative;
 }
 .containerListCardItem:hover {
   border: none;
   background-color: var(--brown-10);
-  transform: translateY(-3px); /* Move up slightly */
-  box-shadow: var(--shadow-3pt); /* Apply shadow */
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-3pt);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .profile {
@@ -95,7 +94,7 @@ h1 {
   font-size: 20px;
   font-weight: 500;
   line-height: 24px;
-  position: relative; /* Required for the pseudo-element positioning */
+  position: relative;
 }
 .containerListCardItem:hover .nameListCardItem::after {
   content: '';
@@ -114,12 +113,24 @@ h1 {
   }
 }
 
+.containerListCardItem:hover::before {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: rgb(90, 224, 90);
+  z-index: -1;
+}
+
 .img {
   width: 60px;
   height: 60px;
   border-radius: 99px;
+  z-index: 1;
 }
-
 .cardBottom {
   display: flex;
   justify-content: space-between;
@@ -131,17 +142,17 @@ h1 {
   align-items: center;
 }
 
-/* Media queries */
+.cardBottom > * {
+  color: var(--gray-40);
+  font-size: 16px;
+  line-height: 22px;
+}
 
-/* When the browser width is 1200px or more */
 @media (min-width: 1200px) {
   .containerListCard {
-    width: 940px; /* Fixed width for larger screens */
-    gap: 20px; /* Spacing between ListCardItem elements */
-    grid-template-columns: repeat(
-      4,
-      minmax(220px, 1fr)
-    ); /* Four items per row */
+    width: 940px;
+    gap: 20px;
+    grid-template-columns: repeat(4, minmax(220px, 1fr));
   }
 
   .containerListCardItem {
@@ -149,7 +160,6 @@ h1 {
   }
 }
 
-/* When the browser width is less than 1200px and more than 949px */
 @media (max-width: 1199px) and (min-width: 950px) {
   .containerListCard {
     width: auto;
@@ -178,15 +188,14 @@ h1 {
   }
 }
 
-/* When the browser width is less than 768px and more than 375px */
 @media (max-width: 767px) and (min-width: 375px) {
   .containerListCard {
     grid-template-columns: repeat(2, minmax(155.5px, 1fr));
     gap: 16px;
   }
   .containerListCardItem {
-    width: 155.5px; /* Minimum width for ListCardItem */
-    height: 168px; /* Fixed height of ListCardItem */
+    width: 155.5px;
+    height: 168px;
     padding: 10px;
   }
   header {
@@ -210,5 +219,11 @@ h1 {
   .nameListCardItem {
     font-size: 17px;
     line-height: 24px;
+  }
+  .cardBottom > * {
+    color: var(--gray-40);
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 400;
   }
 }
