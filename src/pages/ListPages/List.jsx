@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import ListCard from './ListCard';
-import styles from './Combined.module.css';
+import styles from './List.module.css';
 
 const List = () => {
   const [searchValue, setSearchValue] = useState('');
