@@ -1,6 +1,4 @@
-import FeedCardList from './components/FeedCardList/FeedCardList';
-
 function App() {
-  return <FeedCardList subjectId='6742' />;
+  return <></>;
 }
 export default App;
