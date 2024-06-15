@@ -8,7 +8,7 @@ function NoQuestionFeed() {
     <>
       <div className={Style.container}>
         <div className={Style.container_header}>
-          <Icon iconName={'Messages'} />
+          <Icon className={Style.icon} iconName={'Messages'} />
           <p className={Style.header_message}>아직 질문이 없습니다.</p>
         </div>
         <div className={Style.empty_img_box}>

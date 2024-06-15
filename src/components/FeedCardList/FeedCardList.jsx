@@ -1,39 +1,14 @@
 import FeedCard from '../FeedCard/FeedCard';
 import styles from './FeedCardList.module.css';
+import useFeedCardDetails from '../../hooks/useFeedCardDetails';
+import NoQuestionFeed from '../NoQuestionFeed/NoQuestionFeed';
 import Icon from '../Icon/Icon';
-import {
-  getSubjectDetail,
-  getSubjectQuestions,
-} from '../../api/subjects/subjectsApi';
-import { useEffect, useState } from 'react';
 
 const FeedCardList = ({ subjectId }) => {
-  const [questions, setQuestions] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [userProfileImage, setUserProfileImage] = useState('');
-  const [username, setUsername] = useState('');
+  const { questions, isLoading, error, userProfileImage, username } =
+    useFeedCardDetails(subjectId);
 
-  useEffect(() => {
-    const fetchDetails = async () => {
-      try {
-        const subjectDetail = await getSubjectDetail(subjectId);
-        setUsername(subjectDetail.name);
-        setUserProfileImage(subjectDetail.imageSource);
-
-        const questionData = await getSubjectQuestions(subjectId);
-        setQuestions(questionData.results);
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchDetails();
-  }, [subjectId]);
-
-  if (loading) {
+  if (isLoading) {
     return <div>Loading...</div>;
   }
 
@@ -41,7 +16,9 @@ const FeedCardList = ({ subjectId }) => {
     return <div>Error: {error}</div>;
   }
 
-  return (
+  return questions.length === 0 ? (
+    <NoQuestionFeed />
+  ) : (
     <div className={styles.container}>
       <div className={styles.header}>
         <Icon className={styles.icon} iconName={'Messages'} />

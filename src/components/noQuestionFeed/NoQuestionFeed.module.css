@@ -1,33 +1,33 @@
 .container {
+  max-width: 80rem;
   background-color: var(--brown-10);
-  width: 71.6rem;
+  margin: 0 auto;
+  padding: 2rem;
   height: 35rem;
-  border: 0.1rem solid var(--brown-20);
-  border-radius: 1.6rem;
+  border: var(--brown-30) solid 0.1rem;
+  border-radius: 0.8rem;
+  box-shadow: var(--shadow-2pt);
 }
 
 .container_header {
-  width: 23.5rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  margin: 0 auto;
-  margin-top: 1.6rem;
-}
-
-.header_message {
+  margin-bottom: 2rem;
+  line-height: 2.5rem;
   color: var(--brown-40);
   font-size: 2rem;
-  font-weight: 400;
-  line-height: 2.5rem;
+}
+
+.icon {
+  margin-right: 0.8rem;
 }
 
 .empty_img_box {
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-top: 7rem;
-  padding-bottom: 6.5rem;
+  margin-top: 2rem;
 }
 
 .empty_img {
