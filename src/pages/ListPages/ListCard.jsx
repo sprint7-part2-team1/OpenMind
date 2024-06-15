@@ -7,7 +7,7 @@ import styles from './List.module.css';
 const ListCard = ({ searchValue, onlyForMount, sortOrder }) => {
   const [subjectList, setSubjectList] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsCount, setItemsCount] = useState(8); // 반응형으로 사용될 state
+  const [itemsCount, setItemsCount] = useState(8); // 초기 세팅값 페이지당 8개
   const itemsPerPage = itemsCount;
 
   useEffect(() => {
@@ -26,6 +26,22 @@ const ListCard = ({ searchValue, onlyForMount, sortOrder }) => {
   useEffect(() => {
     setCurrentPage(1);
   }, [sortOrder, searchValue]);
+
+  // 반응형 호출
+  useEffect(() => {
+    const updateItemsCount = () => {
+      if (window.innerWidth <= 950) {
+        setItemsCount(6);
+      } else {
+        setItemsCount(8);
+      }
+    };
+    updateItemsCount();
+    window.addEventListener('resize', updateItemsCount);
+    return () => {
+      window.removeEventListener('resize', updateItemsCount);
+    };
+  }, []);
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -56,8 +72,6 @@ const ListCard = ({ searchValue, onlyForMount, sortOrder }) => {
     <div>
       <div className={styles.outContainer}>
         <div className={styles.containerListCard}>
-          {' '}
-          {/* Changed to avoid conflict */}
           {currentItems.map((item) => (
             <ListCardItem key={item.id} {...item} />
           ))}
