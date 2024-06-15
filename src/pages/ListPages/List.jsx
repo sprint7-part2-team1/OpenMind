@@ -34,7 +34,7 @@ const List = () => {
         <div className={styles.ListNavInnerConatiner}>
           <input
             type='text'
-            placeholder='질문하고 싶은 아이디를 검색하세요!'
+            placeholder='아이디를 검색하세요!'
             value={searchValue}
             onChange={handleInputChange}
           />

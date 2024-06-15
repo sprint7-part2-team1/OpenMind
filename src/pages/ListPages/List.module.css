@@ -1,8 +1,14 @@
-/* List.module.css */
+/* Default styles */
+@import url('../../global.css');
+
+/* Common styles */
 header {
   display: flex;
   justify-content: space-between;
-  margin: 40px 130px;
+  width: 100%;
+  padding: 40px 40px 0px 40px;
+  max-width: 1500px;
+  margin: 0 auto;
 }
 
 h1 {
@@ -21,43 +27,63 @@ h1 {
 .ListNav {
   width: 100%;
   display: flex;
-}
-
-.ListNavInnerConatiner {
-  display: flex;
   justify-content: space-between;
 }
 
-/* ListCard.module.css */
+.ListNavInnerConatiner {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+.ListNavInnerConatiner > * {
+  border-radius: 10px;
+}
+
+.ListNavInnerConatiner > input {
+  width: 460px;
+  padding: 10px;
+  border: 1px solid var(--gray-40);
+}
+.ListNavInnerConatiner > input:focus {
+  outline: none;
+  background-color: var(--gray-20);
+}
 .outContainer {
   display: flex;
-  width: 940px;
-  max-width: 100%;
-  margin: 0 auto;
-  flex-wrap: wrap;
-  gap: 20px;
+  justify-self: center;
 }
 
+/* Grid layout for ListCard */
 .containerListCard {
-  /* Changed to avoid conflict */
-  display: flex;
-  width: 940px;
-  max-width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(1fr));
+  max-width: 940px;
+  margin: 0 auto; /* Centering the container horizontally */
+}
+.ListNav {
+  max-width: 940px;
   margin: 0 auto;
-  flex-wrap: wrap;
-  gap: 20px;
 }
 
-/* ListCardItem.module.css */
+/* Styles for ListCardItem */
 .containerListCardItem {
-  /* Changed to avoid conflict */
   display: flex;
   flex-direction: column;
-  border: 1px solid;
+  border: 1px solid var(--gray-40);
   border-radius: 16px;
-  width: 220px;
-  height: 187px;
   padding: 10px;
+  width: auto; /* Adjusted to 100% to fit its parent */
+  height: auto; /* Height set to auto to adjust according to content */
+  background-color: var(--gray-10);
+  cursor: pointer;
+}
+.containerListCardItem:hover {
+  border: none;
+  background-color: var(--brown-10);
+  transform: translateY(-3px); /* Move up slightly */
+  box-shadow: var(--shadow-3pt); /* Apply shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
 }
 
 .profile {
@@ -65,11 +91,27 @@ h1 {
 }
 
 .nameListCardItem {
-  /* Changed to avoid conflict */
   margin-top: 10px;
   font-size: 20px;
-  font-weight: 400;
+  font-weight: 500;
   line-height: 24px;
+  position: relative; /* Required for the pseudo-element positioning */
+}
+.containerListCardItem:hover .nameListCardItem::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 2px;
+  background-color: var(--gray-40);
+  animation: underline 0.3s forwards;
+}
+
+@keyframes underline {
+  to {
+    width: 80%;
+  }
 }
 
 .img {
@@ -87,4 +129,86 @@ h1 {
 .takeQs {
   display: flex;
   align-items: center;
+}
+
+/* Media queries */
+
+/* When the browser width is 1200px or more */
+@media (min-width: 1200px) {
+  .containerListCard {
+    width: 940px; /* Fixed width for larger screens */
+    gap: 20px; /* Spacing between ListCardItem elements */
+    grid-template-columns: repeat(
+      4,
+      minmax(220px, 1fr)
+    ); /* Four items per row */
+  }
+
+  .containerListCardItem {
+    height: 187px;
+  }
+}
+
+/* When the browser width is less than 1200px and more than 949px */
+@media (max-width: 1199px) and (min-width: 950px) {
+  .containerListCard {
+    width: auto;
+    grid-template-columns: repeat(4, minmax(186px, 220px));
+    gap: 20px;
+  }
+  .ListNav {
+    width: auto;
+  }
+  .containerListCardItem {
+    height: 187px;
+  }
+}
+
+/* When the browser width is less than 950px and more than 767px */
+@media (max-width: 949px) and (min-width: 768px) {
+  .containerListCard {
+    grid-template-columns: repeat(3, minmax(186px, 220px));
+    gap: 20px;
+  }
+  .containerListCardItem {
+    height: 187px;
+  }
+  .ListNav {
+    width: 700px;
+  }
+}
+
+/* When the browser width is less than 768px and more than 375px */
+@media (max-width: 767px) and (min-width: 375px) {
+  .containerListCard {
+    grid-template-columns: repeat(2, minmax(155.5px, 1fr));
+    gap: 16px;
+  }
+  .containerListCardItem {
+    width: 155.5px; /* Minimum width for ListCardItem */
+    height: 168px; /* Fixed height of ListCardItem */
+    padding: 10px;
+  }
+  header {
+    gap: 20px;
+    flex-direction: column;
+    align-items: center;
+  }
+  .ListNav {
+    width: 327px;
+  }
+  .ListNavInnerConatiner > input {
+    flex-grow: 1;
+    margin-right: 10px;
+  }
+  h1 {
+    font-size: 33px;
+    font-weight: 400;
+    line-height: 47.73px;
+    text-align: center;
+  }
+  .nameListCardItem {
+    font-size: 17px;
+    line-height: 24px;
+  }
 }
