@@ -1,0 +1,15 @@
+.bg {
+  background-image: url(../assets/images/loginPageImg.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  height: 100vh;
+  margin: 0 auto;
+}
+
+.content {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}

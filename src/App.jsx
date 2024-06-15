@@ -1,4 +1,9 @@
+import LoginPage from './pages/LoginPage.jsx';
+
 function App() {
-  return <></>;
+  return (
+  <>
+    <LoginPage />
+  </>);
 }
 export default App;
