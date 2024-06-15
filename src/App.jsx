@@ -1,4 +1,10 @@
+import ShareLink from './pages/IndividualFeed/ShareLink';
+
 function App() {
-  return <></>;
+  return (
+    <>
+      <ShareLink />
+    </>
+  );
 }
 export default App;
