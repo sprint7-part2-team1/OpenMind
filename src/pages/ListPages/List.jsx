@@ -38,11 +38,12 @@ const List = () => {
           <option value="questions">질문순</option>
         </select>
       </div>
+      
       <ListCard
         searchValue={searchValue}
         onlyForMount={onlyForMount}
         sortOrder={sortOrder}
-      />
+    />
     </div>
   );
 };

@@ -4,7 +4,6 @@ import Pagination from 'react-js-pagination';
 import './PagiNation.css'
 import styles from './ListCard.module.css'
 
-// 페이지네이션 중 1번페이지가 아닌 다른페이지에서 input 검색시, card나오지않음
 
 const ListCard = ({ searchValue, onlyForMount, sortOrder }) => {
   const [subjectList, setSubjectList] = useState([]);
@@ -59,10 +58,11 @@ const ListCard = ({ searchValue, onlyForMount, sortOrder }) => {
 
   return (
     <div>
-      <div className="lala">
+      <div className={styles.outContainer}>
+      <div className={styles.container}>
         {currentItems.map((item) => (
           <ListCardItem key={item.id} {...item} />
-        ))}
+        ))}</div>
       </div>
       <Pagination
         activePage={currentPage}

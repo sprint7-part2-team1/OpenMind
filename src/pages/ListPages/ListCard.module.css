@@ -1,0 +1,9 @@
+.container {
+    display: flex;
+    height: 394px;
+    width: 940px;
+    max-width: 100%;
+    margin: 0 auto;
+    flex-wrap: wrap;
+  }
+

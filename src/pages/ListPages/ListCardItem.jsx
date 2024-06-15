@@ -2,8 +2,7 @@ import styles from './ListCardItem.module.css'
 import Icon from '../../components/Icon/Icon'
 const ListCardItem = ({ id, name, imageSource, questionCount, createAt }) => {
   return (
-    <div >
-      <div className={styles.container}>
+    <div className={styles.container}>
         <img className={styles.img} src={`${imageSource}`} alt="프로필사진" />
         <div>{name}</div>
         <div className={styles.cardBottom}>
@@ -13,7 +12,7 @@ const ListCardItem = ({ id, name, imageSource, questionCount, createAt }) => {
           </div>
           <div>{`${questionCount}개`}</div>
         </div>
-      </div>
+      
     </div>
   );
 };
