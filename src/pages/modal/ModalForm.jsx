@@ -1,7 +1,7 @@
 import '../../global.css'; 
 import Style from './Modal.module.css';
 import { useEffect, useState } from "react";
-import { createQuestion } from "../../api/modalApi";
+import { createQuestion } from "../../api/subjects/subjectsApi";
 
 function ModalForm({  team, subjectId, onClose }) {
   const [content, setContent] = useState('');
@@ -48,7 +48,7 @@ function ModalForm({  team, subjectId, onClose }) {
   
   return (
   <form onSubmit={handleSubmit} className={Style.form}>
-    <textarea value={content} onChange={handleContentChange} placeholder="질문을 입력해주세요"></textarea>
+    <textarea className={Style.textForm} value={content} onChange={handleContentChange} placeholder="질문을 입력해주세요"></textarea>
     <button type="submit" disabled={isSubmitting || !hasContent}>질문 보내기</button>
     {submittingError?.message && <div>{submittingError.message}</div>}
   </form>

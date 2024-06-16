@@ -18,11 +18,13 @@ function Modal({ onClose }) {
       <div className={Style.modal} onClick={preventModalClose}>
         <div className={Style.content}>
           <header className={Style.header}>
-            <Icon iconName={"Messages"}/>
-            <h2>질문을 작성하세요</h2>
+            <div className={Style.title}>
+              <Icon iconName={"Messages"}/>
+              <h2 className={Style.text}>질문을 작성하세요</h2>
+            </div>
             <button onClick={onClose} className={Style.button}><Icon iconName={"Close"}/></button>
           </header>
-          <ModalProfile team={TEAM} subjectId={subjectId}/>
+          <ModalProfile team={TEAM} id={subjectId}/>
           <ModalForm team={TEAM} subjectId={subjectId} onClose={onClose}/>
         </div>
       </div>
