@@ -19,6 +19,13 @@
   margin-bottom: 1.6rem;
 }
 
+.feedcard-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.6rem;
+}
+
 .feedcard-question-header {
   display: flex;
   align-items: center;

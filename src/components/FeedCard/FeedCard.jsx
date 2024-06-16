@@ -3,6 +3,7 @@ import styles from './FeedCard.module.css';
 import ReactionButton from './ReactionButton';
 import '../../global.css';
 import formatTimeDiff from '../../utils/formatTimeDiff.js';
+import KebabMenu from '../KebabMenu/KebabMenu.jsx';
 
 const FeedCard = ({
   pageType,
@@ -48,8 +49,17 @@ const FeedCard = ({
 
   return (
     <div className={styles.feedcard}>
-      <div className={styles['feedcard-status-box']}>
-        {answerStatus === 'true' ? '답변 완료' : '미답변'}
+      <div className={styles['feedcard-header']}>
+        <div className={styles['feedcard-status-box']}>
+          {answerStatus === 'true' ? '답변 완료' : '미답변'}
+        </div>
+        {pageType === 'answer' && (
+          <KebabMenu
+            onEdit={handleEdit}
+            onReject={handleReject}
+            onDelete={handleDelete}
+          />
+        )}
       </div>
       <div className={styles['feedcard-question-header']}>
         <span className={styles['feedcard-question-label']}>질문 · &nbsp;</span>
@@ -101,15 +111,13 @@ const FeedCard = ({
                 className={styles['feedcard-answer-input']}
               />
             </div>
+
             <button
               className={styles['feedcard-submit-button']}
               onClick={handleSubmit}
             >
               제출
             </button>
-            <button onClick={handleEdit}>수정하기</button>
-            <button onClick={handleReject}>거절하기</button>
-            <button onClick={handleDelete}>삭제하기</button>
           </div>
         )
       ) : (
