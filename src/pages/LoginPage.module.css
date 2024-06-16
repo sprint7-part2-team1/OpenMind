@@ -1,6 +1,7 @@
 .container {
-  height: 100%;
-  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 
 .header {
@@ -19,13 +20,6 @@
   width: 16.1rem;
   height: 4.6rem;
   background-color: var(--brown-10);
-}
-
-.make_gap {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
 }
 
 .main {
@@ -71,17 +65,18 @@
   line-height: 2.2rem;
 }
 
-.footer {
+.empty_box {
   width: 100%;
-  height: 100%;
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
+  height: 5rem;
 }
 
-.footer_backgroundImg {
-  width: 120rem;
-  overflow: hidden;
-  position: fixed;
-  object-fit: cover;
+.footer {
+  background-color: var(--gray-10); /* Example background color */
+  width: 125rem; /* Ensure footer spans the full width of the container */
+  background-image: url('../assets/images/loginPageImg.png');
+  background-repeat: no-repeat;
+  background-size: cover; /* Cover the entire footer area with the background image */
+  background-position: center; /* Center the background image */
+  flex-grow: 1;
+  margin: 0 auto;
 }
