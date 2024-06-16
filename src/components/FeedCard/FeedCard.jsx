@@ -12,8 +12,6 @@ const FeedCard = ({
   answer,
   answerDate = answer?.createdAt,
   answerContent = answer?.content,
-
-  answerRejected = answer?.isRejected,
 }) => {
   return (
     <div className={styles.feedcard}>
