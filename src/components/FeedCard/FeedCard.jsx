@@ -12,6 +12,7 @@ const FeedCard = ({
   answer,
   answerDate = answer?.createdAt,
   answerContent = answer?.content,
+  answerRejected = answer?.isRejected,
 }) => {
   return (
     <div className={styles.feedcard}>
@@ -39,7 +40,6 @@ const FeedCard = ({
                 {formatTimeDiff(answerDate)}
               </span>
             </div>
-
             <div
               className={`${styles['feedcard-user-answer']} ${
                 answerRejected ? styles['answer-rejected'] : ''
