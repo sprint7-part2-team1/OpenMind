@@ -22,7 +22,7 @@ function Modal({ onClose }) {
               <Icon iconName={"Messages"}/>
               <h2 className={Style.text}>질문을 작성하세요</h2>
             </div>
-            <button onClick={onClose} className={Style.button}><Icon iconName={"Close"}/></button>
+            <button onClick={onClose} className={Style.closeButton}><Icon iconName={"Close"}/></button>
           </header>
           <ModalProfile team={TEAM} id={subjectId}/>
           <ModalForm team={TEAM} subjectId={subjectId} onClose={onClose}/>
