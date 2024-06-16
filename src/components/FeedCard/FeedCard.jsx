@@ -9,11 +9,23 @@ const FeedCard = ({
   questionDate,
   userProfileImage,
   username,
+  initialLikes,
+  initialDislikes,
   answer,
   answerDate = answer?.createdAt,
   answerContent = answer?.content,
   answerRejected = answer?.isRejected,
+  questionId,
+  countUpdate,
 }) => {
+  const handleCountUpdate = (type, count) => {
+    if (type === 'like') {
+      countUpdate(questionId, { like: count });
+    } else {
+      countUpdate(questionId, { dislike: count });
+    }
+  };
+
   return (
     <div className={styles.feedcard}>
       <div className={styles['feedcard-status-box']}>
@@ -52,8 +64,18 @@ const FeedCard = ({
       )}
       <div className={styles.separator}></div>
       <div className={styles['feedcard-buttons']}>
-        <ReactionButton type='like' />
-        <ReactionButton type='dislike' />
+        <ReactionButton
+          type='like'
+          initialCount={initialLikes}
+          questionId={questionId}
+          countUpdate={handleCountUpdate}
+        />
+        <ReactionButton
+          type='dislike'
+          initialCount={initialDislikes}
+          questionId={questionId}
+          countUpdate={handleCountUpdate}
+        />
       </div>
     </div>
   );

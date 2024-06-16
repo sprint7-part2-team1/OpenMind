@@ -5,11 +5,25 @@ import NoQuestionFeed from '../NoQuestionFeed/NoQuestionFeed';
 import Icon from '../Icon/Icon';
 
 const FeedCardList = ({ subjectId }) => {
-  const { questions, isLoading, error, userProfileImage, username } =
-    useFeedCardDetails(subjectId);
+  const {
+    questions,
+    isLoading,
+    error,
+    userProfileImage,
+    username,
+    setQuestions,
+  } = useFeedCardDetails(subjectId);
+
+  const handleCountUpdate = (questionId, reaction) => {
+    setQuestions((prevQuestions) =>
+      prevQuestions.map((question) =>
+        question.id === questionId ? { ...question, ...reaction } : question
+      )
+    );
+  };
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div>로딩중입니다...</div>;
   }
 
   if (error) {
@@ -33,6 +47,10 @@ const FeedCardList = ({ subjectId }) => {
           username={username}
           answerStatus={data.answer ? 'true' : 'false'}
           answer={data.answer}
+          initialLikes={data.like}
+          initialDislikes={data.dislike}
+          questionId={data.id}
+          countUpdate={handleCountUpdate}
         />
       ))}
     </div>

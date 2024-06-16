@@ -30,7 +30,7 @@ const useFeedCardDetails = (subjectId) => {
     fetchDetails();
   }, [subjectId]);
 
-  return { questions, isLoading, error, userProfileImage, username };
+  return { questions, isLoading, error, userProfileImage, username, setQuestions };
 };
 
 export default useFeedCardDetails;
