@@ -1,4 +1,10 @@
+import IndividualFeed from './pages/IndividualFeed/IndividualFeed';
+
 function App() {
-  return <></>;
+  return (
+    <>
+      <IndividualFeed />
+    </>
+  );
 }
 export default App;
