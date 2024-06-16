@@ -1,4 +1,6 @@
+import AnswerPage from './pages/AnswerPage';
+
 function App() {
-  return <></>;
+  return <AnswerPage subjectId='6767' />;
 }
 export default App;
