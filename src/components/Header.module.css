@@ -7,6 +7,7 @@
   background-image: url(../assets/images/headerImg.png);
   background-size: cover;
   background-repeat: no-repeat;
+
   background-position: center, top;
   width: 100%;
   max-width: 120rem;
@@ -33,4 +34,5 @@
   border-radius: 100%;
   position: absolute;
   top: 13.6rem;
+
 }
