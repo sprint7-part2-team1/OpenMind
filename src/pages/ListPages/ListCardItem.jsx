@@ -4,7 +4,6 @@ import Icon from '../../components/Icon/Icon';
 const ListCardItem = ({ id, name, imageSource, questionCount, createAt }) => {
   return (
     <div className={styles.containerListCardItem}>
-      {' '}
       <div className={styles.profile}>
         <img className={styles.img} src={`${imageSource}`} alt='프로필사진' />
         <div className={styles.nameListCardItem}>{name}</div>{' '}
