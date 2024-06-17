@@ -1,7 +1,7 @@
 import '../global.css';
 import { loginPageBackgroundImage, Logo, personIcon } from '../assets/images';
 import Icon from '../components/Icon/Icon';
-import style from './LoginPage.module.css';
+import styles from './LoginPage.module.css';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { postSubject } from '../api/subjects/subjectsApi';
@@ -26,38 +26,38 @@ function LoginPage() {
   };
 
   return (
-    <div className={style.container}>
-      <div className={style.header}>
-        <div className={style.header_box}>
-          {/* <Link to='/questionListPage' className={style.header_right}>
+    <div className={styles.container}>
+      <div className={styles.header}>
+        <div className={styles.header_box}>
+          {/* <Link to='/questionListPage' className={styles.header_right}>
             <a>질문하러 가기</a>
           </Link> */}
-          <button className={style.header_right}>질문하러 가기</button>
+          <button className={styles.header_right}>질문하러 가기</button>
         </div>
       </div>
-      <div className={style.main}>
-        <img className={style.main_logo} src={Logo} alt='Logo' />
+      <div className={styles.main}>
+        <img className={styles.main_logo} src={Logo} alt='Logo' />
 
-        <div className={style.form}>
+        <div className={styles.form}>
           <input
-            className={style.nickName_input}
+            className={styles.nickName_input}
             value={nameInput}
             placeholder='이름을 입력하세요'
             onChange={(e) => setNameInput(e.target.value)}
             onKeyDown={(e) => e.key === 'Enter' && handleSubmit(e)}
           />
-          <span className={style.input_personIcon}>
+          <span className={styles.input_personIcon}>
             <img src={personIcon} alt='personIcon' />
           </span>
-          <button className={style.login_btn} onClick={(e) => handleSubmit(e)}>
+          <button className={styles.login_btn} onClick={(e) => handleSubmit(e)}>
             질문 받기
           </button>
         </div>
       </div>
-      <div className={style.empty_box}></div>
-      <footer className={style.footer}>
+      <div className={styles.empty_box}></div>
+      <footer className={styles.footer}>
         {/* <img
-              className={style.footer_backgroundImg}
+              className={styles.footer_backgroundImg}
               src={loginPageBackgroundImage}
               alt='backgroundImage'
             /> */}
