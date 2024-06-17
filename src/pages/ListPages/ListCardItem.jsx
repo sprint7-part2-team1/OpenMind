@@ -5,11 +5,9 @@ const ListCardItem = ({ id, name, imageSource, questionCount, createAt }) => {
   return (
     <div className={styles.containerListCardItem}>
       {' '}
-      {/* Changed to avoid conflict */}
       <div className={styles.profile}>
         <img className={styles.img} src={`${imageSource}`} alt='프로필사진' />
         <div className={styles.nameListCardItem}>{name}</div>{' '}
-        {/* Changed to avoid conflict */}
       </div>
       <div className={styles.cardBottom}>
         <div className={styles.takeQs}>
