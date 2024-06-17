@@ -10,21 +10,25 @@ function ModalProfile({ id }) {
       const results = await getSubjectDetail(id);
       setProfileItems(results);
     } catch (error) {
-      console.error("Failed to load profile:", error);
+      console.error('Failed to load profile:', error);
     }
   };
 
-  useEffect(()=>{
+  useEffect(() => {
     loadProfile();
-  },[])
+  }, []);
 
   return (
-  <div className={style.profile}>
-    <span className={style.to}>To.</span>
-    <img className={style.profileImg} src={profileItems.imageSource} alt='Profileimage'></img>
-    <span className={style.name}>{profileItems.name}</span>
-  </div>
-)
+    <div className={style.profile}>
+      <span className={style.to}>To.</span>
+      <img
+        className={style.profileImg}
+        src={profileItems.imageSource}
+        alt='Profileimage'
+      ></img>
+      <span className={style.name}>{profileItems.name}</span>
+    </div>
+  );
 }
 
 export default ModalProfile;

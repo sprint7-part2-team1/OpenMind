@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 function useModal() {
   const [isOpen, setIsOpen] = useState(false);
@@ -8,7 +8,7 @@ function useModal() {
   return {
     isOpen,
     openModal,
-    closeModal
+    closeModal,
   };
 }
 
