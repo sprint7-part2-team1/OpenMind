@@ -1,4 +1,4 @@
-import Style from './NoQuestionFeed.module.css';
+import styles from './NoQuestionFeed.module.css';
 import emptyQuestionIcon from '../../assets/images/emptyQuestionIcon.png';
 import '../../global.css';
 import Icon from '../Icon/Icon';
@@ -6,14 +6,14 @@ import Icon from '../Icon/Icon';
 function NoQuestionFeed() {
   return (
     <>
-      <div className={Style.container}>
-        <div className={Style.container_header}>
-          <Icon className={Style.icon} iconName={'Messages'} />
-          <p className={Style.header_message}>아직 질문이 없습니다.</p>
+      <div className={styles.container}>
+        <div className={styles.container_header}>
+          <Icon className={styles.icon} iconName={'Messages'} />
+          <p className={styles.header_message}>아직 질문이 없습니다.</p>
         </div>
-        <div className={Style.empty_img_box}>
+        <div className={styles.empty_img_box}>
           <img
-            className={Style.empty_img}
+            className={styles.empty_img}
             src={emptyQuestionIcon}
             alt='질문이 비어있는 아이콘'
           />
