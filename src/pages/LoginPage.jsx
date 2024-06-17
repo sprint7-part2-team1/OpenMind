@@ -38,7 +38,7 @@ function LoginPage() {
       <div className={style.main}>
         <img className={style.main_logo} src={Logo} alt='Logo' />
 
-        <form className={style.form} onSubmit={handleSubmit}>
+        <div className={style.form}>
           <input
             className={style.nickName_input}
             value={nameInput}
@@ -49,10 +49,10 @@ function LoginPage() {
           <span className={style.input_personIcon}>
             <img src={personIcon} alt='personIcon' />
           </span>
-          <button className={style.login_btn} type='submit'>
+          <button className={style.login_btn} onClick={(e) => handleSubmit(e)}>
             질문 받기
           </button>
-        </form>
+        </div>
       </div>
       <div className={style.empty_box}></div>
       <footer className={style.footer}>
