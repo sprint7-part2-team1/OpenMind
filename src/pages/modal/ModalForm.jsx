@@ -49,7 +49,7 @@ function ModalForm({  team, subjectId, onClose }) {
   return (
   <form onSubmit={handleSubmit} className={Style.form}>
     <textarea className={Style.textForm} value={content} onChange={handleContentChange} placeholder="질문을 입력해주세요"></textarea>
-    <button className={Style.formButton} type="submit" disabled={isSubmitting || !hasContent}>질문 보내기</button>
+    <button type="submit" disabled={isSubmitting || !hasContent}>질문 보내기</button>
     {submittingError?.message && <div>{submittingError.message}</div>}
   </form>
   );
