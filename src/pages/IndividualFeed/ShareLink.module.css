@@ -1,0 +1,36 @@
+@import '../../global.css';
+
+.shareBox {
+  display: flex;
+  gap: 1.2rem;
+}
+
+.kakaoImg {
+  background-image: url(../../assets/images/Kakao-icon.png);
+  background-size: cover;
+  background-color: white;
+  border: none;
+  width: 4rem;
+  height: 4rem;
+  cursor: pointer;
+}
+
+.linkImg {
+  background-image: url(../../assets/images/Link-icon.png);
+  background-size: cover;
+  background-color: white;
+  border: none;
+  width: 4rem;
+  height: 4rem;
+  cursor: pointer;
+}
+
+.facebookImg {
+  background-image: url(../../assets/images/Facebook-icon.png);
+  background-size: cover;
+  background-color: white;
+  border: none;
+  width: 4rem;
+  height: 4rem;
+  cursor: pointer;
+}
