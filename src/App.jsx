@@ -1,10 +1,11 @@
 import React from 'react';
 
 function App() {
-  
-  return (
-    <>
-    </>
-)
+  return 
+  (
+  <>
+  <LoginPage />
+  </>
+  );
 }
 export default App;
