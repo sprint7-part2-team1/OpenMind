@@ -2,9 +2,6 @@ import { useEffect } from 'react';
 import styles from './Toast.module.css';
 
 function Toast({ message, duration, onClose }) {
-  const test = () => {
-    console.log('hi');
-  };
   useEffect(() => {
     const timer = setTimeout(onClose, duration);
 
