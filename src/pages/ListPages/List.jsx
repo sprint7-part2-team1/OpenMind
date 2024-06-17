@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import ListCard from './ListCard';
 import styles from './List.module.css';
+import { Link } from 'react-router-dom';
 
 const List = () => {
   const [searchValue, setSearchValue] = useState('');
@@ -22,11 +23,13 @@ const List = () => {
   return (
     <div>
       <header>
-        <img
-          className={styles.logo}
-          src='src\assets\images\logo.png'
-          alt='List-logo'
-        />
+        <Link to='/' className={styles.header_right}>
+          <img
+            className={styles.logo}
+            src='src\assets\images\logo.png'
+            alt='List-logo'
+          />
+        </Link>
         <button>버튼</button>
       </header>
       <h1>누구에게 질문할까요?</h1>

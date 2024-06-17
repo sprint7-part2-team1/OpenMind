@@ -1,15 +1,15 @@
 import '../global.css';
-import { loginPageBackgroundImage, Logo, personIcon } from '../assets/images';
+import { Logo, personIcon } from '../assets/images';
 import Icon from '../components/Icon/Icon';
 import styles from './LoginPage.module.css';
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { postSubject } from '../api/subjects/subjectsApi';
 
 function LoginPage() {
   const [nameInput, setNameInput] = useState('');
   const [result, setResult] = useState({});
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -18,7 +18,7 @@ function LoginPage() {
         const SubjectResult = await postSubject(nameInput);
         setResult(SubjectResult);
         console.log(SubjectResult);
-        // navigate(`/question/${SubjectResult.id}`);
+        navigate(`/individualFeed/${SubjectResult.id}`);
       } catch (error) {
         console.error('회원생성에 실패했습니다:', error);
       }
@@ -29,10 +29,9 @@ function LoginPage() {
     <div className={styles.container}>
       <div className={styles.header}>
         <div className={styles.header_box}>
-          {/* <Link to='/questionListPage' className={styles.header_right}>
-            <a>질문하러 가기</a>
-          </Link> */}
-          <button className={styles.header_right}>질문하러 가기</button>
+          <Link to='/list' className={styles.header_right}>
+            질문하러 가기
+          </Link>
         </div>
       </div>
       <div className={styles.main}>
