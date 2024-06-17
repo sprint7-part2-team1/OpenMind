@@ -16,11 +16,15 @@
   margin-bottom: 2rem;
   line-height: 2.5rem;
   color: var(--brown-40);
+  background-color: var(--brown-10);
   font-size: 2rem;
 }
 
 .icon {
   margin-right: 0.8rem;
+}
+.header_message {
+  background-color: var(--brown-10);
 }
 
 .empty_img_box {
@@ -28,10 +32,12 @@
   display: flex;
   justify-content: center;
   margin-top: 2rem;
+  background-color: var(--brown-10);
 }
 
 .empty_img {
   width: 15rem;
   height: 15.4rem;
   margin: 0 auto;
+  background-color: var(--brown-10);
 }

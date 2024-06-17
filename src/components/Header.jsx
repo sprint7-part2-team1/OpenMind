@@ -4,6 +4,7 @@ import ShareLink from '../pages/IndividualFeed/ShareLink';
 import '../global.css';
 import { getSubjectDetail } from '../api/subjects/subjectsApi';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function Header({ subjectId }) {
   const [userProfileImage, setUserProfileImage] = useState('');
@@ -25,7 +26,9 @@ function Header({ subjectId }) {
 
   return (
     <header className={styles.header}>
-      <img className={styles.logo} src={logo} alt='logo' />
+      <Link to='/' className={styles.header_right}>
+        <img className={styles.logo} src={logo} alt='logo' />
+      </Link>
       <img
         className={styles.profileImg}
         src={userProfileImage}

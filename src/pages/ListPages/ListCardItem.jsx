@@ -1,9 +1,20 @@
 import styles from './List.module.css';
 import Icon from '../../components/Icon/Icon';
+import { getSubjectDetail } from '../../api/subjects/subjectsApi';
+import { useNavigate } from 'react-router-dom';
 
 const ListCardItem = ({ id, name, imageSource, questionCount, createAt }) => {
+  const navigate = useNavigate();
+
+  const handleMoveIndividualPage = () => {
+    navigate(`/individualFeed/${id}`);
+  };
+
   return (
-    <div className={styles.containerListCardItem}>
+    <div
+      className={styles.containerListCardItem}
+      onClick={handleMoveIndividualPage}
+    >
       <div className={styles.profile}>
         <img className={styles.img} src={`${imageSource}`} alt='프로필사진' />
         <div className={styles.nameListCardItem}>{name}</div>{' '}
