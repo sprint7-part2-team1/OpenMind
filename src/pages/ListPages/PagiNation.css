@@ -3,25 +3,25 @@
 .pagination {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 2rem;
   list-style: none; /* Remove default list styling */
   padding: 0;
-  gap: 10px;
+  gap: 1rem;
 }
 
 /* Style for pagination items */
 .pagination .page-item {
-  margin: 0 5px; /* Space between pagination items */
+  margin: 0 0.5rem; /* Space between pagination items */
 }
 
 .pagination .page-item .page-link {
   display: block;
-  padding: 10px 15px;
+  padding: 1rem 1.5rem;
   text-decoration: none; /* Remove underline */
-  font-size: 20px;
+  font-size: 2rem;
   color: var(--brown-40);
-  border-radius: 5px;
-  margin-bottom: 30px;
+  border-radius: 0.5rem;
+  margin-bottom: 3rem;
 }
 
 .pagination .page-item .page-link:hover {
@@ -40,31 +40,31 @@
 .pagination .page-item.disabled .page-link {
   color: var(--gray-20);
   pointer-events: none;
-  background-color: #fff;
+  background-color: var(--gray-10);
   border-color: #dee2e6;
 }
 
-@media (max-width: 949px) and (min-width: 768px) {
+@media (max-width: 94.9rem) and (min-width: 76.8rem) {
   .pagination {
     flex-wrap: wrap;
   }
   .pagination .page-item {
-    margin: 0 3px; /* Adjust spacing */
+    margin: 0 0.3rem; /* Adjust spacing */
   }
   .pagination .page-item .page-link {
-    font-size: 12px;
-    padding: 5px 10px;
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
   }
 }
-@media (max-width: 767px) and (min-width: 375px) {
+@media (max-width: 76.7rem) and (min-width: 37.5rem) {
   .pagination {
     flex-wrap: wrap;
   }
   .pagination .page-item {
-    margin: 0 2px; /* Adjust spacing */
+    margin: 0 0.2rem; /* Adjust spacing */
   }
   .pagination .page-item .page-link {
-    font-size: 12px;
-    padding: 5px 10px;
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
   }
 }
