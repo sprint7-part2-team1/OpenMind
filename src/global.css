@@ -16,6 +16,7 @@
   --blue-50: #1877f2;
   --yellow-50: #fee500;
   --red-50: #b93333;
+
   /* shadow */
   --shadow-1pt: 0 0.4rem 0.4rem 0 rgba(140, 140, 140, 0.25);
   --shadow-2pt: 0 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.25);
@@ -28,14 +29,9 @@
 
 html {
   font-size: 62.5%;
+  background-color: var(--gray-20);
 }
 
-html,
-body,
-#root {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-  box-sizing: border-box;
+body {
+  background-color: var(--gray-20);
 }

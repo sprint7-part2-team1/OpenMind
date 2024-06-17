@@ -2,38 +2,23 @@ import '../global.css';
 import { loginPageBackgroundImage, Logo, personIcon } from '../assets/images';
 import Icon from '../components/Icon/Icon';
 import style from './LoginPage.module.css';
-// import { Link } from 'react-router-dom';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { postSubject } from '../api/subjects/subjectsApi';
-
-// import { useNavigate } from 'react-router-dom';
 
 function LoginPage() {
   const [nameInput, setNameInput] = useState('');
   const [result, setResult] = useState({});
   // const navigate = useNavigate();
 
-  const handleNameInputKeyPress = async (e) => {
-    if (e.key === 'Enter' && nameInput.trim() !== '') {
-      e.preventDefault();
-      try {
-        const result = await postSubject(nameInput);
-        setResult(result);
-        console.log(result);
-        // navigate(`/question/${result.id}`);
-      } catch (error) {
-        console.error('회원생성에 실패했습니다:', error);
-      }
-    }
-  };
-
-  const handleButtonClick = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     if (nameInput.trim() !== '') {
       try {
-        const result = await postSubject(nameInput);
-        setResult(result);
-        console.log(result);
-        // navigate(`/question/${result.id}`);
+        const SubjectResult = await postSubject(nameInput);
+        setResult(SubjectResult);
+        console.log(SubjectResult);
+        // navigate(`/question/${SubjectResult.id}`);
       } catch (error) {
         console.error('회원생성에 실패했습니다:', error);
       }
@@ -53,19 +38,18 @@ function LoginPage() {
       <div className={style.main}>
         <img className={style.main_logo} src={Logo} alt='Logo' />
 
-        <form className={style.form}>
+        <form className={style.form} onSubmit={handleSubmit}>
           <input
             className={style.nickName_input}
             value={nameInput}
             placeholder='이름을 입력하세요'
             onChange={(e) => setNameInput(e.target.value)}
-            onKeyDown={(e) => handleNameInputKeyPress(e)}
+            onKeyDown={(e) => e.key === 'Enter' && handleSubmit(e)}
           />
           <span className={style.input_personIcon}>
             <img src={personIcon} alt='personIcon' />
-            {/* <Icon iconName={'Person'} /> */}
           </span>
-          <button className={style.login_btn} onClick={handleButtonClick}>
+          <button className={style.login_btn} type='submit'>
             질문 받기
           </button>
         </form>
@@ -81,4 +65,5 @@ function LoginPage() {
     </div>
   );
 }
+
 export default LoginPage;

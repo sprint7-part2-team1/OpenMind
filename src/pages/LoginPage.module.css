@@ -1,3 +1,6 @@
+* {
+  background-color: var(--gray-20);
+}
 .container {
   display: flex;
   flex-direction: column;
@@ -71,12 +74,12 @@
 }
 
 .footer {
-  background-color: var(--gray-10); /* Example background color */
-  width: 125rem; /* Ensure footer spans the full width of the container */
+  background-color: var(--gray-20);
+  width: 125rem;
   background-image: url('../assets/images/loginPageImg.png');
   background-repeat: no-repeat;
-  background-size: cover; /* Cover the entire footer area with the background image */
-  background-position: center; /* Center the background image */
+  background-size: cover;
+  background-position: center;
   flex-grow: 1;
   margin: 0 auto;
 }

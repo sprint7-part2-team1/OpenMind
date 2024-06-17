@@ -1,0 +1,27 @@
+.container {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: var(--brown-10);
+  border: var(--brown-30) solid 0.1rem;
+  border-radius: 0.8rem;
+  box-shadow: var(--shadow-2pt);
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+  line-height: 2.5rem;
+  color: var(--brown-40);
+  font-size: 2rem;
+}
+
+.icon {
+  margin-right: 0.8rem;
+}
+
+.feedcard {
+  margin-bottom: 20px;
+}
