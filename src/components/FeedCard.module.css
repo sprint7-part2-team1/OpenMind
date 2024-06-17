@@ -1,0 +1,89 @@
+.feedcard {
+  border: 0.1rem solid var(--gray-30);
+  border-radius: 0.8rem;
+  padding: 3.2rem;
+  margin: 1.6rem 0;
+  background-color: var(--gray-10);
+  box-shadow: var(--shadow-2pt);
+}
+
+.feedcard-status-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #542f1a;
+  color: #542f1a;
+  border-radius: 8px;
+  padding: 4px 12px;
+  display: inline-block;
+  margin-bottom: 16px;
+}
+
+.feedcard-question-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.feedcard-question-label {
+  font-size: 14px;
+  color: #999;
+}
+
+.feedcard-date {
+  font-size: 14px;
+  color: #999;
+}
+
+.feedcard-question-text {
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+
+.feedcard-answer-box {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.feedcard-user-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 16px;
+}
+
+.feedcard-user-name {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.feedcard-user-answer {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.separator {
+  border-top: 1px solid #e0e0e0;
+  margin: 16px 0;
+}
+
+.feedcard-buttons {
+  display: flex;
+}
+
+.like-button,
+.dislike-button {
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.like-button:hover,
+.dislike-button:hover {
+  background-color: #e0e0e0;
+}

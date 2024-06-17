@@ -7,9 +7,10 @@
   background-image: url(../assets/images/headerImg.png);
   background-size: cover;
   background-repeat: no-repeat;
+
   background-position: center, top;
   width: 100%;
-  max-width: 120rem;
+
   height: 23.4rem;
   margin: 0 auto;
   display: flex;
@@ -33,4 +34,18 @@
   border-radius: 100%;
   position: absolute;
   top: 13.6rem;
+}
+
+.header-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  gap: 1.2rem;
+  top: 27.7rem;
+}
+
+.name {
+  font-size: 3.2rem;
+  font-weight: 40rem;
 }
