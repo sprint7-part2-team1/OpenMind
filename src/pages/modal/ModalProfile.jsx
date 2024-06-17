@@ -1,6 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { getSubjectDetail } from '../../api/subjects/subjectsApi';
-import { useEffect } from 'react';
 import style from './Modal.module.css';
 
 function ModalProfile({ id }) {
