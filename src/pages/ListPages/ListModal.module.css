@@ -25,9 +25,11 @@
 }
 
 .detailItem {
+  position: relative;
   margin-bottom: 20px; /* 간격을 증가시킴 */
   display: flex;
   align-items: center;
+  justify-content: sp;
   border: 1px solid;
   border-radius: 9999px;
   cursor: pointer;
@@ -70,5 +72,19 @@ h3 {
   z-index: 10001;
   &:hover {
     background-color: red;
+  }
+}
+
+.delete {
+  position: fixed;
+  position: absolute;
+  right: -30px;
+  border-radius: 9999px;
+  background-color: var(--brown-20);
+  font-weight: 600;
+  cursor: pointer;
+  &:hover {
+    background-color: red;
+    color: var(--gray-10);
   }
 }
