@@ -1,5 +1,5 @@
 import '../../global.css';
-import styles from './Button.module.css'
+import styles from './Button.module.css';
 
 const Button = ({ text, size, onClick, isDisabled }) => {
   const content = text;
@@ -36,7 +36,9 @@ const Button = ({ text, size, onClick, isDisabled }) => {
   return (
     <button
       onClick={onClick}
-      className={`${styles.Button} ${styles[`Button_${content}`]} ${styles[size]}`}
+      className={`${styles.Button} ${styles[`Button_${content}`]} ${
+        styles[size]
+      }`}
       disabled={isDisabled}
     >
       {text}
