@@ -18,7 +18,6 @@ function ModalForm({ subjectId, onClose }) {
     const formData = {
       subjectId,
       content,
-
     };
 
     try {
