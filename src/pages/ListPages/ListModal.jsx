@@ -34,15 +34,23 @@ const ListModal = ({ onClose }) => {
     fetchSubjectDetails();
   }, []);
 
+  const handleItemClick = (id) => {
+    navigate(`/individualFeed/${id}/answer`);
+  };
+
   return (
     <div className={styles.modalOverlay}>
       <div className={styles.modalContent}>
         {subjectDetails.length > 0
           ? subjectDetails.map((detail) => (
-              <div key={detail.id} className={styles.detailItem}>
+              <div
+                key={detail.id}
+                className={styles.detailItem}
+                onClick={() => handleItemClick(detail.id)}
+              >
                 <img src={detail.imageSource} alt='프로필' />
                 <h3>{detail.name}</h3>
-                <p>Questions: {detail.questionCount}</p>
+                <p>받은 질문 수: {detail.questionCount}</p>
               </div>
             ))
           : ''}

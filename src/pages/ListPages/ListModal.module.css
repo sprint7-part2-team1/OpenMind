@@ -8,7 +8,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 9999; /* 모든 요소 위에 위치하도록 함 */
+  z-index: 9999;
 }
 
 .modalContent {
@@ -17,6 +17,8 @@
   border-radius: 8px;
   width: 80%; /* 너비를 증가시킴 */
   max-width: 800px; /* 최대 너비를 설정 */
+  max-height: 80vh; /* 최대 높이를 뷰포트 높이의 80%로 설정 */
+  overflow-y: auto; /* 세로 스크롤바를 추가 */
   text-align: center;
   z-index: 10000;
 }
