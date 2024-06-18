@@ -1,7 +1,8 @@
 import '../../global.css';
-import Style from './Modal.module.css';
+import style from './Modal.module.css';
 import { useEffect, useState } from 'react';
 import { createQuestion } from '../../api/subjects/subjectsApi';
+import buttonStyle from '../../components/Button/Button.module.css';
 
 function ModalForm({ subjectId, onClose }) {
   const [content, setContent] = useState('');
@@ -54,15 +55,19 @@ function ModalForm({ subjectId, onClose }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className={Style.form}>
+    <form onSubmit={handleSubmit} className={style.form}>
       <textarea
-        className={Style.textForm}
+        className={style.textForm}
         value={content}
         onChange={handleContentChange}
         onKeyDown={handleKeyDown}
         placeholder='질문을 입력해주세요'
       ></textarea>
-      <button type='submit' disabled={isSubmitting || !hasContent}>
+      <button
+        className={`${style.button} ${buttonStyle.Button_SendQs}`}
+        type='submit'
+        disabled={isSubmitting || !hasContent}
+      >
         질문 보내기
       </button>
       {submittingError?.message && <div>{submittingError.message}</div>}
