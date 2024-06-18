@@ -13,31 +13,40 @@ import {
 
 const FeedCard = ({
   pageType,
-  answerStatus,
-  questionContent,
-  questionDate,
+  questionData,
   userProfileImage,
   username,
-  initialLikes,
-  initialDislikes,
-  answer,
-  answerDate = answer?.createdAt,
-  answerContent = answer?.content,
-  answerRejected = answer?.isRejected,
-  questionId,
   countUpdate,
 }) => {
+  const {
+    id: questionId,
+    content: questionContent,
+    like: initialLikes,
+    dislike: initialDislikes,
+    createdAt: questionDate,
+    answer: answer,
+  } = questionData || {};
+
+  const {
+    id: answerId,
+    content: answerContent,
+    rejected: answerRejected,
+    createdAt: answerDate,
+  } = answer || {};
+
   const [currentAnswer, setCurrentAnswer] = useState(answerContent || '');
-  const [currentAnswerStatus, setCurrentAnswerStatus] = useState(answerStatus);
+  const [currentAnswerStatus, setCurrentAnswerStatus] = useState(
+    answer ? 'true' : 'false'
+  );
 
   const handleAnswerSubmit = (updatedAnswer) => {
     setCurrentAnswer(updatedAnswer.content);
     setCurrentAnswerStatus('true');
   };
 
-  const handleEdit = async (questionId, content) => {
+  const handleEdit = async (answerId, content) => {
     try {
-      const response = await patchAnswer(questionId, { content });
+      const response = await patchAnswer(answerId, { content });
       setCurrentAnswer(response.content);
     } catch (error) {
       console.error(error);
@@ -53,11 +62,13 @@ const FeedCard = ({
     }
   };
 
-  const handleDelete = async (questionId) => {
+  const handleDelete = async (answerId) => {
     try {
-      await deleteAnswer(questionId);
-      setCurrentAnswer('');
-      setCurrentAnswerStatus('false');
+      const response = await deleteAnswer(answerId);
+      if (response.ok) {
+        setCurrentAnswerStatus('false');
+        setCurrentAnswer('');
+      }
     } catch (error) {
       console.error(error);
     }
@@ -71,9 +82,9 @@ const FeedCard = ({
         </div>
         {pageType === 'answer' && (
           <KebabMenu
-            onEdit={() => handleEdit(questionId, currentAnswer)}
+            onEdit={() => handleEdit(answerId, currentAnswer)}
             onReject={() => handleReject(questionId)}
-            onDelete={() => handleDelete(questionId)}
+            onDelete={() => handleDelete(answerId)}
           />
         )}
       </div>

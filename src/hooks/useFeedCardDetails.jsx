@@ -14,12 +14,12 @@ const useFeedCardDetails = (subjectId) => {
   useEffect(() => {
     const fetchDetails = async () => {
       try {
+        const questionData = await getSubjectQuestions(subjectId);
+        setQuestions(questionData.results);
+
         const subjectDetail = await getSubjectDetail(subjectId);
         setUsername(subjectDetail.name);
         setUserProfileImage(subjectDetail.imageSource);
-
-        const questionData = await getSubjectQuestions(subjectId);
-        setQuestions(questionData.results);
       } catch (err) {
         setError(err.message);
       } finally {
