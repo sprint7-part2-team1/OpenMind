@@ -2,3 +2,7 @@
   margin-top: 18.9rem;
   margin-bottom: 13.6rem;
 }
+
+html {
+  background-color: var(--gray-20);
+}

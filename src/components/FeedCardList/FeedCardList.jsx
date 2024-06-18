@@ -2,7 +2,7 @@ import FeedCard from '../FeedCard/FeedCard';
 import styles from './FeedCardList.module.css';
 
 import useFeedCardDetails from '../../hooks/useFeedCardDetails';
-import NoQuestionFeed from '../NoQuestionFeed/NoQuestionFeed';
+import NoQuestionFeed from '../noQuestionFeed/NoQuestionFeed';
 import Icon from '../Icon/Icon';
 
 const FeedCardList = ({ subjectId }) => {

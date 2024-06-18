@@ -5,9 +5,8 @@ import ModalForm from './ModalForm';
 import ModalProfile from './ModalProfile';
 
 const TEAM = '7-1';
-const subjectId = '6742';
 
-function Modal({ onClose }) {
+function Modal({ onClose, subjectId }) {
   const preventModalClose = (e) => {
     e.stopPropagation();
   };
