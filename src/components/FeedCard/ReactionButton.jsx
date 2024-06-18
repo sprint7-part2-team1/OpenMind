@@ -1,16 +1,40 @@
 import { useState } from 'react';
 import styles from './ReactionButton.module.css';
 import Icon from '../Icon/Icon';
-
-const ReactionButton = ({ type, initialCount = 0 }) => {
+import { postReaction } from '../../api/questions/questionsApi';
+const ReactionButton = ({
+  type,
+  initialCount = 0,
+  questionId,
+  countUpdate,
+}) => {
   const [count, setCount] = useState(initialCount);
+  const [isClicked, setIsClicked] = useState(false);
 
-  const handleClick = () => {
-    setCount(count + 1);
+  const handleClick = async () => {
+    try {
+      if (isClicked) {
+        setCount(count - 1);
+        setIsClicked(false);
+        await postReaction(questionId, type);
+      } else {
+        setCount(count + 1);
+        setIsClicked(true);
+        await postReaction(questionId, type);
+      }
+      countUpdate(type, isClicked ? count - 1 : count + 1);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
-    <button className={styles['button-reaction']} onClick={handleClick}>
+    <button
+      className={`${styles['button-reaction']} ${
+        isClicked ? styles['button-active'] : ''
+      }`}
+      onClick={handleClick}
+    >
       <Icon
         className={styles.icon}
         iconName={type === 'like' ? 'thumbs_up' : 'thumbs_down'}
