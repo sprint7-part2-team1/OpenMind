@@ -5,11 +5,7 @@ import '../../global.css';
 import formatTimeDiff from '../../utils/formatTimeDiff.js';
 import KebabMenu from '../KebabMenu/KebabMenu.jsx';
 import FeedCardAnswerInput from './FeedCardAnswerInput.jsx';
-import {
-  putAnswer,
-  patchAnswer,
-  deleteAnswer,
-} from '../../api/answers/answersApi.js';
+import { patchAnswer, deleteAnswer } from '../../api/answers/answersApi.js';
 import { postNewAnswer } from '../../api/questions/questionsApi.js';
 
 const FeedCard = ({
@@ -39,19 +35,16 @@ const FeedCard = ({
   const [currentAnswerStatus, setCurrentAnswerStatus] = useState(
     answer ? 'true' : 'false'
   );
+  const [isEditing, setIsEditing] = useState(false);
 
   const handleAnswerSubmit = (updatedAnswer) => {
     setCurrentAnswer(updatedAnswer.content);
     setCurrentAnswerStatus('true');
+    setIsEditing(false);
   };
 
-  const handleEdit = async (answerId, content) => {
-    try {
-      const response = await patchAnswer(answerId, { content });
-      setCurrentAnswer(response.content);
-    } catch (error) {
-      console.error(error);
-    }
+  const handleEdit = () => {
+    setIsEditing(true);
   };
 
   const handleReject = async (questionId) => {
@@ -83,7 +76,7 @@ const FeedCard = ({
         </div>
         {pageType === 'answer' && (
           <KebabMenu
-            onEdit={() => handleEdit(answerId, currentAnswer)}
+            onEdit={handleEdit}
             onReject={() => handleReject(questionId)}
             onDelete={() => handleDelete(answerId)}
           />
@@ -99,34 +92,49 @@ const FeedCard = ({
 
       {pageType === 'answer' ? (
         currentAnswerStatus === 'true' ? (
-          <div className={styles['feedcard-answer-box']}>
-            <img
-              src={userProfileImage}
-              alt={`${username}'s profile`}
-              className={styles['feedcard-user-image']}
+          isEditing ? (
+            <FeedCardAnswerInput
+              userProfileImage={userProfileImage}
+              username={username}
+              questionId={questionId}
+              onSubmit={handleAnswerSubmit}
+              status={true}
+              answerId={answerId}
+              initialAnswer={currentAnswer}
             />
-            <div className={styles['feedcard-answer-content']}>
-              <div className={styles['feedcard-answer-content-header']}>
-                <div className={styles['feedcard-user-name']}>{username}</div>
-                <span className={styles['feedcard-answer-date']}>
-                  {formatTimeDiff(answerDate)}
-                </span>
-              </div>
-              <div
-                className={`${styles['feedcard-user-answer']} ${
-                  answerRejected ? styles['answer-rejected'] : ''
-                }`}
-              >
-                {answerRejected ? '답변 거절' : currentAnswer}
+          ) : (
+            <div className={styles['feedcard-answer-box']}>
+              <img
+                src={userProfileImage}
+                alt={`${username}'s profile`}
+                className={styles['feedcard-user-image']}
+              />
+              <div className={styles['feedcard-answer-content']}>
+                <div className={styles['feedcard-answer-content-header']}>
+                  <div className={styles['feedcard-user-name']}>{username}</div>
+                  <span className={styles['feedcard-answer-date']}>
+                    {formatTimeDiff(answerDate)}
+                  </span>
+                </div>
+                <div
+                  className={`${styles['feedcard-user-answer']} ${
+                    answerRejected ? styles['answer-rejected'] : ''
+                  }`}
+                >
+                  {answerRejected ? '답변 거절' : currentAnswer}
+                </div>
               </div>
             </div>
-          </div>
+          )
         ) : (
           <FeedCardAnswerInput
             userProfileImage={userProfileImage}
             username={username}
             questionId={questionId}
             onSubmit={handleAnswerSubmit}
+            status={false}
+            answerId={answerId}
+            initialAnswer={currentAnswer}
           />
         )
       ) : (

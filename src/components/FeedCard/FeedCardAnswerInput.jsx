@@ -2,6 +2,7 @@ import { useState } from 'react';
 import styles from './FeedCardAnswerInput.module.css';
 import Button from '../Button/Button';
 import { postNewAnswer } from '../../api/questions/questionsApi';
+import { patchAnswer } from '../../api/answers/answersApi';
 
 const FeedCardAnswerInput = ({
   initialAnswer = '',
@@ -9,6 +10,8 @@ const FeedCardAnswerInput = ({
   username,
   questionId,
   onSubmit,
+  status,
+  answerId,
 }) => {
   const [currentAnswer, setCurrentAnswer] = useState(initialAnswer);
 
@@ -18,7 +21,12 @@ const FeedCardAnswerInput = ({
 
   const handleAnswerSubmit = async () => {
     try {
-      const response = await postNewAnswer(questionId, currentAnswer, false);
+      let response;
+      if (status) {
+        response = await patchAnswer(answerId, currentAnswer, false);
+      } else {
+        response = await postNewAnswer(questionId, currentAnswer, false);
+      }
       onSubmit(response);
     } catch (error) {
       console.error(error);
@@ -43,7 +51,10 @@ const FeedCardAnswerInput = ({
               className={styles['feedcard-answer-input']}
             />
           </div>
-          <Button text={'DoneAs'} onClick={handleAnswerSubmit} />
+          <Button
+            text={status ? 'DoneFix' : 'DoneAs'}
+            onClick={handleAnswerSubmit}
+          />
         </div>
       </div>
     </div>
