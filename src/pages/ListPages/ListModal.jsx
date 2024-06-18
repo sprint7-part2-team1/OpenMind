@@ -58,20 +58,17 @@ const ListModal = ({ onClose }) => {
           cancel: '좀 더 고민할래요',
         },
       }
-    ).then(async (value) => {
+    ).then((value) => {
       switch (value) {
         case '삭제해주세요':
           try {
-            // // 여기서 id를 이용하여 API 호출 및 삭제
-            // await deleteSubjects(id);
-
-            // // API에서 삭제가 성공했으므로 로컬 스토리지에서도 해당 ID 삭제
-            // const savedIds = JSON.parse(localStorage.getItem('savedIds')) || [];
-            // const updatedIds = savedIds.filter((savedId) => savedId !== id);
-            // localStorage.setItem('savedIds', JSON.stringify(updatedIds));
-
+            deleteSubjects(id);
+            const savedIds = JSON.parse(localStorage.getItem('savedIds')) || [];
+            const updatedIds = savedIds.filter((savedId) => savedId !== id);
+            localStorage.setItem('savedIds', JSON.stringify(updatedIds));
             swal('아이디가 삭제되었습니다.', '', 'success').then(() => {
               onClose();
+              window.location.reload();
             });
           } catch (error) {
             console.error('아이디 삭제 중 오류 발생:', error);
