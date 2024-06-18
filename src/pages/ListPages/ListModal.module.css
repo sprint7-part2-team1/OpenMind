@@ -12,10 +12,11 @@
 }
 
 .modalContent {
+  position: relative; /* close 버튼을 위한 상대 위치 */
   background: white;
   padding: 40px; /* 패딩을 증가시킴 */
   border-radius: 8px;
-  width: 80%; /* 너비를 증가시킴 */
+  width: 400px; /* 너비를 증가시킴 */
   max-width: 800px; /* 최대 너비를 설정 */
   max-height: 80vh; /* 최대 높이를 뷰포트 높이의 80%로 설정 */
   overflow-y: auto; /* 세로 스크롤바를 추가 */
@@ -25,4 +26,48 @@
 
 .detailItem {
   margin-bottom: 20px; /* 간격을 증가시킴 */
+  display: flex;
+  align-items: center;
+  border: 1px solid;
+  border-radius: 9999px;
+  cursor: pointer;
+  gap: 20px;
+}
+
+.img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 560;
+}
+
+.close {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 30px;
+  height: 30px;
+  background-color: var(--brown-40);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 20px;
+  line-height: 30px;
+  text-align: center;
+  cursor: pointer;
+  z-index: 10001;
+  &:hover {
+    background-color: red;
+  }
 }

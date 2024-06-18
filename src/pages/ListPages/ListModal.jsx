@@ -24,7 +24,6 @@ const ListModal = ({ onClose }) => {
       const details = await Promise.all(
         savedIds.map(async (id) => {
           const detail = await getSubjectDetail(id);
-          console.log(detail);
           return detail;
         })
       );
@@ -41,6 +40,9 @@ const ListModal = ({ onClose }) => {
   return (
     <div className={styles.modalOverlay}>
       <div className={styles.modalContent}>
+        <button className={styles.close} onClick={onClose}>
+          X
+        </button>
         {subjectDetails.length > 0
           ? subjectDetails.map((detail) => (
               <div
@@ -48,13 +50,18 @@ const ListModal = ({ onClose }) => {
                 className={styles.detailItem}
                 onClick={() => handleItemClick(detail.id)}
               >
-                <img src={detail.imageSource} alt='프로필' />
-                <h3>{detail.name}</h3>
-                <p>받은 질문 수: {detail.questionCount}</p>
+                <img
+                  className={styles.img}
+                  src={detail.imageSource}
+                  alt='프로필'
+                />
+                <div className={styles.content}>
+                  <h3>{detail.name}</h3>
+                  <p>받은 질문 수: {detail.questionCount}</p>
+                </div>
               </div>
             ))
           : ''}
-        <button onClick={onClose}>닫기</button>
       </div>
     </div>
   );
