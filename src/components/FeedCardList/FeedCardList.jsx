@@ -5,7 +5,7 @@ import useFeedCardDetails from '../../hooks/useFeedCardDetails';
 import NoQuestionFeed from '../NoQuestionFeed/NoQuestionFeed';
 import Icon from '../Icon/Icon';
 
-const FeedCardList = ({ subjectId }) => {
+const FeedCardList = ({ subjectId, pageType }) => {
   const {
     questions,
     isLoading,
@@ -24,7 +24,7 @@ const FeedCardList = ({ subjectId }) => {
   };
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div>로딩중입니다 헷...</div>;
   }
 
   if (error) {
@@ -52,6 +52,7 @@ const FeedCardList = ({ subjectId }) => {
           initialDislikes={data.dislike}
           questionId={data.id}
           countUpdate={handleCountUpdate}
+          pageType={pageType}
         />
       ))}
     </div>
