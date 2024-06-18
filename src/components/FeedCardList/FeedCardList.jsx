@@ -2,10 +2,10 @@ import FeedCard from '../FeedCard/FeedCard';
 import styles from './FeedCardList.module.css';
 
 import useFeedCardDetails from '../../hooks/useFeedCardDetails';
-import NoQuestionFeed from '../noQuestionFeed/NoQuestionFeed';
+import NoQuestion from '../NoQuestion/NoQuestion';
 import Icon from '../Icon/Icon';
 
-const FeedCardList = ({ subjectId }) => {
+const FeedCardList = ({ subjectId, pageType }) => {
   const {
     questions,
     isLoading,
@@ -24,7 +24,7 @@ const FeedCardList = ({ subjectId }) => {
   };
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div>로딩중입니다 헷...</div>;
   }
 
   if (error) {
@@ -32,7 +32,7 @@ const FeedCardList = ({ subjectId }) => {
   }
 
   return questions.length === 0 ? (
-    <NoQuestionFeed />
+    <NoQuestion />
   ) : (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -52,6 +52,7 @@ const FeedCardList = ({ subjectId }) => {
           initialDislikes={data.dislike}
           questionId={data.id}
           countUpdate={handleCountUpdate}
+          pageType={pageType}
         />
       ))}
     </div>

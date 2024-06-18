@@ -45,6 +45,7 @@ function LoginPage() {
           </Link>
         </div>
       </div>
+
       <div className={styles.main}>
         <img className={styles.main_logo} src={Logo} alt='Logo' />
 
@@ -64,14 +65,6 @@ function LoginPage() {
           </button>
         </div>
       </div>
-      <div className={styles.empty_box}></div>
-      <footer className={styles.footer}>
-        {/* <img
-              className={styles.footer_backgroundImg}
-              src={loginPageBackgroundImage}
-              alt='backgroundImage'
-            /> */}
-      </footer>
     </div>
   );
 }
