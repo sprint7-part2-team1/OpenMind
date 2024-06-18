@@ -10,21 +10,35 @@
 }
 
 .kebab-menu-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   position: absolute;
-  background-color: var(--gray-10);
-  border: 1px solid var(--gray-30);
-  border-radius: 1rem;
+  right: 0.5rem;
+  width: 10rem;
+  padding: 0.4rem 0;
+  border-radius: 0.8rem;
+  border: 0.1rem solid var(--gray-30);
+  background: var(--gray-10);
   box-shadow: var(--shadow-1pt);
   z-index: 1;
-  flex-direction: column;
-  align-items: flex-start;
 }
 
 .kebab-menu-item {
-  display: inline-block;
-  padding: 8px 16px;
-  background: none;
+  display: flex;
+  padding: 6px 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
   border: none;
+  background-color: var(--gray-10);
+  color: var(--gray-50);
+  font-family: Pretendard;
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 1.8rem;
+  align-self: stretch;
   cursor: pointer;
 }
 
