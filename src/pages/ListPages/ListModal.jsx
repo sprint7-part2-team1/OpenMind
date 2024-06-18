@@ -39,8 +39,24 @@ const ListModal = ({ onClose }) => {
   };
 
   const deleteUserId = () => {
-    alert('clicked');
-    navigate('/');
+    swal(
+      ' 경고',
+      '정말 아이디를 삭제할까요? 한번 삭제된 아이디는 다시 복구 할 수 없습니다.',
+      {
+        buttons: {
+          삭제해주세요: true,
+          cancel: '좀 더 고민할래요',
+        },
+      }
+    ).then((value) => {
+      switch (value) {
+        case '삭제해주세요':
+          swal('아이디가 삭제되었습니다.');
+          break;
+        default:
+          break;
+      }
+    });
   };
 
   return (
