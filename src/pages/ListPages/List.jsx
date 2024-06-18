@@ -2,6 +2,7 @@ import { useState } from 'react';
 import ListCard from './ListCard';
 import styles from './List.module.css';
 import { Link } from 'react-router-dom';
+import Button from '../../components/Button/Button';
 
 const List = () => {
   const [searchValue, setSearchValue] = useState('');
@@ -30,7 +31,7 @@ const List = () => {
             alt='List-logo'
           />
         </Link>
-        <button>버튼</button>
+        <Button text={'GoAs'} />
       </header>
       <h1>누구에게 질문할까요?</h1>
       <div className={styles.ListNav}>
