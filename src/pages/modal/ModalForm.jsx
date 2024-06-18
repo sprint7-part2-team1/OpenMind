@@ -24,13 +24,14 @@ function ModalForm({ subjectId, onClose }) {
       setSubmittingError(null);
       setIsSubmitting(true);
       await createQuestion(formData, subjectId);
+      setContent('');
+      onClose();
     } catch (error) {
       setSubmittingError(error);
       return;
     } finally {
       setIsSubmitting(false);
     }
-    setContent('');
   };
 
   const contentButtonOnOff = () => {
@@ -46,7 +47,8 @@ function ModalForm({ subjectId, onClose }) {
   }, [content]);
 
   const handleKeyDown = (e) => {
-    if (e.key === 'Enter') {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
       handleSubmit(e);
     }
   };
