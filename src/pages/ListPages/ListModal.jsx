@@ -32,11 +32,10 @@ const ListModal = ({ onClose }) => {
             return detail;
           } catch (error) {
             console.error(`Error fetching subject detail for ID ${id}:`, error);
-            return null; // Handle error gracefully, return null or handle differently
+            return null;
           }
         })
       );
-      // Filter out null values (error handling) and set subjectDetails
       setSubjectDetails(details.filter((detail) => detail !== null));
     };
 
@@ -102,7 +101,9 @@ const ListModal = ({ onClose }) => {
                 />
                 <div className={styles.content}>
                   <h3>{detail.name}</h3>
-                  <p>받은 질문 : {detail.questionCount}</p>
+                  <p className={styles.takeQs}>
+                    받은 질문 : {detail.questionCount} 개
+                  </p>
                 </div>
                 <button
                   className={styles.delete}
