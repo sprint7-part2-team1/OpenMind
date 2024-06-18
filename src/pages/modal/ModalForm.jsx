@@ -45,12 +45,19 @@ function ModalForm({ subjectId, onClose }) {
     contentButtonOnOff();
   }, [content]);
 
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      handleSubmit(e);
+    }
+  };
+
   return (
     <form onSubmit={handleSubmit} className={Style.form}>
       <textarea
         className={Style.textForm}
         value={content}
         onChange={handleContentChange}
+        onKeyDown={handleKeyDown}
         placeholder='질문을 입력해주세요'
       ></textarea>
       <button type='submit' disabled={isSubmitting || !hasContent}>
