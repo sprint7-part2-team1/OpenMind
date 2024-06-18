@@ -1,6 +1,5 @@
 import '../../global.css';
 import styles from './Button.module.css';
-
 import useWindowSize from '../../hooks/useWindowSize';
 
 const Button = ({ text, onClick, isDisabled }) => {
