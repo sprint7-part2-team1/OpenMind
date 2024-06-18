@@ -49,8 +49,9 @@ const ListModal = ({ onClose }) => {
 
   const deleteUserId = (id) => {
     swal(
-      '※ 경고 ※',
+      'WARNING',
       '정말 아이디를 삭제할까요? 한번 삭제된 아이디는 다시 복구 할 수 없습니다.',
+      'warning',
       {
         buttons: {
           삭제해주세요: true,
@@ -69,7 +70,7 @@ const ListModal = ({ onClose }) => {
             // const updatedIds = savedIds.filter((savedId) => savedId !== id);
             // localStorage.setItem('savedIds', JSON.stringify(updatedIds));
 
-            swal('아이디가 삭제되었습니다.').then(() => {
+            swal('아이디가 삭제되었습니다.', '', 'success').then(() => {
               onClose();
             });
           } catch (error) {
@@ -84,7 +85,6 @@ const ListModal = ({ onClose }) => {
       }
     });
   };
-  console.log(subjectDetails);
   return (
     <div className={styles.modalOverlay}>
       <div className={styles.modalContent}>
