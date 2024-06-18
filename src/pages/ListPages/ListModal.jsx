@@ -51,7 +51,9 @@ const ListModal = ({ onClose }) => {
     ).then((value) => {
       switch (value) {
         case '삭제해주세요':
-          swal('아이디가 삭제되었습니다.');
+          swal('아이디가 삭제되었습니다.').then(() => {
+            onClose();
+          });
           break;
         default:
           break;
