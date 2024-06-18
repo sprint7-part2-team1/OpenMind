@@ -1,24 +1,25 @@
 .feedcardAnswerInput {
   display: flex;
   flex-direction: column;
-  padding: 16px;
+
   border: 1px solid var(--gray-10);
-  border-radius: 8px;
+  border-radius: 0.8rem;
   background-color: var(--gray-10);
-  margin-bottom: 16px;
+  margin-bottom: 1.6rem;
 }
 
 .header {
   display: flex;
   align-items: center;
-  margin-bottom: 8px;
+  margin-bottom: 0.8rem;
 }
 
 .feedcard-user-image {
-  width: 40px;
-  height: 40px;
+  width: 4rem;
+  height: 4rem;
   border-radius: 50%;
-  margin-right: 16px;
+  margin-right: 1.2rem;
+  margin-bottom: auto;
 }
 
 .feedcard-answer-content {
@@ -31,33 +32,23 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-direction: column;
 }
 
 .feedcard-user-name {
-  font-size: 1.2rem;
-  font-weight: bold;
+  margin-right: auto;
+  font-size: 1.8rem;
+  line-height: 2.2rem;
 }
 
 .feedcard-answer-input {
   width: 100%;
-  height: 100px;
-  margin-top: 8px;
-  padding: 8px;
-  border: 2px solid var(--gray-20);
-  border-radius: 4px;
+  height: 20rem;
+  margin-top: 0.8rem;
+  margin-bottom: 0.8rem;
+  padding: 1.6rem;
+  border: 0.2rem solid var(--gray-20);
+  border-radius: 0.4rem;
+  background-color: var(--gray-20);
   resize: none;
-}
-
-.feedcard-submit-button {
-  margin-top: 8px;
-  padding: 8px 16px;
-  background-color: var(--brown-40);
-  color: var(--gray-10);
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.feedcard-submit-button:hover {
-  background-color: var(--brown-20);
 }
