@@ -10,10 +10,10 @@
 
 .header {
   width: 100%;
+  margin-bottom: 6.9rem;
 }
 
 .header_box {
-  height: 16.6rem;
   display: flex;
   justify-content: flex-end;
   padding-top: 4.5rem;
