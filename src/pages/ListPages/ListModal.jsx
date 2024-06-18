@@ -50,7 +50,7 @@ const ListModal = ({ onClose }) => {
   const deleteUserId = (id) => {
     swal(
       'WARNING',
-      '정말 아이디를 삭제할까요? 한번 삭제된 아이디는 다시 복구 할 수 없습니다.',
+      '정말 아이디를 삭제할까요? \n 한번 삭제된 아이디는 다시 복구 할 수 없습니다.',
       'warning',
       {
         buttons: {
@@ -111,7 +111,7 @@ const ListModal = ({ onClose }) => {
                     deleteUserId(detail.id);
                   }}
                 >
-                  삭제
+                  X
                 </button>
               </div>
             ))
