@@ -5,6 +5,11 @@ import '../../global.css';
 import formatTimeDiff from '../../utils/formatTimeDiff.js';
 import KebabMenu from '../KebabMenu/KebabMenu.jsx';
 import FeedCardAnswerInput from './FeedCardAnswerInput.jsx';
+import {
+  putAnswer,
+  patchAnswer,
+  deleteAnswer,
+} from '../../api/answers/answersApi.js';
 
 const FeedCard = ({
   pageType,
@@ -21,10 +26,6 @@ const FeedCard = ({
   answerRejected = answer?.isRejected,
   questionId,
   countUpdate,
-  onSubmit,
-  onEdit,
-  onReject,
-  onDelete,
 }) => {
   const [currentAnswer, setCurrentAnswer] = useState(answerContent || '');
   const [currentAnswerStatus, setCurrentAnswerStatus] = useState(answerStatus);
@@ -34,16 +35,32 @@ const FeedCard = ({
     setCurrentAnswerStatus('true');
   };
 
-  const handleEdit = () => {
-    onEdit(questionId, currentAnswer);
+  const handleEdit = async (questionId, content) => {
+    try {
+      const response = await patchAnswer(questionId, { content });
+      setCurrentAnswer(response.content);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
-  const handleReject = () => {
-    onReject(questionId);
+  const handleReject = async (questionId) => {
+    try {
+      await putAnswer(questionId, currentAnswer, true);
+      setCurrentAnswerStatus('true');
+    } catch (error) {
+      console.error(error);
+    }
   };
 
-  const handleDelete = () => {
-    onDelete(questionId);
+  const handleDelete = async (questionId) => {
+    try {
+      await deleteAnswer(questionId);
+      setCurrentAnswer('');
+      setCurrentAnswerStatus('false');
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -54,9 +71,9 @@ const FeedCard = ({
         </div>
         {pageType === 'answer' && (
           <KebabMenu
-            onEdit={handleEdit}
-            onReject={handleReject}
-            onDelete={handleDelete}
+            onEdit={() => handleEdit(questionId, currentAnswer)}
+            onReject={() => handleReject(questionId)}
+            onDelete={() => handleDelete(questionId)}
           />
         )}
       </div>
