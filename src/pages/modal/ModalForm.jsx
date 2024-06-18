@@ -3,7 +3,7 @@ import Style from './Modal.module.css';
 import { useEffect, useState } from 'react';
 import { createQuestion } from '../../api/subjects/subjectsApi';
 
-function ModalForm({ team, subjectId, onClose }) {
+function ModalForm({ subjectId, onClose }) {
   const [content, setContent] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submittingError, setSubmittingError] = useState(null);
@@ -18,7 +18,7 @@ function ModalForm({ team, subjectId, onClose }) {
     const formData = {
       subjectId,
       content,
-      team,
+
     };
 
     try {

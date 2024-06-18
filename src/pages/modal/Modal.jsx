@@ -4,8 +4,6 @@ import styles from './Modal.module.css';
 import ModalForm from './ModalForm';
 import ModalProfile from './ModalProfile';
 
-const TEAM = '7-1';
-
 function Modal({ onClose, subjectId }) {
   const preventModalClose = (e) => {
     e.stopPropagation();
@@ -24,8 +22,8 @@ function Modal({ onClose, subjectId }) {
               <Icon iconName={'Close'} />
             </button>
           </header>
-          <ModalProfile team={TEAM} id={subjectId} />
-          <ModalForm team={TEAM} subjectId={subjectId} onClose={onClose} />
+          <ModalProfile id={subjectId} />
+          <ModalForm subjectId={subjectId} onClose={onClose} />
         </div>
       </div>
     </div>
