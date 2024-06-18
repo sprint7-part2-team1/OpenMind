@@ -1,0 +1,43 @@
+.container {
+  max-width: 80rem;
+  background-color: var(--brown-10);
+  margin: 0 auto;
+  padding: 2rem;
+  height: 35rem;
+  border: var(--brown-30) solid 0.1rem;
+  border-radius: 0.8rem;
+  box-shadow: var(--shadow-2pt);
+}
+
+.container_header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+  line-height: 2.5rem;
+  color: var(--brown-40);
+  background-color: var(--brown-10);
+  font-size: 2rem;
+}
+
+.icon {
+  margin-right: 0.8rem;
+}
+.header_message {
+  background-color: var(--brown-10);
+}
+
+.empty_img_box {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  background-color: var(--brown-10);
+}
+
+.empty_img {
+  width: 15rem;
+  height: 15.4rem;
+  margin: 0 auto;
+  background-color: var(--brown-10);
+}
