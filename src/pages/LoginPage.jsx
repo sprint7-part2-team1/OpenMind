@@ -53,7 +53,7 @@ function LoginPage() {
           </button>
         </div>
       </div>
-      <div className={styles.empty_box}></div>
+
       <footer className={styles.footer}>
         {/* <img
               className={styles.footer_backgroundImg}
