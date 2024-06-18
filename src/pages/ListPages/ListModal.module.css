@@ -13,7 +13,7 @@
 
 .modalContent {
   position: relative; /* close 버튼을 위한 상대 위치 */
-  background: white;
+  background: var(--brown-10);
   padding: 40px; /* 패딩을 증가시킴 */
   border-radius: 8px;
   width: 400px; /* 너비를 증가시킴 */
@@ -32,6 +32,7 @@
   border-radius: 9999px;
   cursor: pointer;
   gap: 20px;
+  background-color: var(--gray-20);
 }
 
 .img {
@@ -56,13 +57,13 @@ h3 {
   position: absolute;
   top: 5px;
   right: 5px;
-  width: 30px;
+  width: 50px;
   height: 30px;
   background-color: var(--brown-40);
   color: white;
   border: none;
-  border-radius: 50%;
-  font-size: 20px;
+  border-radius: 9999px;
+  font-size: 10px;
   line-height: 30px;
   text-align: center;
   cursor: pointer;

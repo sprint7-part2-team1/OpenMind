@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import styles from './ListModal.module.css';
 import { getSubjectDetail } from '../../api/subjects/subjectsApi';
 import { useNavigate } from 'react-router-dom';
+import swal from 'sweetalert';
 
 const ListModal = ({ onClose }) => {
   const navigate = useNavigate();
@@ -37,11 +38,16 @@ const ListModal = ({ onClose }) => {
     navigate(`/individualFeed/${id}/answer`);
   };
 
+  const deleteUserId = () => {
+    alert('clicked');
+    navigate('/');
+  };
+
   return (
     <div className={styles.modalOverlay}>
       <div className={styles.modalContent}>
         <button className={styles.close} onClick={onClose}>
-          X
+          닫기
         </button>
         {subjectDetails.length > 0
           ? subjectDetails.map((detail) => (
@@ -57,8 +63,17 @@ const ListModal = ({ onClose }) => {
                 />
                 <div className={styles.content}>
                   <h3>{detail.name}</h3>
-                  <p>받은 질문 수: {detail.questionCount}</p>
+                  <p>받은 질문 : {detail.questionCount}</p>
                 </div>
+                <button
+                  className={styles.delete}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    deleteUserId();
+                  }}
+                >
+                  삭제
+                </button>
               </div>
             ))
           : ''}
