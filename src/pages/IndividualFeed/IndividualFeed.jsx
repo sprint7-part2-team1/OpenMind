@@ -24,7 +24,10 @@ function IndividualFeed() {
 
       <Button text='WriteQs' onClick={openModal} isDisabled={false} />
       {isOpen &&
-        ReactDOM.createPortal(<Modal onClose={closeModal} />, portalRoot)}
+        ReactDOM.createPortal(
+          <Modal onClose={closeModal} subjectId={subjectId} />,
+          portalRoot
+        )}
     </div>
   );
 }
