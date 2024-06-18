@@ -29,7 +29,7 @@ const List = () => {
   const handleGoAsClick = () => {
     const savedIds = localStorage.getItem('savedIds');
     if (!savedIds) {
-      swal('아이디를 생성하지 않았군요! 생성하러 갈까요?', {
+      swal('아이디를 생성하지 않았군요! 생성하러 갈까요?', '', 'info', {
         buttons: {
           '네,갈래요': true,
           cancel: '구경만 할게요',
