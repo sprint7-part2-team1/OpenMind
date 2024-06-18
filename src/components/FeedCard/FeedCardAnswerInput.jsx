@@ -1,25 +1,28 @@
 import { useState } from 'react';
-import KebabMenu from '../KebabMenu/KebabMenu';
 import styles from './FeedCardAnswerInput.module.css';
 import Button from '../Button/Button';
+import { postNewAnswer } from '../../api/questions/questionsApi';
 
 const FeedCardAnswerInput = ({
   initialAnswer = '',
-  onSubmit,
-  onEdit,
-  onReject,
-  onDelete,
   userProfileImage,
   username,
+  questionId,
+  onSubmit,
 }) => {
   const [currentAnswer, setCurrentAnswer] = useState(initialAnswer);
 
-  const handleAnswerChange = (event) => {
-    setCurrentAnswer(event.target.value);
+  const handleAnswerChange = (e) => {
+    setCurrentAnswer(e.target.value);
   };
 
-  const handleSubmit = () => {
-    onSubmit(currentAnswer);
+  const handleAnswerSubmit = async () => {
+    try {
+      const response = await postNewAnswer(questionId, currentAnswer, false);
+      onSubmit(response);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -40,7 +43,7 @@ const FeedCardAnswerInput = ({
               className={styles['feedcard-answer-input']}
             />
           </div>
-          <Button text={'DoneAs'} onClick={handleSubmit} />
+          <Button text={'DoneAs'} onClick={handleAnswerSubmit} />
         </div>
       </div>
     </div>

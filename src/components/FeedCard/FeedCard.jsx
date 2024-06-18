@@ -27,13 +27,11 @@ const FeedCard = ({
   onDelete,
 }) => {
   const [currentAnswer, setCurrentAnswer] = useState(answerContent || '');
+  const [currentAnswerStatus, setCurrentAnswerStatus] = useState(answerStatus);
 
-  const handleAnswerChange = (event) => {
-    setCurrentAnswer(event.target.value);
-  };
-
-  const handleSubmit = () => {
-    onSubmit(questionId, currentAnswer);
+  const handleAnswerSubmit = (updatedAnswer) => {
+    setCurrentAnswer(updatedAnswer.content);
+    setCurrentAnswerStatus('true');
   };
 
   const handleEdit = () => {
@@ -52,7 +50,7 @@ const FeedCard = ({
     <div className={styles.feedcard}>
       <div className={styles['feedcard-header']}>
         <div className={styles['feedcard-status-box']}>
-          {answerStatus === 'true' ? '답변 완료' : '미답변'}
+          {currentAnswerStatus === 'true' ? '답변 완료' : '미답변'}
         </div>
         {pageType === 'answer' && (
           <KebabMenu
@@ -71,7 +69,7 @@ const FeedCard = ({
       <div className={styles['feedcard-question-text']}>{questionContent}</div>
 
       {pageType === 'answer' ? (
-        answerStatus === 'true' ? (
+        currentAnswerStatus === 'true' ? (
           <div className={styles['feedcard-answer-box']}>
             <img
               src={userProfileImage}
@@ -90,7 +88,7 @@ const FeedCard = ({
                   answerRejected ? styles['answer-rejected'] : ''
                 }`}
               >
-                {answerRejected ? '답변 거절' : answerContent}
+                {answerRejected ? '답변 거절' : currentAnswer}
               </div>
             </div>
           </div>
@@ -98,10 +96,12 @@ const FeedCard = ({
           <FeedCardAnswerInput
             userProfileImage={userProfileImage}
             username={username}
+            questionId={questionId}
+            onSubmit={handleAnswerSubmit}
           />
         )
       ) : (
-        answerStatus === 'true' && (
+        currentAnswerStatus === 'true' && (
           <div className={styles['feedcard-answer-box']}>
             <img
               src={userProfileImage}
@@ -120,7 +120,7 @@ const FeedCard = ({
                   answerRejected ? styles['answer-rejected'] : ''
                 }`}
               >
-                {answerRejected ? '답변 거절' : answerContent}
+                {answerRejected ? '답변 거절' : currentAnswer}
               </div>
             </div>
           </div>
