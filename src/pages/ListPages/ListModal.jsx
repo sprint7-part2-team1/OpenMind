@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react';
 import styles from './ListModal.module.css';
-import { getSubjectDetail } from '../../api/subjects/subjectsApi';
+import {
+  getSubjectDetail,
+  deleteSubjects,
+} from '../../api/subjects/subjectsApi';
 import { useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
 
@@ -24,11 +27,17 @@ const ListModal = ({ onClose }) => {
       const savedIds = JSON.parse(localStorage.getItem('savedIds')) || [];
       const details = await Promise.all(
         savedIds.map(async (id) => {
-          const detail = await getSubjectDetail(id);
-          return detail;
+          try {
+            const detail = await getSubjectDetail(id);
+            return detail;
+          } catch (error) {
+            console.error(`Error fetching subject detail for ID ${id}:`, error);
+            return null; // Handle error gracefully, return null or handle differently
+          }
         })
       );
-      setSubjectDetails(details);
+      // Filter out null values (error handling) and set subjectDetails
+      setSubjectDetails(details.filter((detail) => detail !== null));
     };
 
     fetchSubjectDetails();
@@ -38,9 +47,9 @@ const ListModal = ({ onClose }) => {
     navigate(`/individualFeed/${id}/answer`);
   };
 
-  const deleteUserId = () => {
+  const deleteUserId = (id) => {
     swal(
-      ' 경고',
+      '※ 경고 ※',
       '정말 아이디를 삭제할까요? 한번 삭제된 아이디는 다시 복구 할 수 없습니다.',
       {
         buttons: {
@@ -48,19 +57,34 @@ const ListModal = ({ onClose }) => {
           cancel: '좀 더 고민할래요',
         },
       }
-    ).then((value) => {
+    ).then(async (value) => {
       switch (value) {
         case '삭제해주세요':
-          swal('아이디가 삭제되었습니다.').then(() => {
-            onClose();
-          });
+          try {
+            // // 여기서 id를 이용하여 API 호출 및 삭제
+            // await deleteSubjects(id);
+
+            // // API에서 삭제가 성공했으므로 로컬 스토리지에서도 해당 ID 삭제
+            // const savedIds = JSON.parse(localStorage.getItem('savedIds')) || [];
+            // const updatedIds = savedIds.filter((savedId) => savedId !== id);
+            // localStorage.setItem('savedIds', JSON.stringify(updatedIds));
+
+            swal('아이디가 삭제되었습니다.').then(() => {
+              onClose();
+            });
+          } catch (error) {
+            console.error('아이디 삭제 중 오류 발생:', error);
+            swal('아이디 삭제 중 오류가 발생했습니다.').then(() => {
+              onClose();
+            });
+          }
           break;
         default:
           break;
       }
     });
   };
-
+  console.log(subjectDetails);
   return (
     <div className={styles.modalOverlay}>
       <div className={styles.modalContent}>
@@ -87,7 +111,7 @@ const ListModal = ({ onClose }) => {
                   className={styles.delete}
                   onClick={(e) => {
                     e.stopPropagation();
-                    deleteUserId();
+                    deleteUserId(detail.id);
                   }}
                 >
                   삭제
