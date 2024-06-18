@@ -2,7 +2,7 @@ import FeedCard from '../FeedCard/FeedCard';
 import styles from './FeedCardList.module.css';
 
 import useFeedCardDetails from '../../hooks/useFeedCardDetails';
-import NoQuestionFeed from '../NoQuestionFeed/NoQuestionFeed';
+import NoQuestion from '../NoQuestion/NoQuestion';
 import Icon from '../Icon/Icon';
 
 const FeedCardList = ({ subjectId, pageType }) => {
@@ -32,7 +32,7 @@ const FeedCardList = ({ subjectId, pageType }) => {
   }
 
   return questions.length === 0 ? (
-    <NoQuestionFeed />
+    <NoQuestion />
   ) : (
     <div className={styles.container}>
       <div className={styles.header}>
