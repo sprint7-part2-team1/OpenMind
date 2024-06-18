@@ -30,13 +30,13 @@ const FeedCardList = ({ subjectId, pageType }) => {
     return <div>Error: {error}</div>;
   }
 
-  return questions.count === 0 ? (
+  return questions.length === 0 ? (
     <NoQuestion />
   ) : (
     <div className={styles.container}>
       <div className={styles.header}>
         <Icon className={styles.icon} iconName={'Messages'} />
-        <span>{questions.count}개의 질문이 있습니다</span>
+        <span>{questions.length}개의 질문이 있습니다</span>
       </div>
       {questions.map((data) => (
         <FeedCard

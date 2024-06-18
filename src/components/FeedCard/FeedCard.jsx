@@ -10,6 +10,7 @@ import {
   patchAnswer,
   deleteAnswer,
 } from '../../api/answers/answersApi.js';
+import { postNewAnswer } from '../../api/questions/questionsApi.js';
 
 const FeedCard = ({
   pageType,
@@ -30,7 +31,7 @@ const FeedCard = ({
   const {
     id: answerId,
     content: answerContent,
-    rejected: answerRejected,
+    isRejected: answerRejected,
     createdAt: answerDate,
   } = answer || {};
 
@@ -55,7 +56,7 @@ const FeedCard = ({
 
   const handleReject = async (questionId) => {
     try {
-      await putAnswer(questionId, currentAnswer, true);
+      await postNewAnswer(questionId, 'reject', true);
       setCurrentAnswerStatus('true');
     } catch (error) {
       console.error(error);
