@@ -1,9 +1,9 @@
-import styles from './NoQuestionFeed.module.css';
+import styles from './NoQuestion.module.css';
 import emptyQuestionIcon from '../../assets/images/emptyQuestionIcon.png';
 import '../../global.css';
 import Icon from '../Icon/Icon';
 
-function NoQuestionFeed() {
+function NoQuestion() {
   return (
     <>
       <div className={styles.container}>
@@ -23,4 +23,4 @@ function NoQuestionFeed() {
   );
 }
 
-export default NoQuestionFeed;
+export default NoQuestion;

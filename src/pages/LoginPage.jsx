@@ -1,6 +1,6 @@
 import '../global.css';
 import { Logo, personIcon } from '../assets/images';
-import Icon from '../components/Icon/Icon';
+import Button from '../components/Button/Button';
 import styles from './LoginPage.module.css';
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
@@ -26,18 +26,24 @@ function LoginPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (nameInput.trim() !== '') {
-      if (checkDuplicateNickname(nameInput)) {
-        setError('닉네임이 이미 존재합니다.');
-      } else {
-        try {
-          const SubjectResult = await postSubject(nameInput);
-          addNickname(nameInput);
-          setResult(SubjectResult);
-          console.log(SubjectResult);
-          navigate(`/individualFeed/${SubjectResult.id}`);
-        } catch (error) {
-          console.error('회원생성에 실패했습니다:', error);
+      try {
+        const SubjectResult = await postSubject(nameInput);
+        setResult(SubjectResult);
+        console.log(SubjectResult);
+
+        // 로컬 스토리지에서 기존 데이터 가져오기
+        let storedIds = localStorage.getItem('savedIds');
+        let savedIds = [];
+        if (storedIds) {
+          savedIds = JSON.parse(storedIds);
         }
+        // 새로운 id 추가
+        savedIds.push(SubjectResult.id);
+        // 배열을 다시 로컬 스토리지에 저장
+        localStorage.setItem('savedIds', JSON.stringify(savedIds));
+        navigate(`/individualFeed/${SubjectResult.id}`);
+      } catch (error) {
+        console.error('회원생성에 실패했습니다:', error);
       }
     }
   };
@@ -46,11 +52,12 @@ function LoginPage() {
     <div className={styles.container}>
       <div className={styles.header}>
         <div className={styles.header_box}>
-          <Link to='/list' className={styles.header_right}>
-            질문하러 가기
+          <Link to='/list'>
+            <Button text='GoQs' />
           </Link>
         </div>
       </div>
+
       <div className={styles.main}>
         <img className={styles.main_logo} src={Logo} alt='Logo' />
 
@@ -69,13 +76,9 @@ function LoginPage() {
           <span className={styles.input_personIcon}>
             <img src={personIcon} alt='personIcon' />
           </span>
-          <button className={styles.login_btn} onClick={(e) => handleSubmit(e)}>
-            질문 받기
-          </button>
+          <Button text='TakeQs' onClick={(e) => handleSubmit(e)} />
         </div>
       </div>
-      <div className={styles.empty_box}></div>
-      <footer className={styles.footer}></footer>
     </div>
   );
 }

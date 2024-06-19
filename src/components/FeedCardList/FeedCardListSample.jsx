@@ -3,18 +3,12 @@ import { useInView } from 'react-intersection-observer';
 import FeedCard from '../FeedCard/FeedCard';
 import styles from './FeedCardList.module.css';
 import useFeedCardInfinityScroll from '../../hooks/useFeedCardInfinityScroll';
-import NoQuestion from '../NoQuestion/NoQuestion';
+import NoQuestionFeed from '../NoQuestionFeed/NoQuestionFeed';
 import Icon from '../Icon/Icon';
 
-const FeedCardList = ({ subjectId, pageType }) => {
-  const {
-    count,
-    questions,
-    isLoading,
-    error,
-    loadMoreQuestions,
-    setQuestions,
-  } = useFeedCardInfinityScroll(subjectId);
+const FeedCardList = ({ subjectId, userProfileImage, username }) => {
+  const { questions, isLoading, error, loadMoreQuestions, setQuestions } =
+    useFeedCardInfinityScroll(subjectId);
 
   const { ref, inView } = useInView({
     threshold: 0.5,
@@ -29,7 +23,6 @@ const FeedCardList = ({ subjectId, pageType }) => {
     );
   };
 
-  console.log(subjectId);
   const loadMore = useCallback(() => {
     if (!isLoading && inView) {
       loadMoreQuestions();
@@ -41,7 +34,7 @@ const FeedCardList = ({ subjectId, pageType }) => {
   }, [inView, loadMore]);
 
   if (isLoading && questions.length === 0) {
-    return <div>로딩중입니다 헷...</div>;
+    return <div>Loading...</div>;
   }
 
   if (error) {
@@ -49,7 +42,7 @@ const FeedCardList = ({ subjectId, pageType }) => {
   }
 
   return questions.length === 0 ? (
-    <NoQuestion />
+    <NoQuestionFeed />
   ) : (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -59,10 +52,15 @@ const FeedCardList = ({ subjectId, pageType }) => {
       {questions.map((data) => (
         <FeedCard
           key={data.id}
-          pageType={pageType}
-          questionData={data}
-          userProfileImage={data.userProfileImage}
-          username={data.username}
+          questionContent={data.content}
+          questionDate={data.createdAt}
+          userProfileImage={userProfileImage}
+          username={username}
+          answerStatus={data.answer ? 'true' : 'false'}
+          answer={data.answer}
+          initialLikes={data.like}
+          initialDislikes={data.dislike}
+          questionId={data.id}
           countUpdate={handleCountUpdate}
         />
       ))}

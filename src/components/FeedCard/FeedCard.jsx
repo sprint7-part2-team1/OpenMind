@@ -1,27 +1,82 @@
+import { useState } from 'react';
 import styles from './FeedCard.module.css';
 import ReactionButton from './ReactionButton';
 import '../../global.css';
 import formatTimeDiff from '../../utils/formatTimeDiff.js';
+import KebabMenu from '../KebabMenu/KebabMenu.jsx';
+import FeedCardAnswerInput from './FeedCardAnswerInput.jsx';
+import { deleteAnswer } from '../../api/answers/answersApi.js';
+import { postNewAnswer } from '../../api/questions/questionsApi.js';
+import FeedCardAnswer from './FeedCardAnswer.jsx';
 
 const FeedCard = ({
-  answerStatus,
-  questionContent,
-  questionDate,
+  pageType,
+  questionData,
   userProfileImage,
   username,
-  initialLikes,
-  initialDislikes,
-  answer,
-  answerDate = answer?.createdAt,
-  answerContent = answer?.content,
-  answerRejected = answer?.isRejected,
-  questionId,
   countUpdate,
 }) => {
+  const {
+    id: questionId,
+    content: questionContent,
+    like: initialLikes,
+    dislike: initialDislikes,
+    createdAt: questionDate,
+    answer: answer,
+  } = questionData || {};
+
+  const { id: answerId, content: answerContent } = answer || {};
+
+  const [currentAnswer, setCurrentAnswer] = useState(answerContent || '');
+  const [currentAnswerStatus, setCurrentAnswerStatus] = useState(
+    answer ? 'true' : 'false'
+  );
+  const [isEditing, setIsEditing] = useState(false);
+
+  const handleAnswerSubmit = (updatedAnswer) => {
+    setCurrentAnswer(updatedAnswer.content);
+    setCurrentAnswerStatus('true');
+    setIsEditing(false);
+  };
+
+  const handleEdit = () => {
+    setIsEditing(true);
+  };
+
+  const handleReject = async (questionId) => {
+    try {
+      await postNewAnswer(questionId, 'reject', true);
+      setCurrentAnswerStatus('true');
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleDelete = async (answerId) => {
+    try {
+      const response = await deleteAnswer(answerId);
+      if (response.ok) {
+        setCurrentAnswerStatus('false');
+        setCurrentAnswer('');
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <div className={styles.feedcard}>
-      <div className={styles['feedcard-status-box']}>
-        {answerStatus === 'true' ? '답변 완료' : '미답변'}
+      <div className={styles['feedcard-header']}>
+        <div className={styles['feedcard-status-box']}>
+          {currentAnswerStatus === 'true' ? '답변 완료' : '미답변'}
+        </div>
+        {pageType === 'answer' && (
+          <KebabMenu
+            onEdit={handleEdit}
+            onReject={() => handleReject(questionId)}
+            onDelete={() => handleDelete(answerId)}
+          />
+        )}
       </div>
       <div className={styles['feedcard-question-header']}>
         <span className={styles['feedcard-question-label']}>질문 · &nbsp;</span>
@@ -30,29 +85,45 @@ const FeedCard = ({
         </span>
       </div>
       <div className={styles['feedcard-question-text']}>{questionContent}</div>
-      {answerStatus === 'true' && (
-        <div className={styles['feedcard-answer-box']}>
-          <img
-            src={userProfileImage}
-            alt={`${username}'s profile`}
-            className={styles['feedcard-user-image']}
+
+      {pageType === 'answer' ? (
+        currentAnswerStatus === 'true' ? (
+          isEditing ? (
+            <FeedCardAnswerInput
+              userProfileImage={userProfileImage}
+              username={username}
+              questionId={questionId}
+              onSubmit={handleAnswerSubmit}
+              answerStatus={true}
+              answerId={answerId}
+              initialAnswer={currentAnswer}
+            />
+          ) : (
+            <FeedCardAnswer
+              answer={answer}
+              userProfileImage={userProfileImage}
+              username={username}
+            />
+          )
+        ) : (
+          <FeedCardAnswerInput
+            userProfileImage={userProfileImage}
+            username={username}
+            questionId={questionId}
+            onSubmit={handleAnswerSubmit}
+            answerStatus={false}
+            answerId={answerId}
+            initialAnswer={currentAnswer}
           />
-          <div className={styles['feedcard-answer-content']}>
-            <div className={styles['feedcard-answer-content-header']}>
-              <div className={styles['feedcard-user-name']}>{username}</div>
-              <span className={styles['feedcard-answer-date']}>
-                {formatTimeDiff(answerDate)}
-              </span>
-            </div>
-            <div
-              className={`${styles['feedcard-user-answer']} ${
-                answerRejected ? styles['answer-rejected'] : ''
-              }`}
-            >
-              {answerRejected ? '답변 거절' : answerContent}
-            </div>
-          </div>
-        </div>
+        )
+      ) : (
+        currentAnswerStatus === 'true' && (
+          <FeedCardAnswer
+            answer={answer}
+            userProfileImage={userProfileImage}
+            username={username}
+          />
+        )
       )}
       <div className={styles.separator}></div>
       <div className={styles['feedcard-buttons']}>
