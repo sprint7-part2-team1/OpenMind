@@ -13,7 +13,8 @@ const FeedCard = ({
   pageType,
   questionData,
   userInfo,
-  countUpdate,
+  onCountUpdate,
+  onAnswerUpdate,
 }) => {
   const {
     id: questionId,
@@ -34,6 +35,7 @@ const FeedCard = ({
     setCurrentAnswer(updatedAnswer.content);
     setCurrentAnswerStatus(true);
     setIsEditing(false);
+    onAnswerUpdate(questionId, updatedAnswer);
   };
 
   const handleEdit = () => {
@@ -42,7 +44,7 @@ const FeedCard = ({
 
   const handleReject = async (questionId) => {
     try {
-      await postNewAnswer(questionId, 'reject', true);
+      await postNewAnswer(questionId, '거절', true);
       setCurrentAnswerStatus(true);
     } catch (error) {
       console.error(error);
@@ -55,6 +57,7 @@ const FeedCard = ({
       if (response.ok) {
         setCurrentAnswerStatus(false);
         setCurrentAnswer('');
+        onAnswerUpdate(questionId, null);
       }
     } catch (error) {
       console.error(error);
@@ -95,14 +98,11 @@ const FeedCard = ({
               initialAnswer={currentAnswer}
             />
           ) : (
-            <FeedCardAnswer
-              answer={answer}
-              userInfo={userInfo}
-            />
+            <FeedCardAnswer answer={answer} userInfo={userInfo} />
           )
         ) : (
           <FeedCardAnswerInput
-          userInfo={userInfo}
+            userInfo={userInfo}
             questionId={questionId}
             onSubmit={handleAnswerSubmit}
             answerStatus={false}
@@ -112,10 +112,7 @@ const FeedCard = ({
         )
       ) : (
         currentAnswerStatus && (
-          <FeedCardAnswer
-            answer={answer}
-            userInfo={userInfo}
-          />
+          <FeedCardAnswer answer={answer} userInfo={userInfo} />
         )
       )}
       <div className={styles.separator}></div>
@@ -124,13 +121,13 @@ const FeedCard = ({
           type='like'
           initialCount={initialLikes}
           questionId={questionId}
-          countUpdate={countUpdate}
+          countUpdate={onCountUpdate}
         />
         <ReactionButton
           type='dislike'
           initialCount={initialDislikes}
           questionId={questionId}
-          countUpdate={countUpdate}
+          countUpdate={onCountUpdate}
         />
       </div>
     </div>
