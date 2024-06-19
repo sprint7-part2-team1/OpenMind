@@ -3,14 +3,12 @@ import style from './Modal.module.css';
 import { useEffect, useState } from 'react';
 import { createQuestion } from '../../api/subjects/subjectsApi';
 import buttonStyle from '../../components/Button/Button.module.css';
-import { useNavigate } from 'react-router-dom';
 
 function ModalForm({ subjectId, onClose }) {
   const [content, setContent] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submittingError, setSubmittingError] = useState(null);
   const [hasContent, setHasContent] = useState(false);
-  const navigate = useNavigate();
 
   const handleContentChange = (e) => {
     setContent(e.target.value);
@@ -52,8 +50,10 @@ function ModalForm({ subjectId, onClose }) {
 
   const handleKeyDown = (e) => {
     if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault();
-      handleSubmit(e);
+      if (e.nativeEvent.isComposing === false) {
+        e.preventDefault();
+        handleSubmit(e);
+      }
     }
   };
 
