@@ -69,9 +69,11 @@
 
 .Button_Delete {
   border-radius: 20rem;
+  display: flex;
+  align-items: center;
   width: 10rem;
   height: 3.5rem;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   line-height: 2.5rem;
   color: var(--gray-10);
   background-color: var(--brown-40);
