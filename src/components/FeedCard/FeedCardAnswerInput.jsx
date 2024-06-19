@@ -18,7 +18,9 @@ const FeedCardAnswerInput = ({
 
   useEffect(() => {
     if (answerStatus) {
-      setIsButtonDisabled(currentAnswer === initialAnswer);
+      setIsButtonDisabled(
+        currentAnswer === initialAnswer || currentAnswer.trim() === ''
+      );
     } else {
       setIsButtonDisabled(currentAnswer.trim() === '');
     }
