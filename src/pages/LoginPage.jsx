@@ -17,7 +17,6 @@ function LoginPage() {
       try {
         const SubjectResult = await postSubject(nameInput);
         setResult(SubjectResult);
-        console.log(SubjectResult);
 
         // 로컬 스토리지에서 기존 데이터 가져오기
         let storedIds = localStorage.getItem('savedIds');
@@ -29,7 +28,7 @@ function LoginPage() {
         savedIds.push(SubjectResult.id);
         // 배열을 다시 로컬 스토리지에 저장
         localStorage.setItem('savedIds', JSON.stringify(savedIds));
-        navigate(`/individualFeed/${SubjectResult.id}`);
+        navigate(`/individualFeed/${SubjectResult.id}/answer`);
       } catch (error) {
         console.error('회원생성에 실패했습니다:', error);
       }
