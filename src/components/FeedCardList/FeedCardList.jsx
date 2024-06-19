@@ -16,6 +16,14 @@ const FeedCardList = ({ subjectId, pageType }) => {
     );
   };
 
+  const handleAnswerUpdate = (questionId, updatedAnswer) => {
+    setQuestions((prevQuestions) =>
+      prevQuestions.map((question) =>
+        question.id === questionId ? { ...question, answer: updatedAnswer } : question
+      )
+    );
+  }
+
   if (isLoading) {
     return <div>로딩중입니다 헷...</div>;
   }
@@ -38,7 +46,8 @@ const FeedCardList = ({ subjectId, pageType }) => {
           pageType={pageType}
           questionData={data}
           userInfo={userInfo}
-          countUpdate={handleCountUpdate}
+          onCountUpdate={handleCountUpdate}
+          onAnswerUpdate={handleAnswerUpdate}
         />
       ))}
     </div>
