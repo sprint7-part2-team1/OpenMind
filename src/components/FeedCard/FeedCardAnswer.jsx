@@ -1,12 +1,15 @@
 import styles from './FeedCard.module.css';
 import formatTimeDiff from '../../utils/formatTimeDiff';
 
-const FeedCardAnswer = ({ answer, userProfileImage, username }) => {
+const FeedCardAnswer = ({ answer, userInfo }) => {
   const {
     content: currentAnswer,
     isRejected: answerRejected,
     createdAt: answerDate,
   } = answer || {};
+
+  const { name: username, imageSource: userProfileImage } = userInfo || {};
+
   return (
     <div className={styles['feedcard-answer-box']}>
       <img
