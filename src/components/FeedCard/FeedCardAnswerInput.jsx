@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from './FeedCardAnswerInput.module.css';
 import Button from '../Button/Button';
 import { postNewAnswer } from '../../api/questions/questionsApi';
@@ -10,10 +10,19 @@ const FeedCardAnswerInput = ({
   username,
   questionId,
   onSubmit,
-  status,
+  answerStatus,
   answerId,
 }) => {
   const [currentAnswer, setCurrentAnswer] = useState(initialAnswer);
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+
+  useEffect(() => {
+    if (answerStatus) {
+      setIsButtonDisabled(currentAnswer === initialAnswer);
+    } else {
+      setIsButtonDisabled(currentAnswer.trim() === '');
+    }
+  }, [currentAnswer, answerStatus, initialAnswer]);
 
   const handleAnswerChange = (e) => {
     setCurrentAnswer(e.target.value);
@@ -22,7 +31,7 @@ const FeedCardAnswerInput = ({
   const handleAnswerSubmit = async () => {
     try {
       let response;
-      if (status) {
+      if (answerStatus) {
         response = await patchAnswer(answerId, currentAnswer, false);
       } else {
         response = await postNewAnswer(questionId, currentAnswer, false);
@@ -52,8 +61,9 @@ const FeedCardAnswerInput = ({
             />
           </div>
           <Button
-            text={status ? 'DoneFix' : 'DoneAs'}
+            text={answerStatus ? 'DoneFix' : 'DoneAs'}
             onClick={handleAnswerSubmit}
+            isDisabled={isButtonDisabled}
           />
         </div>
       </div>

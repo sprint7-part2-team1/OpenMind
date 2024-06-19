@@ -5,7 +5,7 @@ import '../../global.css';
 import formatTimeDiff from '../../utils/formatTimeDiff.js';
 import KebabMenu from '../KebabMenu/KebabMenu.jsx';
 import FeedCardAnswerInput from './FeedCardAnswerInput.jsx';
-import { patchAnswer, deleteAnswer } from '../../api/answers/answersApi.js';
+import { deleteAnswer } from '../../api/answers/answersApi.js';
 import { postNewAnswer } from '../../api/questions/questionsApi.js';
 
 const FeedCard = ({
@@ -98,7 +98,7 @@ const FeedCard = ({
               username={username}
               questionId={questionId}
               onSubmit={handleAnswerSubmit}
-              status={true}
+              answerStatus={true}
               answerId={answerId}
               initialAnswer={currentAnswer}
             />
@@ -132,7 +132,7 @@ const FeedCard = ({
             username={username}
             questionId={questionId}
             onSubmit={handleAnswerSubmit}
-            status={false}
+            answerStatus={false}
             answerId={answerId}
             initialAnswer={currentAnswer}
           />
