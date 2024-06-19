@@ -5,7 +5,7 @@ import '../../global.css';
 import formatTimeDiff from '../../utils/formatTimeDiff.js';
 import KebabMenu from '../KebabMenu/KebabMenu.jsx';
 import FeedCardAnswerInput from './FeedCardAnswerInput.jsx';
-import { deleteAnswer } from '../../api/answers/answersApi.js';
+import { deleteAnswer, patchAnswer } from '../../api/answers/answersApi.js';
 import { postNewAnswer } from '../../api/questions/questionsApi.js';
 import FeedCardAnswer from './FeedCardAnswer.jsx';
 
@@ -44,8 +44,14 @@ const FeedCard = ({
 
   const handleReject = async (questionId) => {
     try {
-      await postNewAnswer(questionId, '거절', true);
+      if (currentAnswerStatus) {
+        await patchAnswer(answerId, '거절', true);
+      } else {
+        await postNewAnswer(questionId, '거절', true);
+      }
       setCurrentAnswerStatus(true);
+      setCurrentAnswer('거절');
+      onAnswerUpdate(questionId, { id: answerId, content: '거절', isRejected: true });
     } catch (error) {
       console.error(error);
     }
