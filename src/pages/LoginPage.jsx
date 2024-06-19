@@ -1,6 +1,6 @@
 import '../global.css';
 import { Logo, personIcon } from '../assets/images';
-import Icon from '../components/Icon/Icon';
+import Button from '../components/Button/Button';
 import styles from './LoginPage.module.css';
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
@@ -40,8 +40,8 @@ function LoginPage() {
     <div className={styles.container}>
       <div className={styles.header}>
         <div className={styles.header_box}>
-          <Link to='/list' className={styles.header_right}>
-            질문하러 가기
+          <Link to='/list'>
+            <Button text='GoQs' />
           </Link>
         </div>
       </div>
@@ -60,9 +60,7 @@ function LoginPage() {
           <span className={styles.input_personIcon}>
             <img src={personIcon} alt='personIcon' />
           </span>
-          <button className={styles.login_btn} onClick={(e) => handleSubmit(e)}>
-            질문 받기
-          </button>
+          <Button text='TakeQs' onClick={(e) => handleSubmit(e)} />
         </div>
       </div>
     </div>
