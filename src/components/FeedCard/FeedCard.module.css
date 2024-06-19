@@ -9,14 +9,17 @@
 
 .feedcard-status-box {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 0.1rem solid var(--brown-40);
-  color: var(--brown-40);
-  border-radius: 0.8rem;
   padding: 0.4rem 1.2rem;
-  display: inline-block;
-  margin-bottom: 1.6rem;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  border-radius: 0.8rem;
+  border: 1px solid var(--brown-40);
+  color: var(--brown-40);
+  font-family: Pretendard;
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 1.8rem;
 }
 
 .feedcard-header {

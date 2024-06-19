@@ -5,60 +5,76 @@ import '../../global.css';
 import formatTimeDiff from '../../utils/formatTimeDiff.js';
 import KebabMenu from '../KebabMenu/KebabMenu.jsx';
 import FeedCardAnswerInput from './FeedCardAnswerInput.jsx';
+import { deleteAnswer } from '../../api/answers/answersApi.js';
+import { postNewAnswer } from '../../api/questions/questionsApi.js';
+import FeedCardAnswer from './FeedCardAnswer.jsx';
 
 const FeedCard = ({
   pageType,
-  answerStatus,
-  questionContent,
-  questionDate,
+  questionData,
   userProfileImage,
   username,
-  initialLikes,
-  initialDislikes,
-  answer,
-  answerDate = answer?.createdAt,
-  answerContent = answer?.content,
-  answerRejected = answer?.isRejected,
-  questionId,
   countUpdate,
-  onSubmit,
-  onEdit,
-  onReject,
-  onDelete,
 }) => {
+  const {
+    id: questionId,
+    content: questionContent,
+    like: initialLikes,
+    dislike: initialDislikes,
+    createdAt: questionDate,
+    answer: answer,
+  } = questionData || {};
+
+  const { id: answerId, content: answerContent } = answer || {};
+
   const [currentAnswer, setCurrentAnswer] = useState(answerContent || '');
+  const [currentAnswerStatus, setCurrentAnswerStatus] = useState(
+    answer ? 'true' : 'false'
+  );
+  const [isEditing, setIsEditing] = useState(false);
 
-  const handleAnswerChange = (event) => {
-    setCurrentAnswer(event.target.value);
-  };
-
-  const handleSubmit = () => {
-    onSubmit(questionId, currentAnswer);
+  const handleAnswerSubmit = (updatedAnswer) => {
+    setCurrentAnswer(updatedAnswer.content);
+    setCurrentAnswerStatus('true');
+    setIsEditing(false);
   };
 
   const handleEdit = () => {
-    onEdit(questionId, currentAnswer);
+    setIsEditing(true);
   };
 
-  const handleReject = () => {
-    onReject(questionId);
+  const handleReject = async (questionId) => {
+    try {
+      await postNewAnswer(questionId, 'reject', true);
+      setCurrentAnswerStatus('true');
+    } catch (error) {
+      console.error(error);
+    }
   };
 
-  const handleDelete = () => {
-    onDelete(questionId);
+  const handleDelete = async (answerId) => {
+    try {
+      const response = await deleteAnswer(answerId);
+      if (response.ok) {
+        setCurrentAnswerStatus('false');
+        setCurrentAnswer('');
+      }
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
     <div className={styles.feedcard}>
       <div className={styles['feedcard-header']}>
         <div className={styles['feedcard-status-box']}>
-          {answerStatus === 'true' ? '답변 완료' : '미답변'}
+          {currentAnswerStatus === 'true' ? '답변 완료' : '미답변'}
         </div>
         {pageType === 'answer' && (
           <KebabMenu
             onEdit={handleEdit}
-            onReject={handleReject}
-            onDelete={handleDelete}
+            onReject={() => handleReject(questionId)}
+            onDelete={() => handleDelete(answerId)}
           />
         )}
       </div>
@@ -71,59 +87,42 @@ const FeedCard = ({
       <div className={styles['feedcard-question-text']}>{questionContent}</div>
 
       {pageType === 'answer' ? (
-        answerStatus === 'true' ? (
-          <div className={styles['feedcard-answer-box']}>
-            <img
-              src={userProfileImage}
-              alt={`${username}'s profile`}
-              className={styles['feedcard-user-image']}
+        currentAnswerStatus === 'true' ? (
+          isEditing ? (
+            <FeedCardAnswerInput
+              userProfileImage={userProfileImage}
+              username={username}
+              questionId={questionId}
+              onSubmit={handleAnswerSubmit}
+              answerStatus={true}
+              answerId={answerId}
+              initialAnswer={currentAnswer}
             />
-            <div className={styles['feedcard-answer-content']}>
-              <div className={styles['feedcard-answer-content-header']}>
-                <div className={styles['feedcard-user-name']}>{username}</div>
-                <span className={styles['feedcard-answer-date']}>
-                  {formatTimeDiff(answerDate)}
-                </span>
-              </div>
-              <div
-                className={`${styles['feedcard-user-answer']} ${
-                  answerRejected ? styles['answer-rejected'] : ''
-                }`}
-              >
-                {answerRejected ? '답변 거절' : answerContent}
-              </div>
-            </div>
-          </div>
+          ) : (
+            <FeedCardAnswer
+              answer={answer}
+              userProfileImage={userProfileImage}
+              username={username}
+            />
+          )
         ) : (
           <FeedCardAnswerInput
             userProfileImage={userProfileImage}
             username={username}
+            questionId={questionId}
+            onSubmit={handleAnswerSubmit}
+            answerStatus={false}
+            answerId={answerId}
+            initialAnswer={currentAnswer}
           />
         )
       ) : (
-        answerStatus === 'true' && (
-          <div className={styles['feedcard-answer-box']}>
-            <img
-              src={userProfileImage}
-              alt={`${username}'s profile`}
-              className={styles['feedcard-user-image']}
-            />
-            <div className={styles['feedcard-answer-content']}>
-              <div className={styles['feedcard-answer-content-header']}>
-                <div className={styles['feedcard-user-name']}>{username}</div>
-                <span className={styles['feedcard-answer-date']}>
-                  {formatTimeDiff(answerDate)}
-                </span>
-              </div>
-              <div
-                className={`${styles['feedcard-user-answer']} ${
-                  answerRejected ? styles['answer-rejected'] : ''
-                }`}
-              >
-                {answerRejected ? '답변 거절' : answerContent}
-              </div>
-            </div>
-          </div>
+        currentAnswerStatus === 'true' && (
+          <FeedCardAnswer
+            answer={answer}
+            userProfileImage={userProfileImage}
+            username={username}
+          />
         )
       )}
       <div className={styles.separator}></div>

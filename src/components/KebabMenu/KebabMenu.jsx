@@ -17,13 +17,13 @@ const KebabMenu = ({ onEdit, onReject, onDelete }) => {
       {isMenuOpen && (
         <div className={styles['kebab-menu-content']}>
           <button className={styles['kebab-menu-item']} onClick={onEdit}>
-            수정
+            답변 수정
           </button>
           <button className={styles['kebab-menu-item']} onClick={onReject}>
-            거절
+            답변 거절
           </button>
           <button className={styles['kebab-menu-item']} onClick={onDelete}>
-            삭제
+            답변 삭제
           </button>
         </div>
       )}
