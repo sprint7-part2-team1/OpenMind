@@ -8,8 +8,7 @@ const useFeedCardDetails = (subjectId) => {
   const [questions, setQuestions] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [userProfileImage, setUserProfileImage] = useState('');
-  const [username, setUsername] = useState('');
+  const [userInfo, setUserInfo] = useState({});
 
   useEffect(() => {
     const fetchDetails = async () => {
@@ -18,8 +17,7 @@ const useFeedCardDetails = (subjectId) => {
         setQuestions(questionData.results);
 
         const subjectDetail = await getSubjectDetail(subjectId);
-        setUsername(subjectDetail.name);
-        setUserProfileImage(subjectDetail.imageSource);
+        setUserInfo(subjectDetail);
       } catch (err) {
         setError(err.message);
       } finally {
@@ -30,7 +28,7 @@ const useFeedCardDetails = (subjectId) => {
     fetchDetails();
   }, [subjectId]);
 
-  return { questions, isLoading, error, userProfileImage, username };
+  return { questions, isLoading, error, userInfo };
 };
 
 export default useFeedCardDetails;

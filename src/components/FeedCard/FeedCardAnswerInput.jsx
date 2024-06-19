@@ -6,13 +6,13 @@ import { patchAnswer } from '../../api/answers/answersApi';
 
 const FeedCardAnswerInput = ({
   initialAnswer = '',
-  userProfileImage,
-  username,
+  userInfo,
   questionId,
   onSubmit,
   answerStatus,
   answerId,
 }) => {
+  const { name: username, imageSource: userProfileImage } = userInfo || {};
   const [currentAnswer, setCurrentAnswer] = useState(initialAnswer);
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
 

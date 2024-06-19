@@ -9,8 +9,7 @@ const FeedCardList = ({ subjectId, pageType }) => {
     questions,
     isLoading,
     error,
-    userProfileImage,
-    username,
+    userInfo,
     setQuestions,
   } = useFeedCardDetails(subjectId);
 
@@ -43,8 +42,7 @@ const FeedCardList = ({ subjectId, pageType }) => {
           key={data.id}
           pageType={pageType}
           questionData={data}
-          userProfileImage={userProfileImage}
-          username={username}
+          userInfo={userInfo}
           countUpdate={handleCountUpdate}
         />
       ))}

@@ -12,8 +12,7 @@ import FeedCardAnswer from './FeedCardAnswer.jsx';
 const FeedCard = ({
   pageType,
   questionData,
-  userProfileImage,
-  username,
+  userInfo,
   countUpdate,
 }) => {
   const {
@@ -88,8 +87,7 @@ const FeedCard = ({
         currentAnswerStatus ? (
           isEditing ? (
             <FeedCardAnswerInput
-              userProfileImage={userProfileImage}
-              username={username}
+              userInfo={userInfo}
               questionId={questionId}
               onSubmit={handleAnswerSubmit}
               answerStatus={true}
@@ -99,14 +97,12 @@ const FeedCard = ({
           ) : (
             <FeedCardAnswer
               answer={answer}
-              userProfileImage={userProfileImage}
-              username={username}
+              userInfo={userInfo}
             />
           )
         ) : (
           <FeedCardAnswerInput
-            userProfileImage={userProfileImage}
-            username={username}
+          userInfo={userInfo}
             questionId={questionId}
             onSubmit={handleAnswerSubmit}
             answerStatus={false}
@@ -118,8 +114,7 @@ const FeedCard = ({
         currentAnswerStatus && (
           <FeedCardAnswer
             answer={answer}
-            userProfileImage={userProfileImage}
-            username={username}
+            userInfo={userInfo}
           />
         )
       )}
