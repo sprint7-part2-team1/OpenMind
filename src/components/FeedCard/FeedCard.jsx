@@ -12,8 +12,7 @@ import FeedCardAnswer from './FeedCardAnswer.jsx';
 const FeedCard = ({
   pageType,
   questionData,
-  userProfileImage,
-  username,
+  userInfo,
   countUpdate,
 }) => {
   const {
@@ -28,14 +27,12 @@ const FeedCard = ({
   const { id: answerId, content: answerContent } = answer || {};
 
   const [currentAnswer, setCurrentAnswer] = useState(answerContent || '');
-  const [currentAnswerStatus, setCurrentAnswerStatus] = useState(
-    answer ? 'true' : 'false'
-  );
+  const [currentAnswerStatus, setCurrentAnswerStatus] = useState(answer);
   const [isEditing, setIsEditing] = useState(false);
 
   const handleAnswerSubmit = (updatedAnswer) => {
     setCurrentAnswer(updatedAnswer.content);
-    setCurrentAnswerStatus('true');
+    setCurrentAnswerStatus(true);
     setIsEditing(false);
   };
 
@@ -46,7 +43,7 @@ const FeedCard = ({
   const handleReject = async (questionId) => {
     try {
       await postNewAnswer(questionId, 'reject', true);
-      setCurrentAnswerStatus('true');
+      setCurrentAnswerStatus(true);
     } catch (error) {
       console.error(error);
     }
@@ -56,7 +53,7 @@ const FeedCard = ({
     try {
       const response = await deleteAnswer(answerId);
       if (response.ok) {
-        setCurrentAnswerStatus('false');
+        setCurrentAnswerStatus(false);
         setCurrentAnswer('');
       }
     } catch (error) {
@@ -68,7 +65,7 @@ const FeedCard = ({
     <div className={styles.feedcard}>
       <div className={styles['feedcard-header']}>
         <div className={styles['feedcard-status-box']}>
-          {currentAnswerStatus === 'true' ? '답변 완료' : '미답변'}
+          {currentAnswerStatus ? '답변 완료' : '미답변'}
         </div>
         {pageType === 'answer' && (
           <KebabMenu
@@ -87,11 +84,10 @@ const FeedCard = ({
       <div className={styles['feedcard-question-text']}>{questionContent}</div>
 
       {pageType === 'answer' ? (
-        currentAnswerStatus === 'true' ? (
+        currentAnswerStatus ? (
           isEditing ? (
             <FeedCardAnswerInput
-              userProfileImage={userProfileImage}
-              username={username}
+              userInfo={userInfo}
               questionId={questionId}
               onSubmit={handleAnswerSubmit}
               answerStatus={true}
@@ -101,14 +97,12 @@ const FeedCard = ({
           ) : (
             <FeedCardAnswer
               answer={answer}
-              userProfileImage={userProfileImage}
-              username={username}
+              userInfo={userInfo}
             />
           )
         ) : (
           <FeedCardAnswerInput
-            userProfileImage={userProfileImage}
-            username={username}
+          userInfo={userInfo}
             questionId={questionId}
             onSubmit={handleAnswerSubmit}
             answerStatus={false}
@@ -117,11 +111,10 @@ const FeedCard = ({
           />
         )
       ) : (
-        currentAnswerStatus === 'true' && (
+        currentAnswerStatus && (
           <FeedCardAnswer
             answer={answer}
-            userProfileImage={userProfileImage}
-            username={username}
+            userInfo={userInfo}
           />
         )
       )}

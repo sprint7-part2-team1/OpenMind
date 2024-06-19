@@ -7,15 +7,13 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 function Header({ subjectId }) {
-  const [userProfileImage, setUserProfileImage] = useState('');
-  const [userName, setUserName] = useState('');
+  const [userInfo, setUserInfo] = useState({});
 
   useEffect(() => {
     const fetchSubjectDetail = async () => {
       try {
         const subjectDetail = await getSubjectDetail(subjectId);
-        setUserProfileImage(subjectDetail.imageSource);
-        setUserName(subjectDetail.name);
+        setUserInfo(subjectDetail);
       } catch (error) {
         console.error('Error fetching subject detail:', error);
       }
@@ -23,6 +21,8 @@ function Header({ subjectId }) {
 
     fetchSubjectDetail();
   }, [subjectId]);
+
+  const { name: userName, imageSource: userProfileImage } = userInfo || {};
 
   return (
     <header className={styles.header}>
