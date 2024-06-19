@@ -7,6 +7,7 @@ import KebabMenu from '../KebabMenu/KebabMenu.jsx';
 import FeedCardAnswerInput from './FeedCardAnswerInput.jsx';
 import { deleteAnswer } from '../../api/answers/answersApi.js';
 import { postNewAnswer } from '../../api/questions/questionsApi.js';
+import FeedCardAnswer from './FeedCardAnswer.jsx';
 
 const FeedCard = ({
   pageType,
@@ -24,12 +25,7 @@ const FeedCard = ({
     answer: answer,
   } = questionData || {};
 
-  const {
-    id: answerId,
-    content: answerContent,
-    isRejected: answerRejected,
-    createdAt: answerDate,
-  } = answer || {};
+  const { id: answerId, content: answerContent } = answer || {};
 
   const [currentAnswer, setCurrentAnswer] = useState(answerContent || '');
   const [currentAnswerStatus, setCurrentAnswerStatus] = useState(
@@ -103,28 +99,11 @@ const FeedCard = ({
               initialAnswer={currentAnswer}
             />
           ) : (
-            <div className={styles['feedcard-answer-box']}>
-              <img
-                src={userProfileImage}
-                alt={`${username}'s profile`}
-                className={styles['feedcard-user-image']}
-              />
-              <div className={styles['feedcard-answer-content']}>
-                <div className={styles['feedcard-answer-content-header']}>
-                  <div className={styles['feedcard-user-name']}>{username}</div>
-                  <span className={styles['feedcard-answer-date']}>
-                    {formatTimeDiff(answerDate)}
-                  </span>
-                </div>
-                <div
-                  className={`${styles['feedcard-user-answer']} ${
-                    answerRejected ? styles['answer-rejected'] : ''
-                  }`}
-                >
-                  {answerRejected ? '답변 거절' : currentAnswer}
-                </div>
-              </div>
-            </div>
+            <FeedCardAnswer
+              answer={answer}
+              userProfileImage={userProfileImage}
+              username={username}
+            />
           )
         ) : (
           <FeedCardAnswerInput
@@ -139,28 +118,11 @@ const FeedCard = ({
         )
       ) : (
         currentAnswerStatus === 'true' && (
-          <div className={styles['feedcard-answer-box']}>
-            <img
-              src={userProfileImage}
-              alt={`${username}'s profile`}
-              className={styles['feedcard-user-image']}
-            />
-            <div className={styles['feedcard-answer-content']}>
-              <div className={styles['feedcard-answer-content-header']}>
-                <div className={styles['feedcard-user-name']}>{username}</div>
-                <span className={styles['feedcard-answer-date']}>
-                  {formatTimeDiff(answerDate)}
-                </span>
-              </div>
-              <div
-                className={`${styles['feedcard-user-answer']} ${
-                  answerRejected ? styles['answer-rejected'] : ''
-                }`}
-              >
-                {answerRejected ? '답변 거절' : currentAnswer}
-              </div>
-            </div>
-          </div>
+          <FeedCardAnswer
+            answer={answer}
+            userProfileImage={userProfileImage}
+            username={username}
+          />
         )
       )}
       <div className={styles.separator}></div>
