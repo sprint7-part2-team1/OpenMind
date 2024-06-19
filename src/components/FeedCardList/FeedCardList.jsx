@@ -1,6 +1,5 @@
 import FeedCard from '../FeedCard/FeedCard';
 import styles from './FeedCardList.module.css';
-
 import useFeedCardDetails from '../../hooks/useFeedCardDetails';
 import NoQuestion from '../NoQuestion/NoQuestion';
 import Icon from '../Icon/Icon';
@@ -42,17 +41,11 @@ const FeedCardList = ({ subjectId, pageType }) => {
       {questions.map((data) => (
         <FeedCard
           key={data.id}
-          questionContent={data.content}
-          questionDate={data.createdAt}
+          pageType={pageType}
+          questionData={data}
           userProfileImage={userProfileImage}
           username={username}
-          answerStatus={data.answer ? 'true' : 'false'}
-          answer={data.answer}
-          initialLikes={data.like}
-          initialDislikes={data.dislike}
-          questionId={data.id}
           countUpdate={handleCountUpdate}
-          pageType={pageType}
         />
       ))}
     </div>

@@ -24,7 +24,7 @@ export const deleteAnswer = async (id) => {
       throw new Error('fetch failed');
     }
 
-    return response.json();
+    return response
   } catch (error) {
     console.error(error);
   }
