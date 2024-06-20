@@ -5,6 +5,15 @@
   cursor: pointer;
 }
 
+.back {
+  width: 50px;
+  height: 90px;
+  position: fixed;
+  top: 0;
+  background-color: red;
+  cursor: pointer;
+}
+
 .Button_TakeQs {
   width: 100%;
   background-color: var(--brown-40);

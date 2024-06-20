@@ -6,6 +6,7 @@ import ReactDOM from 'react-dom';
 import Modal from '../modal/Modal';
 import { useParams, useNavigate } from 'react-router-dom';
 import Button from '../../components/Button/Button';
+import BackButton from '../../components/Button/BackButton';
 
 function IndividualFeed() {
   const { subjectId } = useParams();
@@ -25,7 +26,7 @@ function IndividualFeed() {
         <FeedCardList subjectId={subjectId} />
       </div>
 
-      <Button text='Back' onClick={handleBackClick} isDisabled={false} />
+      <BackButton onClick={handleBackClick} />
       <Button text='WriteQs' onClick={openModal} isDisabled={false} />
       {isOpen &&
         ReactDOM.createPortal(

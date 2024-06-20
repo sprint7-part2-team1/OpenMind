@@ -69,6 +69,11 @@ const List = () => {
     setIsModalOpen(false);
   };
 
+  const handlereload = () => {
+    navigate('/list');
+    setSearchValue('');
+  };
+
   return (
     <div>
       <header>
@@ -90,6 +95,7 @@ const List = () => {
             value={searchValue}
             onChange={handleInputChange}
           />
+          <button onClick={handlereload}>초기화</button>
           <select value={sortOrder} onChange={handleSelectChange}>
             <option value='newest'>최신순</option>
             <option value='questions'>질문순</option>
