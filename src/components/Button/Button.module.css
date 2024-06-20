@@ -70,6 +70,7 @@
 .Button_Delete {
   border-radius: 20rem;
   display: flex;
+  justify-content: center;
   align-items: center;
   width: 10rem;
   height: 3.5rem;
@@ -79,7 +80,7 @@
   background-color: var(--brown-40);
   border: 0.2rem solid transparent;
   padding: 1.2rem 2.4rem;
-  box-shadow: var(--shadow-3pt);
+  box-shadow: var(--shadow-2pt);
   &.mobile {
     justify-content: center;
     width: 7rem;
