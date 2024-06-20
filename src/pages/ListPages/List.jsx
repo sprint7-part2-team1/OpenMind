@@ -42,7 +42,6 @@ const List = () => {
     navigate(`?search=${search}&sort=${sort}&page=${page}`);
   };
 
-  // GoAs 버튼 클릭 시 동작
   const handleGoAsClick = () => {
     const savedIds = localStorage.getItem('savedIds');
     if (!savedIds) {
