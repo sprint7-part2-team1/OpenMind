@@ -10,7 +10,7 @@ import { useState } from 'react';
 
 function AnswerFeed() {
   const { subjectId } = useParams();
-  const [refreshKey, setRefreshKey] = useState(0);
+  const [refreshKey, setRefreshKey] = useState(false);
 
   const deleteAllQuestions = async () => {
     const { results } = await getSubjectQuestions(subjectId);
@@ -24,7 +24,7 @@ function AnswerFeed() {
       if (value === 'OK') {
         questionForDelete.map(async (id) => {
           await deleteQuestionDetail(id);
-          setRefreshKey((prevKey) => prevKey + 1);
+          setRefreshKey((prevKey) => !prevKey);
         });
       } else {
         // 취소 버튼을 눌렀을 때는 아무 동작도 하지 않습니다.
