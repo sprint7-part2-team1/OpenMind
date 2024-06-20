@@ -40,6 +40,16 @@
     display: none;
   }
 }
+@media (max-width: 500px) {
+  .back {
+    width: 4.2rem;
+    height: 4.9rem;
+    font-size: 1.61rem;
+    top: 0.7rem;
+    left: 0.7rem;
+    border-radius: 0.7rem;
+  }
+}
 
 .back::before {
   content: '';
