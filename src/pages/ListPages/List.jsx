@@ -89,13 +89,15 @@ const List = () => {
       <h1>누구에게 질문할까요?</h1>
       <div className={styles.ListNav}>
         <div className={styles.ListNavInnerConatiner}>
-          <input
-            type='text'
-            placeholder='아이디를 검색하세요!'
-            value={searchValue}
-            onChange={handleInputChange}
-          />
-          <button onClick={handlereload}>초기화</button>
+          <div className={styles.InputWrapper}>
+            <input
+              type='text'
+              placeholder='아이디를 검색하세요!'
+              value={searchValue}
+              onChange={handleInputChange}
+            />
+            <button onClick={handlereload}>↻</button>
+          </div>
           <select value={sortOrder} onChange={handleSelectChange}>
             <option value='newest'>최신순</option>
             <option value='questions'>질문순</option>
