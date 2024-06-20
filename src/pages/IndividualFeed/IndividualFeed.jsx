@@ -16,7 +16,7 @@ function IndividualFeed() {
   const portalRoot = document.getElementById('portal-root');
 
   const handleBackClick = () => {
-    navigate(-1); // 뒤로가기
+    navigate(-1);
   };
 
   return (
@@ -25,7 +25,6 @@ function IndividualFeed() {
       <div className={styles['feed-container']}>
         <FeedCardList subjectId={subjectId} />
       </div>
-
       <BackButton onClick={handleBackClick} />
       <Button text='WriteQs' onClick={openModal} isDisabled={false} />
       {isOpen &&
