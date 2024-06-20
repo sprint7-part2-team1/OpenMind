@@ -6,9 +6,11 @@ import Button from '../../components/Button/Button';
 import { getSubjectQuestions } from '../../api/subjects/subjectsApi';
 import { deleteQuestionDetail } from '../../api/questions/questionsApi';
 import swal from 'sweetalert';
+import { useState } from 'react';
 
 function AnswerFeed() {
   const { subjectId } = useParams();
+  const [refreshKey, setRefreshKey] = useState(0);
 
   const deleteAllQuestions = async () => {
     const { results } = await getSubjectQuestions(subjectId);
@@ -22,6 +24,7 @@ function AnswerFeed() {
       if (value === 'OK') {
         questionForDelete.map(async (id) => {
           await deleteQuestionDetail(id);
+          setRefreshKey((prevKey) => prevKey + 1);
         });
       } else {
         // 취소 버튼을 눌렀을 때는 아무 동작도 하지 않습니다.
@@ -36,7 +39,11 @@ function AnswerFeed() {
         <div className={styles.buttonBox}>
           <Button text='Delete' onClick={deleteAllQuestions} />
         </div>
-        <FeedCardList subjectId={subjectId} pageType={'answer'} />
+        <FeedCardList
+          key={refreshKey}
+          subjectId={subjectId}
+          pageType={'answer'}
+        />
       </div>
     </div>
   );
