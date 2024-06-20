@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import Button from '../../components/Button/Button';
 import { getSubjectQuestions } from '../../api/subjects/subjectsApi';
 import { deleteQuestionDetail } from '../../api/questions/questionsApi';
+import BackButton from '../../components/Button/BackButton';
 
 function AnswerFeed() {
   const { subjectId } = useParams();
@@ -16,9 +17,13 @@ function AnswerFeed() {
       await deleteQuestionDetail(id);
     });
   };
+  const handleBackClick = () => {
+    window.history.back();
+  };
 
   return (
     <div className={styles['individualFeed-body']}>
+      <BackButton onClick={handleBackClick} />
       <Header subjectId={subjectId} />
       <div className={styles['feed-container']}>
         <div className={styles.buttonBox}>
