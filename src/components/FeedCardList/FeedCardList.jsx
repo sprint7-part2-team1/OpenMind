@@ -2,7 +2,7 @@ import FeedCard from '../FeedCard/FeedCard';
 import styles from './FeedCardList.module.css';
 import useFeedCardDetails from '../../hooks/useFeedCardDetails';
 import NoQuestion from '../NoQuestion/NoQuestion';
-import Icon from '../Icon/Icon';
+import Messages from '../../assets/images/Messages.svg?react';
 
 const FeedCardList = ({ subjectId, pageType }) => {
   const { questions, questionCount, isLoading, error, userInfo, setQuestions } =
@@ -19,10 +19,12 @@ const FeedCardList = ({ subjectId, pageType }) => {
   const handleAnswerUpdate = (questionId, updatedAnswer) => {
     setQuestions((prevQuestions) =>
       prevQuestions.map((question) =>
-        question.id === questionId ? { ...question, answer: updatedAnswer } : question
+        question.id === questionId
+          ? { ...question, answer: updatedAnswer }
+          : question
       )
     );
-  }
+  };
 
   if (isLoading) {
     return <div>로딩중입니다 헷...</div>;
@@ -37,7 +39,7 @@ const FeedCardList = ({ subjectId, pageType }) => {
   ) : (
     <div className={styles.container}>
       <div className={styles.header}>
-        <Icon className={styles.icon} iconName={'Messages'} />
+        <Messages className={styles.icon} />
         <span>{questionCount}개의 질문이 있습니다</span>
       </div>
       {questions.map((data) => (

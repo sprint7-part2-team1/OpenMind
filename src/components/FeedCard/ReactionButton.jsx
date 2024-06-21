@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import styles from './ReactionButton.module.css';
-import Icon from '../Icon/Icon';
 import { postReaction } from '../../api/questions/questionsApi';
+import LikeIcon from '../../assets/images/thumbs_up.svg?react';
+import DislikeIcon from '../../assets/images/thumbs_down.svg?react';
+
 const ReactionButton = ({
   type,
   initialCount = 0,
@@ -35,13 +37,16 @@ const ReactionButton = ({
       }`}
       onClick={handleClick}
     >
-      <Icon
-        className={styles.icon}
-        iconName={type === 'like' ? 'thumbs_up' : 'thumbs_down'}
-      />
-      <span className={styles.text}>
-        {type === 'like' ? '좋아요' : '싫어요'}
-      </span>
+      {type === 'like' ? (
+        <LikeIcon
+          className={`${styles.icon} ${isClicked ? styles['icon-active'] : ''}`}
+        />
+      ) : (
+        <DislikeIcon
+          className={`${styles.icon} ${isClicked ? styles['icon-active'] : ''}`}
+        />
+      )}
+
       <span className={styles.count}>{count}</span>
     </button>
   );
