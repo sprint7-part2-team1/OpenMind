@@ -7,10 +7,12 @@ import {
 import { useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
 import '../../assets/css/swal.css';
+import Loading from '../../components/Loading/Loading';
 
 const ListModal = ({ onClose }) => {
   const navigate = useNavigate();
   const [subjectDetails, setSubjectDetails] = useState([]);
+  const [isLoading,setIsLoading] = useState(true)
   useEffect(() => {
     const handleOutsideClick = (e) => {
       if (e.target.className === styles.modalOverlay) {
@@ -25,6 +27,7 @@ const ListModal = ({ onClose }) => {
 
   useEffect(() => {
     const fetchSubjectDetails = async () => {
+      setIsLoading(true);  // 로딩 상태 true
       const savedIds = JSON.parse(localStorage.getItem('savedIds')) || [];
       const details = await Promise.all(
         savedIds.map(async (id) => {
@@ -38,10 +41,12 @@ const ListModal = ({ onClose }) => {
         })
       );
       setSubjectDetails(details.filter((detail) => detail !== null));
+      setIsLoading(false);  // 로딩 상태 false
     };
 
     fetchSubjectDetails();
   }, []);
+
 
   const handleItemClick = (id) => {
     navigate(`/post/${id}/answer`);
@@ -82,6 +87,10 @@ const ListModal = ({ onClose }) => {
       }
     });
   };
+
+  if (isLoading) {
+    return <Loading />; // 로딩 중일 때 Loading 컴포넌트를 표시
+  }
   return (
     <div className={styles.modalOverlay}>
       <div className={styles.modalContent}>

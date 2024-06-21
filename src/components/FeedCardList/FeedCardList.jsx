@@ -3,6 +3,7 @@ import styles from './FeedCardList.module.css';
 import useFeedCardDetails from '../../hooks/useFeedCardDetails';
 import NoQuestion from '../NoQuestion/NoQuestion';
 import Icon from '../Icon/Icon';
+import Loading from '../Loading/Loading';
 
 const FeedCardList = ({ subjectId, pageType }) => {
   const { questions, questionCount, isLoading, error, userInfo, setQuestions } =
@@ -25,7 +26,7 @@ const FeedCardList = ({ subjectId, pageType }) => {
   }
 
   if (isLoading) {
-    return <div>로딩중입니다 헷...</div>;
+    return <Loading />
   }
 
   if (error) {
