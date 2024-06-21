@@ -6,6 +6,7 @@
   cursor: pointer;
   font-size: 1.6rem;
   margin-right: 1rem;
+  color: var(--gray-40);
 }
 
 .button-active {
@@ -13,17 +14,10 @@
 }
 
 .icon {
-  display: inline-block;
-  margin-right: 1rem;
-}
-
-.text {
-  margin-left: 0.5rem;
   margin-right: 0.5rem;
-  line-height: 1rem;
 }
 
-.icon,
-.text {
-  vertical-align: middle;
+.icon-active {
+  filter: invert(38%) sepia(27%) saturate(4887%) hue-rotate(200deg)
+    brightness(94%) contrast(102%);
 }
