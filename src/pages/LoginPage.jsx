@@ -1,5 +1,6 @@
 import '../global.css';
-import { Logo, personIcon } from '../assets/images';
+import { personIcon } from '../assets/images';
+import LogoImg from '../assets/images/logo.svg?react';
 import Button from '../components/Button/Button';
 import styles from './LoginPage.module.css';
 import { useState } from 'react';
@@ -54,9 +55,8 @@ function LoginPage() {
       </div>
 
       <div className={styles.main}>
-        <img
+        <LogoImg
           className={`${styles.main_logo} animate__animated animate__flipInX`}
-          src={Logo}
           alt='Logo'
         />
 
