@@ -6,6 +6,7 @@ import Button from '../../components/Button/Button';
 import swal from 'sweetalert';
 import ListModal from './ListModal';
 import '../../assets/css/swal.css';
+import ListLogo from '../../assets/images/logo.png';
 
 const List = () => {
   const navigate = useNavigate();
@@ -85,11 +86,7 @@ const List = () => {
     <div>
       <header>
         <Link to='/' className={styles.header_right}>
-          <img
-            className={styles.logo}
-            src='src/assets/images/logo.png'
-            alt='List-logo'
-          />
+          <img className={styles.logo} src={ListLogo} alt='List-logo' />
         </Link>
         <Button text={'GoAs'} onClick={handleGoAsClick} />
       </header>
