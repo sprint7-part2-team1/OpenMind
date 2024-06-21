@@ -29,7 +29,7 @@ function LoginPage() {
           savedIds.push(SubjectResult.id);
           // 배열을 다시 로컬 스토리지에 저장
           localStorage.setItem('savedIds', JSON.stringify(savedIds));
-          navigate(`/individualFeed/${SubjectResult.id}/answer`);
+          navigate(`/post/${SubjectResult.id}/answer`);
         } catch (error) {
           console.error('회원생성에 실패했습니다:', error);
         }

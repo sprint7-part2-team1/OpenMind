@@ -5,6 +5,76 @@
   cursor: pointer;
 }
 
+.back {
+  width: 6rem;
+  height: 7rem;
+  position: fixed;
+  font-size: 2.3rem;
+  top: 1rem;
+  left: 1rem;
+  background-color: white;
+  cursor: pointer;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+  z-index: 10005;
+  &::before {
+    content: '';
+    color: var(--gray-10);
+    font-size: 3rem;
+    font-weight: bold;
+    transition: content 0.2s ease-in-out;
+  }
+  &:hover {
+    background-color: var(--brown-20);
+    transform: scale(1.1);
+  }
+  &::before {
+    content: 'Go back?';
+    font-size: 1.6rem;
+    color: black;
+    font-weight: 600;
+  }
+  &:hover > span {
+    display: none;
+  }
+}
+@media (max-width: 500px) {
+  .back {
+    width: 4.2rem;
+    height: 4.9rem;
+    font-size: 1.61rem;
+    top: 0.7rem;
+    left: 0.7rem;
+    border-radius: 0.7rem;
+  }
+}
+
+.back::before {
+  content: '';
+  color: var(--gray-10);
+  font-size: 3rem;
+  font-weight: bold;
+  transition: content 0.2s ease-in-out;
+}
+
+.back:hover {
+  background-color: var(--brown-20);
+  transform: scale(1.1);
+}
+.back:hover::before {
+  content: 'Go back?';
+  font-size: 1.6rem;
+  color: black;
+  font-weight: 600;
+}
+
+.back:hover > span {
+  display: none;
+}
+
 .Button_TakeQs {
   width: 100%;
   background-color: var(--brown-40);

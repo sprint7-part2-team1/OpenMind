@@ -4,13 +4,17 @@ import Pagination from 'react-js-pagination';
 import './PagiNation.css';
 import styles from './List.module.css';
 import { getSubjects } from '../../api/subjects/subjectsApi';
+import { useNavigate, useLocation } from 'react-router-dom';
 
-const ListCard = ({ searchValue, onlyForMount, sortOrder }) => {
-  const [subjectList, setSubjectList] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [itemsCount, setItemsCount] = useState(8); // 초기 세팅값 페이지당 8개
+const ListCard = ({ searchValue, onlyForMount, sortOrder, currentPage }) => {
+  const [subjectList, setSubjectList] = useState([]); // 데이터 리스트 상태
+  const [currentPageState, setCurrentPageState] = useState(currentPage); // 현재 페이지 상태
+  const [itemsCount, setItemsCount] = useState(8); // 페이지당 아이템 수
   const itemsPerPage = itemsCount;
+  const navigate = useNavigate(); // 페이지 이동을 위한 훅
+  const location = useLocation(); // 현재 URL 정보를 가져오기 위한 훅
 
+  // 데이터 가져오기
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -24,10 +28,10 @@ const ListCard = ({ searchValue, onlyForMount, sortOrder }) => {
     fetchData();
   }, [onlyForMount]);
 
-  //  정렬기준 변경시, 현재페이지 1로이동
+  // currentPage가 변경될 때 상태 업데이트
   useEffect(() => {
-    setCurrentPage(1);
-  }, [sortOrder, searchValue]);
+    setCurrentPageState(currentPage);
+  }, [currentPage]);
 
   // 반응형 호출
   useEffect(() => {
@@ -45,12 +49,22 @@ const ListCard = ({ searchValue, onlyForMount, sortOrder }) => {
     };
   }, []);
 
+  // URL 쿼리 파라미터 업데이트 함수
+  const updateURL = (pageNumber) => {
+    const queryParams = new URLSearchParams(location.search);
+    queryParams.set('page', pageNumber);
+    navigate(`${location.pathname}?${queryParams.toString()}`);
+  };
+
+  // 페이지 변경 시 호출
   const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber);
+    setCurrentPageState(pageNumber); // 현재 페이지 상태 업데이트
+    updateURL(pageNumber); // URL 쿼리 파라미터 업데이트
   };
 
   let filteredItems = [];
 
+  // 검색어와 정렬 옵션에 따라 리스트 필터링 및 정렬
   if (sortOrder === 'newest') {
     filteredItems = searchValue
       ? subjectList.filter((item) =>
@@ -66,7 +80,8 @@ const ListCard = ({ searchValue, onlyForMount, sortOrder }) => {
     filteredItems.sort((a, b) => b.questionCount - a.questionCount);
   }
 
-  const indexOfLastItem = currentPage * itemsPerPage;
+  // 현재 페이지에 해당하는 아이템들 계산
+  const indexOfLastItem = currentPageState * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = filteredItems.slice(indexOfFirstItem, indexOfLastItem);
 
@@ -80,11 +95,11 @@ const ListCard = ({ searchValue, onlyForMount, sortOrder }) => {
         </div>
       </div>
       <Pagination
-        activePage={currentPage}
+        activePage={currentPageState}
         itemsCountPerPage={itemsPerPage}
         totalItemsCount={filteredItems.length}
         pageRangeDisplayed={5}
-        onChange={handlePageChange}
+        onChange={handlePageChange} // 페이지 변경 핸들러
         prevPageText='<'
         nextPageText='>'
         itemClass='page-item'

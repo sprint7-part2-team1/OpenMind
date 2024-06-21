@@ -4,14 +4,20 @@ import styles from './IndividualFeed.module.css';
 import useModal from '../modal/useModal';
 import ReactDOM from 'react-dom';
 import Modal from '../modal/Modal';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import Button from '../../components/Button/Button';
+import BackButton from '../../components/Button/BackButton';
 
 function IndividualFeed() {
   const { subjectId } = useParams();
+  const navigate = useNavigate();
 
   const { isOpen, openModal, closeModal } = useModal();
   const portalRoot = document.getElementById('portal-root');
+
+  const handleBackClick = () => {
+    navigate(-1);
+  };
 
   return (
     <div className={styles['individualFeed-body']}>
@@ -19,7 +25,7 @@ function IndividualFeed() {
       <div className={styles['feed-container']}>
         <FeedCardList subjectId={subjectId} />
       </div>
-
+      <BackButton onClick={handleBackClick} />
       <Button text='WriteQs' onClick={openModal} isDisabled={false} />
       {isOpen &&
         ReactDOM.createPortal(
