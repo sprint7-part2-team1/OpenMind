@@ -22,6 +22,8 @@
 
 .icon {
   margin-right: 0.8rem;
+  filter: invert(17%) sepia(15%) saturate(2307%) hue-rotate(338deg)
+    brightness(96%) contrast(88%);
 }
 .header_message {
   background-color: var(--brown-10);

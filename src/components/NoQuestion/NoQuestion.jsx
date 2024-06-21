@@ -1,14 +1,14 @@
 import styles from './NoQuestion.module.css';
 import emptyQuestionIcon from '../../assets/images/emptyQuestionIcon.png';
 import '../../global.css';
-import Icon from '../Icon/Icon';
+import Messages from '../../assets/images/Messages.svg?react';
 
 function NoQuestion() {
   return (
     <>
       <div className={styles.container}>
         <div className={styles.container_header}>
-          <Icon className={styles.icon} iconName={'Messages'} />
+        <Messages className={styles.icon} />
           <p className={styles.header_message}>아직 질문이 없습니다.</p>
         </div>
         <div className={styles.empty_img_box}>
