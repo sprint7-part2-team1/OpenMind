@@ -8,7 +8,7 @@ const ListCardItem = ({ id, name, imageSource, questionCount, createAt }) => {
 
   const handleMoveIndividualPage = () => {
     navigate(
-      `/individualFeed/${id}?page=${
+      `/post/${id}?page=${
         new URLSearchParams(location.search).get('page') || 1
       }`
     );

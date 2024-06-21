@@ -44,7 +44,7 @@ const ListModal = ({ onClose }) => {
   }, []);
 
   const handleItemClick = (id) => {
-    navigate(`/individualFeed/${id}/answer`);
+    navigate(`/post/${id}/answer`);
   };
 
   const deleteUserId = (id) => {

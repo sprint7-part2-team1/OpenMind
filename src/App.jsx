@@ -9,8 +9,8 @@ function App() {
     <Router>
       <Routes>
         <Route path='/' element={<LoginPage />} />
-        <Route path='/individualFeed/:subjectId' element={<IndividualFeed />} />
-        <Route path='/individualFeed/:subjectId/answer' element={<AnswerFeed />} />
+        <Route path='/post/:subjectId' element={<IndividualFeed />} />
+        <Route path='/post/:subjectId/answer' element={<AnswerFeed />} />
         <Route path='/list' element={<List />} />
       </Routes>
     </Router>
