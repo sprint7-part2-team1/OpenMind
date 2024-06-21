@@ -1,8 +1,8 @@
 import styles from './List.module.css';
-import Icon from '../../components/Icon/Icon';
+import Messages from '../../assets/images/Messages.svg?react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
-const ListCardItem = ({ id, name, imageSource, questionCount, createAt }) => {
+const ListCardItem = ({ id, name, imageSource, questionCount }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -25,7 +25,7 @@ const ListCardItem = ({ id, name, imageSource, questionCount, createAt }) => {
       </div>
       <div className={styles.cardBottom}>
         <div className={styles.takeQs}>
-          <Icon iconName={'Messages'} />
+          <Messages className={styles.icon} />
           <span className={styles.takeQsText}>받은 질문</span>
         </div>
         <div>{`${questionCount}개`}</div>
