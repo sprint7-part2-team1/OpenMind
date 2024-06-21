@@ -1,13 +1,17 @@
 import styles from './List.module.css';
 import Icon from '../../components/Icon/Icon';
-import { getSubjectDetail } from '../../api/subjects/subjectsApi';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const ListCardItem = ({ id, name, imageSource, questionCount, createAt }) => {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleMoveIndividualPage = () => {
-    navigate(`/individualFeed/${id}`);
+    navigate(
+      `/individualFeed/${id}?page=${
+        new URLSearchParams(location.search).get('page') || 1
+      }`
+    );
   };
 
   return (

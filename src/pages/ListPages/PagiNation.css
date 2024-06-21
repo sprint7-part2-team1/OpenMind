@@ -44,7 +44,7 @@
   border-color: #dee2e6;
 }
 
-@media (max-width: 94.9rem) and (min-width: 76.8rem) {
+@media (max-width: 949px) and (min-width: 768px) {
   .pagination {
     flex-wrap: wrap;
   }
@@ -56,7 +56,7 @@
     padding: 0.5rem 1rem;
   }
 }
-@media (max-width: 76.7rem) and (min-width: 37.5rem) {
+@media (max-width: 767px) and (min-width: 375px) {
   .pagination {
     flex-wrap: wrap;
   }

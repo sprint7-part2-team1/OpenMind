@@ -35,18 +35,46 @@ h1 {
   justify-content: space-between;
   margin-bottom: 15px;
 }
+
 .ListNavInnerConatiner > * {
   border-radius: 10px;
 }
 
-.ListNavInnerConatiner > input {
+.InputWrapper {
+  position: relative;
   width: 460px;
-  padding: 10px;
-  border: 1px solid var(--gray-40);
 }
-.ListNavInnerConatiner > input:focus {
+
+.InputWrapper > input {
+  width: 100%;
+  padding: 10px;
+  padding-right: 40px; /* 버튼이 들어갈 공간 확보 */
+  border: 1px solid var(--gray-40);
+  border-radius: 10px; /* input의 테두리 둥글게 */
+}
+
+.InputWrapper > input:focus {
   outline: none;
   background-color: var(--gray-20);
+}
+
+.InputWrapper > button {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px; /* 아이콘 크기 조절 */
+  padding: 0;
+  margin: 0;
+  font-size: 30px;
+  font-weight: 600;
+  color: var(--brown-40);
+  &:active {
+    color: var(--gray-30);
+  }
 }
 .outContainer {
   display: flex;
