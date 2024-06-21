@@ -8,32 +8,38 @@ import { postSubject } from '../api/subjects/subjectsApi';
 
 function LoginPage() {
   const [nameInput, setNameInput] = useState('');
-  const [result, setResult] = useState({});
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (e.nativeEvent.isComposing === false) {
-      if (nameInput.trim() !== '') {
-        try {
-          const SubjectResult = await postSubject(nameInput);
-          setResult(SubjectResult);
-
-          // 로컬 스토리지에서 기존 데이터 가져오기
-          let storedIds = localStorage.getItem('savedIds');
-          let savedIds = [];
-          if (storedIds) {
-            savedIds = JSON.parse(storedIds);
-          }
-          // 새로운 id 추가
-          savedIds.push(SubjectResult.id);
-          // 배열을 다시 로컬 스토리지에 저장
-          localStorage.setItem('savedIds', JSON.stringify(savedIds));
-          navigate(`/post/${SubjectResult.id}/answer`);
-        } catch (error) {
-          console.error('회원생성에 실패했습니다:', error);
+  const handleSubmit = async () => {
+    if (nameInput.trim() !== '') {
+      try {
+        const SubjectResult = await postSubject(nameInput);
+        // 로컬 스토리지에서 기존 데이터 가져오기
+        let storedIds = localStorage.getItem('savedIds');
+        let savedIds = [];
+        if (storedIds) {
+          savedIds = JSON.parse(storedIds);
         }
+        // 새로운 id 추가
+        savedIds.push(SubjectResult.id);
+        // Set을 배열로 변환하여 다시 로컬 스토리지에 저장
+        localStorage.setItem('savedIds', JSON.stringify(Array.from(savedIds)));
+        navigate(`/post/${SubjectResult.id}/answer`);
+      } catch (error) {
+        console.error('회원생성에 실패했습니다:', error);
       }
+    }
+  };
+
+  const handleOnClickSubmit = async (e) => {
+    e.preventDefault();
+    await handleSubmit();
+  };
+
+  const handleKeyDownSubmit = async (e) => {
+    if (e.nativeEvent.isComposing === false && e.key === 'Enter') {
+      e.preventDefault();
+      await handleSubmit();
     }
   };
 
@@ -60,12 +66,12 @@ function LoginPage() {
             value={nameInput}
             placeholder='이름을 입력하세요'
             onChange={(e) => setNameInput(e.target.value)}
-            onKeyDown={(e) => e.key === 'Enter' && handleSubmit(e)}
+            onKeyDown={(e) => handleKeyDownSubmit(e)}
           />
           <span className={styles.input_personIcon}>
             <img src={personIcon} alt='personIcon' />
           </span>
-          <Button text='TakeQs' onClick={(e) => handleSubmit(e)} />
+          <Button text='TakeQs' onClick={(e) => handleOnClickSubmit(e)} />
         </div>
       </div>
     </div>
