@@ -6,6 +6,7 @@ import {
 } from '../../api/subjects/subjectsApi';
 import { useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
+import '../../assets/css/swal.css';
 
 const ListModal = ({ onClose }) => {
   const navigate = useNavigate();
@@ -48,18 +49,18 @@ const ListModal = ({ onClose }) => {
 
   const deleteUserId = (id) => {
     swal(
-      'WARNING',
-      '정말 아이디를 삭제할까요? \n 한번 삭제된 아이디는 다시 복구 할 수 없습니다.',
+      '아이디를 삭제할까요?',
+      '아이디에 있던 질문도 모두 삭제되며, \n 한번 삭제된 아이디는 다시 복구 할 수 없습니다',
       'warning',
       {
         buttons: {
-          삭제해주세요: true,
-          cancel: '좀 더 고민할래요',
+          삭제할래요: true,
+          cancel: '더 고민해볼래요',
         },
       }
     ).then((value) => {
       switch (value) {
-        case '삭제해주세요':
+        case '삭제할래요':
           try {
             deleteSubjects(id);
             const savedIds = JSON.parse(localStorage.getItem('savedIds')) || [];

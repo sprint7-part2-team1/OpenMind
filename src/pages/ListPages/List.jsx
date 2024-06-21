@@ -5,6 +5,7 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import Button from '../../components/Button/Button';
 import swal from 'sweetalert';
 import ListModal from './ListModal';
+import '../../assets/css/swal.css';
 
 const List = () => {
   const navigate = useNavigate();
@@ -43,16 +44,23 @@ const List = () => {
   };
 
   const handleGoAsClick = () => {
-    const savedIds = localStorage.getItem('savedIds');
-    if (!savedIds) {
-      swal('아이디를 생성하지 않았군요! 생성하러 갈까요?', '', 'info', {
-        buttons: {
-          '네,갈래요': true,
-          cancel: '구경만 할게요',
-        },
-      }).then((value) => {
+    if (
+      !localStorage.getItem('savedIds') ||
+      JSON.parse(localStorage.getItem('savedIds')).length === 0
+    ) {
+      swal(
+        '아이디를 생성하러 갈까요?',
+        '아직 아이디를 생성하지 않으셨네요! \n 아이디를 생성하시면 질문을 받을 수 있습니다.',
+        'info',
+        {
+          buttons: {
+            갈래요: true,
+            cancel: '구경만 할게요',
+          },
+        }
+      ).then((value) => {
         switch (value) {
-          case '네,갈래요':
+          case '갈래요':
             navigate('/');
             break;
           default:
