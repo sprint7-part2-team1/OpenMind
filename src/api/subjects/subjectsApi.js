@@ -15,7 +15,9 @@ export const deleteSubjects = async (id) => {
       throw new Error('fetch failed');
     }
 
-    return response.json();
+    const text = await response.text();
+
+    return text ? JSON.parse(text) : {};
   } catch (error) {
     console.error(error);
   }
@@ -123,7 +125,6 @@ export const postSubjectQuestion = async (subjectId, content) => {
     console.error(error);
   }
 };
-
 
 export const createQuestion = async (formData, id) => {
   try {
