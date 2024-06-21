@@ -1,69 +1,97 @@
-import '../global.css';
-import { Logo, personIcon } from '../assets/images';
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import LogoImg from '../assets/images/logo.svg?react';
 import Button from '../components/Button/Button';
 import styles from './LoginPage.module.css';
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { postSubject } from '../api/subjects/subjectsApi';
+import { getSubjects, postSubject } from '../api/subjects/subjectsApi';
 
 function LoginPage() {
   const [nameInput, setNameInput] = useState('');
-  const [result, setResult] = useState({});
+  const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (nameInput.trim() !== '') {
-      try {
-        const SubjectResult = await postSubject(nameInput);
-        setResult(SubjectResult);
+  const uniqueNickCheck = async (name) => {
+    try {
+      const { results } = await getSubjects();
+      const subjects = results;
+      return (
+        Array.isArray(subjects) &&
+        !subjects.some((subject) => subject.name === name)
+      );
+    } catch (error) {
+      throw new Error('닉네임 중복 확인에 실패했습니다.');
+    }
+  };
 
-        // 로컬 스토리지에서 기존 데이터 가져오기
-        let storedIds = localStorage.getItem('savedIds');
-        let savedIds = [];
-        if (storedIds) {
-          savedIds = JSON.parse(storedIds);
-        }
-        // 새로운 id 추가
-        savedIds.push(SubjectResult.id);
-        // 배열을 다시 로컬 스토리지에 저장
-        localStorage.setItem('savedIds', JSON.stringify(savedIds));
-        navigate(`/post/${SubjectResult.id}/answer`);
-      } catch (error) {
-        console.error('회원생성에 실패했습니다:', error);
+  const handleSubmit = async () => {
+    if (nameInput.trim() === '') {
+      setErrorMessage('이름을 입력하세요');
+      return;
+    }
+
+    try {
+      const isUnique = await uniqueNickCheck(nameInput);
+      if (!isUnique) {
+        setErrorMessage('이미 사용 중인 닉네임입니다.');
+        return;
       }
+
+      const SubjectResult = await postSubject(nameInput);
+      const storedIds = JSON.parse(localStorage.getItem('savedIds')) || [];
+      storedIds.push(SubjectResult.id);
+
+      localStorage.setItem('savedIds', JSON.stringify(storedIds));
+      navigate(`/post/${SubjectResult.id}/answer`);
+    } catch (error) {
+      console.error(error.message);
+      setErrorMessage(error.message);
+    }
+  };
+
+  const handleOnClickSubmit = async (e) => {
+    e.preventDefault();
+    await handleSubmit();
+  };
+
+  const handleKeyDownSubmit = async (e) => {
+    if (!e.nativeEvent.isComposing && e.key === 'Enter') {
+      e.preventDefault();
+      await handleSubmit();
     }
   };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.header}>
-        <div className={styles.header_box}>
-          <Link to='/list'>
-            <Button text='GoQs' />
-          </Link>
+    <div className={styles.background}>
+      <div className={styles.container}>
+        <div className={styles.header}>
+          <div className={styles.header_button}>
+            <Link to='/list'>
+              <Button text='GoQs' />
+            </Link>
+          </div>
+          <div className={styles.header_logo}>
+            <LogoImg
+              className={`${styles.logo_img} animate__animated animate__flipInX`}
+              alt='Logo'
+            />
+          </div>
         </div>
-      </div>
 
-      <div className={styles.main}>
-        <img
-          className={`${styles.main_logo} animate__animated animate__flipInX`}
-          src={Logo}
-          alt='Logo'
-        />
-
-        <div className={styles.form}>
+        <div className={styles.input_box}>
           <input
             className={styles.nickName_input}
             value={nameInput}
             placeholder='이름을 입력하세요'
-            onChange={(e) => setNameInput(e.target.value)}
-            onKeyDown={(e) => e.key === 'Enter' && handleSubmit(e)}
+            onChange={(e) => {
+              setNameInput(e.target.value);
+              setErrorMessage(''); // 입력할 때 에러 메시지 초기화
+            }}
+            onKeyDown={handleKeyDownSubmit}
           />
-          <span className={styles.input_personIcon}>
-            <img src={personIcon} alt='personIcon' />
-          </span>
-          <Button text='TakeQs' onClick={(e) => handleSubmit(e)} />
+          <Button text='TakeQs' onClick={handleOnClickSubmit} />
+          {errorMessage && (
+            <p className={styles.error_message}>{errorMessage}</p>
+          )}
         </div>
       </div>
     </div>
