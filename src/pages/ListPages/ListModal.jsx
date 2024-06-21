@@ -49,13 +49,13 @@ const ListModal = ({ onClose }) => {
 
   const deleteUserId = (id) => {
     swal(
-      'WARNING',
-      '정말 아이디를 삭제할까요? \n 한번 삭제된 아이디는 다시 복구 할 수 없습니다.',
+      '아이디를 삭제할까요?',
+      '아이디에 있던 질문도 모두 삭제되며, \n 한번 삭제된 아이디는 다시 복구 할 수 없습니다',
       'warning',
       {
         buttons: {
           삭제할래요: true,
-          cancel: '좀 더 고민할래요',
+          cancel: '더 고민해볼래요',
         },
       }
     ).then((value) => {

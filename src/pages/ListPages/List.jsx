@@ -32,12 +32,17 @@ const List = () => {
       !localStorage.getItem('savedIds') ||
       JSON.parse(localStorage.getItem('savedIds')).length === 0
     ) {
-      swal('', '아이디를 생성하지 않으셨네요! \n 생성하러 갈까요?', 'info', {
-        buttons: {
-          갈래요: true,
-          cancel: '구경만 할게요',
-        },
-      }).then((value) => {
+      swal(
+        '아이디를 생성하러 갈까요?',
+        '아직 아이디를 생성하지 않으셨네요! \n 아이디를 생성하시면 질문을 받을 수 있습니다.',
+        'info',
+        {
+          buttons: {
+            갈래요: true,
+            cancel: '구경만 할게요',
+          },
+        }
+      ).then((value) => {
         switch (value) {
           case '갈래요':
             navigate('/');
