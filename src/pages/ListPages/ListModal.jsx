@@ -6,6 +6,7 @@ import {
 } from '../../api/subjects/subjectsApi';
 import { useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
+import '../../assets/css/swal.css';
 
 const ListModal = ({ onClose }) => {
   const navigate = useNavigate();
@@ -53,13 +54,13 @@ const ListModal = ({ onClose }) => {
       'warning',
       {
         buttons: {
-          삭제해주세요: true,
+          삭제할래요: true,
           cancel: '좀 더 고민할래요',
         },
       }
     ).then((value) => {
       switch (value) {
-        case '삭제해주세요':
+        case '삭제할래요':
           try {
             deleteSubjects(id);
             const savedIds = JSON.parse(localStorage.getItem('savedIds')) || [];

@@ -46,7 +46,11 @@ function LoginPage() {
       </div>
 
       <div className={styles.main}>
-        <img className={styles.main_logo} src={Logo} alt='Logo' />
+        <img
+          className={`${styles.main_logo} animate__animated animate__flipInX`}
+          src={Logo}
+          alt='Logo'
+        />
 
         <div className={styles.form}>
           <input
