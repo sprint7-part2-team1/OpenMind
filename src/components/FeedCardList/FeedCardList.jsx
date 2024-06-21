@@ -66,6 +66,7 @@ const FeedCardList = ({ subjectId, pageType }) => {
   };
 
   if (isLoading && questions.length === 0) {
+
     return <div>로딩중입니다 헷...</div>;
   }
 
@@ -73,7 +74,7 @@ const FeedCardList = ({ subjectId, pageType }) => {
     return <div>Error: {error}</div>;
   }
 
-  return questions.length === 0 ? (
+  return !questionCount ? (
     <NoQuestion />
   ) : (
     <div className={styles.container}>

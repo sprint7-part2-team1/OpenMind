@@ -3,11 +3,22 @@ import Icon from '../../components/Icon/Icon';
 import styles from './Modal.module.css';
 import ModalForm from './ModalForm';
 import ModalProfile from './ModalProfile';
+import { useEffect } from 'react';
 
 function Modal({ onClose, subjectId }) {
   const preventModalClose = (e) => {
     e.stopPropagation();
   };
+
+  useEffect(() => {
+    const escKeyModalClose = (e) => {
+      if (e.key === 'Escape') {
+        onClose();
+      }
+    };
+    window.addEventListener('keydown', escKeyModalClose);
+    return () => window.removeEventListener('keydown', escKeyModalClose);
+  }, [onClose]);
 
   return (
     <div className={styles.modalOverlay} onClick={onClose}>

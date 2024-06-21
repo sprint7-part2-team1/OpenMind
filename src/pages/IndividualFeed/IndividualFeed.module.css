@@ -3,6 +3,14 @@
   padding: 0 2.4rem 13.6rem;
 }
 
+.buttonBox {
+  display: flex;
+  justify-content: end;
+  margin-bottom: 9rem;
+  max-width: 80rem;
+  margin: 0 auto 1.9rem;
+}
+
 html {
   background-color: var(--gray-20);
 }

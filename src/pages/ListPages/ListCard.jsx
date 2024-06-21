@@ -3,6 +3,7 @@ import ListCardItem from './ListCardItem';
 import Pagination from 'react-js-pagination';
 import './PagiNation.css';
 import styles from './List.module.css';
+import { getSubjects } from '../../api/subjects/subjectsApi';
 
 const ListCard = ({ searchValue, onlyForMount, sortOrder }) => {
   const [subjectList, setSubjectList] = useState([]);
@@ -11,13 +12,14 @@ const ListCard = ({ searchValue, onlyForMount, sortOrder }) => {
   const itemsPerPage = itemsCount;
 
   useEffect(() => {
-    // const response = await getSubjects(999, 0); -> 머지되면 수정할 코드.
     const fetchData = async () => {
-      const response = await fetch(
-        'https://openmind-api.vercel.app/7-1/subjects/?limit=9999'
-      );
-      const { results } = await response.json();
-      setSubjectList(results);
+      try {
+        const response = await getSubjects(9999);
+        const { results } = await response;
+        setSubjectList(results);
+      } catch (error) {
+        console.error('Failed to fetch subjects:', error);
+      }
     };
     fetchData();
   }, [onlyForMount]);

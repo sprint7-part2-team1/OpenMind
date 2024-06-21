@@ -20,9 +20,9 @@ const FeedCardAnswer = ({ answer, userInfo }) => {
       <div className={styles['feedcard-answer-content']}>
         <div className={styles['feedcard-answer-content-header']}>
           <div className={styles['feedcard-user-name']}>{username}</div>
-          <span className={styles['feedcard-answer-date']}>
+          {!answerRejected && (<span className={styles['feedcard-answer-date']}>
             {formatTimeDiff(answerDate)}
-          </span>
+          </span>)}
         </div>
         <div
           className={`${styles['feedcard-user-answer']} ${
