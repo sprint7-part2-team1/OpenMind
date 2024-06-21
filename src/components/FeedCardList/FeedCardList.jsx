@@ -1,12 +1,27 @@
-import FeedCard from '../FeedCard/FeedCard';
+import { useCallback, useEffect } from 'react';
+import { useInView } from 'react-intersection-observer';
 import styles from './FeedCardList.module.css';
-import useFeedCardDetails from '../../hooks/useFeedCardDetails';
+import FeedCard from '../FeedCard/FeedCard';
+import useFeedCardInfinityScroll from '../../hooks/useFeedCardInfinityScroll';
 import NoQuestion from '../NoQuestion/NoQuestion';
 import Messages from '../../assets/images/Messages.svg?react';
+import Loading from '../Loading/Loading';
 
 const FeedCardList = ({ subjectId, pageType }) => {
-  const { questions, questionCount, isLoading, error, userInfo, setQuestions } =
-    useFeedCardDetails(subjectId);
+  const {
+    questions,
+    questionCount,
+    isLoading,
+    error,
+    userInfo,
+    loadMoreQuestions,
+    setQuestions,
+  } = useFeedCardInfinityScroll(subjectId);
+
+  const { ref, inView } = useInView({
+    threshold: 1,
+    triggerOnce: false,
+  });
 
   const handleCountUpdate = (questionId, reaction) => {
     setQuestions((prevQuestions) =>
@@ -26,15 +41,25 @@ const FeedCardList = ({ subjectId, pageType }) => {
     );
   };
 
-  if (isLoading) {
-    return <div>로딩중입니다 헷...</div>;
+  const loadMore = useCallback(() => {
+    if (!isLoading && inView) {
+      loadMoreQuestions();
+    }
+  }, [isLoading, inView, loadMoreQuestions]);
+
+  useEffect(() => {
+    loadMore();
+  }, [inView]);
+
+  if (isLoading && questions.length === 0) {
+    return <Loading />;
   }
 
   if (error) {
     return <div>Error: {error}</div>;
   }
 
-  return !questionCount ? (
+  return questionCount === 0 ? (
     <NoQuestion />
   ) : (
     <div className={styles.container}>
@@ -52,6 +77,7 @@ const FeedCardList = ({ subjectId, pageType }) => {
           onAnswerUpdate={handleAnswerUpdate}
         />
       ))}
+      <div ref={ref} className={styles.loadMoreTrigger} />
     </div>
   );
 };
