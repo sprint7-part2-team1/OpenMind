@@ -103,9 +103,12 @@
 }
 
 .Button_GoQs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 16.1rem;
   height: 4.6rem;
-  border: 0.2rem solid var(--brown-40);
+  border: 0.1rem solid var(--brown-40);
   background-color: var(--brown-10);
   color: var(--brown-40);
   font-weight: 400;
@@ -121,7 +124,6 @@
   &:hover {
     background-color: var(--brown-40);
     color: var(--gray-10);
-    border: 0.2rem solid var(--brown-10);
   }
   &:active {
     background-color: var(--brown-50);
@@ -189,7 +191,6 @@
   &:hover {
     background-color: var(--brown-40);
     color: var(--gray-10);
-    border: 0.2rem solid var(--brown-10);
   }
   &:active {
     background-color: var(--brown-50);
