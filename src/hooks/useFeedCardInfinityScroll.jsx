@@ -121,6 +121,7 @@ const useFeedCardInfinityScroll = (subjectId) => {
     questions,
     questionCount,
     isLoading,
+
     error: error?.message,
     userInfo,
     loadMoreQuestions: fetchNextPage,
