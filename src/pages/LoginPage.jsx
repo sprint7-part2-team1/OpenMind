@@ -1,5 +1,4 @@
 import '../global.css';
-import { personIcon } from '../assets/images';
 import LogoImg from '../assets/images/logo.svg?react';
 import Button from '../components/Button/Button';
 import styles from './LoginPage.module.css';
