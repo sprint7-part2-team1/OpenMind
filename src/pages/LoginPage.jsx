@@ -47,32 +47,28 @@ function LoginPage() {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <div className={styles.header_box}>
+        <div className={styles.header_button}>
           <Link to='/list'>
             <Button text='GoQs' />
           </Link>
         </div>
+        <div className={styles.header_logo}>
+          <LogoImg
+            className={`${styles.logo_img} animate__animated animate__flipInX`}
+            alt='Logo'
+          />
+        </div>
       </div>
 
-      <div className={styles.main}>
-        <LogoImg
-          className={`${styles.main_logo} animate__animated animate__flipInX`}
-          alt='Logo'
+      <div className={styles.input_box}>
+        <input
+          className={styles.nickName_input}
+          value={nameInput}
+          placeholder='이름을 입력하세요'
+          onChange={(e) => setNameInput(e.target.value)}
+          onKeyDown={(e) => handleKeyDownSubmit(e)}
         />
-
-        <div className={styles.form}>
-          <input
-            className={styles.nickName_input}
-            value={nameInput}
-            placeholder='이름을 입력하세요'
-            onChange={(e) => setNameInput(e.target.value)}
-            onKeyDown={(e) => handleKeyDownSubmit(e)}
-          />
-          <span className={styles.input_personIcon}>
-            <img src={personIcon} alt='personIcon' />
-          </span>
-          <Button text='TakeQs' onClick={(e) => handleOnClickSubmit(e)} />
-        </div>
+        <Button text='TakeQs' onClick={(e) => handleOnClickSubmit(e)} />
       </div>
     </div>
   );
