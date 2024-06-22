@@ -9,6 +9,16 @@ header {
   margin: 0 auto;
 }
 
+  /* 에니메이션 제거시 코드 삭제 */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
 h1 {
   font-size: 40px;
   font-weight: 400;
@@ -16,6 +26,11 @@ h1 {
   text-align: center;
   margin-bottom: 2rem;
   margin-top: 20px;
+  animation: pulse 4s ease-in-out infinite;
+  /* 에니메이션 제거시 코드 삭제 */
+  transform-origin: center;
+  /* 에니메이션 제거시 코드 삭제 */
+
 }
 
 .logo {
