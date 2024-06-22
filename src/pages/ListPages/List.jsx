@@ -83,7 +83,8 @@ const List = () => {
   };
 
   return (
-    <div>
+    <div className={styles.body}>
+      <div className={styles.background}></div>
       <header>
         <Link to='/' className={styles.header_right}>
           <img className={styles.logo} src={ListLogo} alt='List-logo' />
