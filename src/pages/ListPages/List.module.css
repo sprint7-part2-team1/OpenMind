@@ -53,6 +53,7 @@ h1 {
   padding-right: 40px; /* 버튼이 들어갈 공간 확보 */
   border: 1px solid var(--gray-40);
   border-radius: 10px; /* input의 테두리 둥글게 */
+  font-size: 15px;
 }
 
 .InputWrapper > input:focus {
