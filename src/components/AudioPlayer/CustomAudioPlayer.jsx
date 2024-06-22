@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import styles from './CustomAudioPlayer.module.css'; // 모듈 CSS를 import 합니다.
+import styles from './CustomAudioPlayer.module.css';
 import playIcon from '../../assets/images/play-circle-line.svg';
 import pauseIcon from '../../assets/images/pause-circle-line.svg';
 
