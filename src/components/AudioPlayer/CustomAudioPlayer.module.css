@@ -1,0 +1,64 @@
+.audioPlayerContainer {
+  position: fixed;
+  bottom: 2rem;
+  left: 2rem;
+  display: flex;
+  align-items: center;
+  z-index: 1000; /* 다른 컨텐츠 위에 나타나도록 설정합니다. */
+}
+
+.playPauseButton {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: transform 0.3s ease; /* 버튼에 호버 효과를 위한 transition 추가 */
+}
+
+.playPauseButton img {
+  width: 4rem;
+  height: 4rem;
+}
+
+.playPauseButton:hover {
+  transform: scale(1.2); /* 버튼에 호버 시 확대 효과 추가 */
+}
+
+.playPauseButtonplaying .playPauseButton:hover::after {
+  content: 'You want?';
+  position: absolute;
+  top: -40rem;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.4rem;
+  font-size: 1.2rem;
+}
+
+.playAnimation {
+  width: 0.8rem;
+  height: 0.8rem;
+  background-color: #3498db;
+  border-radius: 50%;
+  margin-left: 1.5rem;
+}
+
+@keyframes pulseAnimation {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+}
+
+.playingAnimation {
+  animation: pulseAnimation 1s infinite, rotateAnimation 2s linear infinite; /* 재생 중일 때 회전 애니메이션 추가 */
+}
