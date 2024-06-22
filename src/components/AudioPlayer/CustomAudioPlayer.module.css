@@ -24,18 +24,6 @@
   transform: scale(1.2); /* 버튼에 호버 시 확대 효과 추가 */
 }
 
-.playPauseButtonplaying .playPauseButton:hover::after {
-  content: 'You want?';
-  position: absolute;
-  top: -40rem;
-  transform: translateX(-50%);
-  background-color: rgba(0, 0, 0, 0.8);
-  color: white;
-  padding: 0.4rem 0.8rem;
-  border-radius: 0.4rem;
-  font-size: 1.2rem;
-}
-
 .playAnimation {
   width: 0.8rem;
   height: 0.8rem;
@@ -61,4 +49,31 @@
 
 .playingAnimation {
   animation: pulseAnimation 1s infinite, rotateAnimation 2s linear infinite; /* 재생 중일 때 회전 애니메이션 추가 */
+}
+
+@media (max-width: 500px) {
+  .audioPlayerContainer {
+    bottom: 1rem; /* 기존의 2rem에서 줄어들게 조정 */
+    left: 0.6rem; /* 기존의 2rem에서 줄어들게 조정 */
+  }
+
+  .playPauseButton img {
+    width: 2.4rem; /* 기존의 4rem에서 40% 줄어들게 조정 */
+    height: 2.4rem; /* 기존의 4rem에서 40% 줄어들게 조정 */
+  }
+
+  .playPauseButton:hover {
+    transform: scale(1.1); /* 기존의 1.2에서 조금 작게 설정 */
+  }
+
+  .playPauseButtonplaying .playPauseButton:hover::after {
+    font-size: 1rem; /* 기존의 1.2rem에서 줄어들게 조정 */
+    padding: 0.3rem 0.6rem; /* 기존의 패딩을 조금 줄여줌 */
+  }
+
+  .playAnimation {
+    width: 0.48rem; /* 기존의 0.8rem에서 40% 줄어들게 조정 */
+    height: 0.48rem; /* 기존의 0.8rem에서 40% 줄어들게 조정 */
+    margin-left: 0.2rem; /* 기존의 1.5rem에서 40% 줄어들게 조정 */
+  }
 }
