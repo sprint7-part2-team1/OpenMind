@@ -5,6 +5,49 @@
   cursor: pointer;
 }
 
+.home {
+  width: 6rem;
+  height: 7rem;
+  position: fixed;
+  font-size: 2.3rem;
+  top: 1rem;
+  right: 1rem;
+  background-color: var(--gray-10);
+  cursor: pointer;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+  z-index: 10005;
+}
+
+.home::before {
+  content: '';
+  color: var(--gray-10);
+  font-size: 3rem;
+  font-weight: bold;
+  transition: content 0.2s ease-in-out;
+}
+
+.home:hover {
+  background-color: var(--brown-20);
+  transform: scale(1.1);
+}
+
+.home:hover::before {
+  content: 'Go home?';
+  font-size: 1.6rem;
+  color: black;
+  font-weight: 600;
+}
+
+.home:hover > span {
+  display: none;
+}
+
+
+
 .back {
   width: 6rem;
   height: 7rem;
@@ -50,10 +93,21 @@
   .back {
     width: 4.2rem;
     height: 4.9rem;
-    font-size: 1.61rem;
+    font-size: 1.4rem;
     top: 0.7rem;
     left: 0.7rem;
     border-radius: 0.7rem;
+  }
+  .home{
+    width: 4.2rem;
+    height: 4.9rem;
+    font-size: 1.4rem;
+    top: 0.7rem;
+    right: 0.7rem;
+    border-radius: 0.7rem;
+  }
+  .back:hover::before, .home:hover::before{
+    font-size: 1.2rem;
   }
 }
 
