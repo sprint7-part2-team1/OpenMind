@@ -89,7 +89,7 @@
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 412px) {
   .header {
     flex-direction: column-reverse;
     margin: 2.4rem;
