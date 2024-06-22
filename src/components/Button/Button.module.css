@@ -191,7 +191,6 @@
   &:hover {
     background-color: var(--brown-40);
     color: var(--gray-10);
-    border: 0.2rem solid var(--brown-10);
   }
   &:active {
     background-color: var(--brown-50);
