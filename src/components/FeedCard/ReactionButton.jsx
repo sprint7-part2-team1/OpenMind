@@ -3,53 +3,56 @@ import styles from './ReactionButton.module.css';
 import { postReaction } from '../../api/questions/questionsApi';
 import LikeIcon from '../../assets/images/thumbs_up.svg?react';
 import DislikeIcon from '../../assets/images/thumbs_down.svg?react';
-import {
-  postSupabaseReaction,
-  removeSupabaseReaction,
-  getReactionCount,
-  getCancelledReactionCount,
-} from './reactionApi';
+import { postSupabaseReaction, getCancelledReactionCount } from './reactionApi';
 
 const ReactionButton = ({
   type,
   initialCount = 0,
   questionId,
-  userId,
   countUpdate,
 }) => {
   const [count, setCount] = useState(initialCount);
   const [isClicked, setIsClicked] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const fetchCount = async () => {
-      const reactionCount = await getReactionCount(questionId, type);
-      const cancelledReactionCount = await getCancelledReactionCount(
-        questionId,
-        type
-      );
-      setCount(reactionCount - cancelledReactionCount);
+    const fetchInitialCount = async () => {
+      try {
+        const cancelledReactionCount = await getCancelledReactionCount(
+          questionId,
+          type
+        );
+        setCount(initialCount - cancelledReactionCount);
+      } catch (error) {
+        console.error('Failed to fetch initial reaction count:', error);
+      } finally {
+        setIsLoading(false); // 로딩 상태 해제
+      }
     };
-    fetchCount();
-  }, [questionId, type]);
+    fetchInitialCount();
+  }, [questionId, type, initialCount]);
 
   const handleClick = async () => {
     try {
+      const newCount = isClicked ? count - 1 : count + 1;
+      setCount(newCount);
+      setIsClicked(!isClicked);
+
       if (isClicked) {
-        setCount(count - 1);
-        setIsClicked(false);
-        await removeSupabaseReaction(questionId, type, userId);
-        await postReaction(questionId, type); // 기존 API 호출
+        await postSupabaseReaction(questionId, type);
       } else {
-        setCount(count + 1);
-        setIsClicked(true);
-        await postSupabaseReaction(questionId, type, userId);
-        await postReaction(questionId, type); // 기존 API 호출
+        await postReaction(questionId, type);
       }
-      countUpdate(type, isClicked ? count - 1 : count + 1);
+
+      countUpdate(type, newCount);
     } catch (error) {
-      console.error(error);
+      console.error('Failed to handle reaction:', error);
     }
   };
+
+  if (isLoading) {
+    return null; // 로딩 중에는 아무것도 렌더링하지 않음
+  }
 
   return (
     <button
@@ -67,7 +70,6 @@ const ReactionButton = ({
           className={`${styles.icon} ${isClicked ? styles['icon-active'] : ''}`}
         />
       )}
-
       <span className={styles.count}>{count}</span>
     </button>
   );
