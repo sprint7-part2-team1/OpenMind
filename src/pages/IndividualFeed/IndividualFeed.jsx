@@ -1,13 +1,13 @@
-import Header from '../../components/Header';
-import FeedCardList from '../../components/FeedCardList/FeedCardList';
-import styles from './IndividualFeed.module.css';
-import useModal from '../modal/useModal';
+import { useParams, useNavigate } from 'react-router-dom';
 import ReactDOM from 'react-dom';
 import Modal from '../modal/Modal';
-import { useParams, useNavigate } from 'react-router-dom';
+import useModal from '../modal/useModal';
+import Header from '../../components/Header';
+import styles from './IndividualFeed.module.css';
 import Button from '../../components/Button/Button';
 import BackButton from '../../components/Button/BackButton';
 import HomeButton from '../../components/Button/HomeButton';
+import FeedCardList from '../../components/FeedCardList/FeedCardList';
 
 function IndividualFeed() {
   const { subjectId } = useParams();
