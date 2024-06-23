@@ -38,10 +38,10 @@
 }
 
 .pagination .page-item.disabled .page-link {
-  color: var(--gray-20);
+  color: transparent;
   pointer-events: none;
-  background-color: var(--gray-20);
-  border-color: #dee2e6;
+  background-color: none;
+  border-color: none;
 }
 
 @media (max-width: 949px) and (min-width: 768px) {

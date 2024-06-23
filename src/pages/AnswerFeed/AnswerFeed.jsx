@@ -9,6 +9,7 @@ import BackButton from '../../components/Button/BackButton';
 import swal from 'sweetalert';
 import { useState } from 'react';
 import '../../assets/css/swal.css';
+import HomeButton from '../../components/Button/HomeButton';
 
 function AnswerFeed() {
   const { subjectId } = useParams();
@@ -45,6 +46,7 @@ function AnswerFeed() {
   return (
     <div className={styles['individualFeed-body']}>
       <BackButton onClick={handleBackClick} />
+      <HomeButton />
       <Header subjectId={subjectId} />
       <div className={styles['feed-container']}>
         <div className={styles.buttonBox}>
