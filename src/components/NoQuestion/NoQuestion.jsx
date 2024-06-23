@@ -1,6 +1,5 @@
 import styles from './NoQuestion.module.css';
 import emptyQuestionIcon from '../../assets/images/emptyQuestionIcon.png';
-import '../../global.css';
 import Messages from '../../assets/images/Messages.svg?react';
 
 function NoQuestion() {

@@ -21,7 +21,7 @@ function ShareLink() {
       content: {
         title: '오픈마인드',
         description: '궁금한 내용을 물어보세요!',
-        imageUrl: 'https://via.placeholder.com/300', // 여기에 실제 이미지 URL을 넣으세요
+        imageUrl: 'src/assets/images/team1.jpg',
         link: {
           webUrl: url,
           mobileWebUrl: url,
@@ -40,7 +40,7 @@ function ShareLink() {
   };
 
   const shareFacebook = () => {
-    window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`); // 외부에서 접근 가능한 url이어야 기능 정상 작동.
+    window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`);
   };
 
   return (

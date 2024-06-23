@@ -1,12 +1,5 @@
 import { fetchApi } from '../instance/fetchInstance';
 
-// subjects api 모음
-
-/**
- *
- * @param {*} id는 삭제할 Subjects의 id 값입니다.
- * @returns
- */
 export const deleteSubjects = async (id) => {
   try {
     const response = await fetchApi(`subjects/${id}/`, { method: 'DELETE' });
@@ -123,7 +116,6 @@ export const postSubjectQuestion = async (subjectId, content) => {
     console.error(error);
   }
 };
-
 
 export const createQuestion = async (formData, id) => {
   try {

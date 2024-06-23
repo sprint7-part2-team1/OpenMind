@@ -1,7 +1,7 @@
 import { useCallback, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
-import FeedCard from '../FeedCard/FeedCard';
 import styles from './FeedCardList.module.css';
+import FeedCard from '../FeedCard/FeedCard';
 import useFeedCardInfinityScroll from '../../hooks/useFeedCardInfinityScroll';
 import NoQuestion from '../NoQuestion/NoQuestion';
 import Messages from '../../assets/images/Messages.svg?react';

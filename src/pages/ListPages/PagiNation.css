@@ -4,20 +4,19 @@
   display: flex;
   justify-content: center;
   margin-top: 2rem;
-  list-style: none; /* Remove default list styling */
+  list-style: none;
   padding: 0;
   gap: 1rem;
 }
 
-/* Style for pagination items */
 .pagination .page-item {
-  margin: 0 0.5rem; /* Space between pagination items */
+  margin: 0 0.5rem;
 }
 
 .pagination .page-item .page-link {
   display: block;
   padding: 1rem 1.5rem;
-  text-decoration: none; /* Remove underline */
+  text-decoration: none;
   font-size: 2rem;
   color: var(--brown-40);
   border-radius: 0.5rem;
@@ -29,12 +28,11 @@
   color: black;
 }
 
-/* Style for active (current) page item */
 .pagination .page-item.active .page-link {
   background-color: var(--brown-30);
   border-color: var(--gray-30);
   color: var(--gray-10);
-  border-radius: 50%; /* Circle shape */
+  border-radius: 50%;
 }
 
 .pagination .page-item.disabled .page-link {
@@ -49,7 +47,7 @@
     flex-wrap: wrap;
   }
   .pagination .page-item {
-    margin: 0 0.3rem; /* Adjust spacing */
+    margin: 0 0.3rem;
   }
   .pagination .page-item .page-link {
     font-size: 1.2rem;
@@ -61,7 +59,7 @@
     flex-wrap: wrap;
   }
   .pagination .page-item {
-    margin: 0 0.2rem; /* Adjust spacing */
+    margin: 0 0.2rem;
   }
   .pagination .page-item .page-link {
     font-size: 1.2rem;

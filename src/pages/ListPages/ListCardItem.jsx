@@ -1,6 +1,6 @@
+import { useNavigate, useLocation } from 'react-router-dom';
 import styles from './List.module.css';
 import Messages from '../../assets/images/Messages.svg?react';
-import { useNavigate, useLocation } from 'react-router-dom';
 
 const ListCardItem = ({ id, name, imageSource, questionCount }) => {
   const navigate = useNavigate();

@@ -1,15 +1,15 @@
-import Header from '../../components/Header';
-import FeedCardList from '../../components/FeedCardList/FeedCardList';
-import styles from '../IndividualFeed/IndividualFeed.module.css';
+import { useState } from 'react';
 import { useParams } from 'react-router-dom';
+import Header from '../../components/Header';
+import swal from 'sweetalert';
 import Button from '../../components/Button/Button';
+import HomeButton from '../../components/Button/HomeButton';
+import BackButton from '../../components/Button/BackButton';
+import '../../assets/css/swal.css';
+import styles from '../IndividualFeed/IndividualFeed.module.css';
+import FeedCardList from '../../components/FeedCardList/FeedCardList';
 import { getSubjectQuestions } from '../../api/subjects/subjectsApi';
 import { deleteQuestionDetail } from '../../api/questions/questionsApi';
-import BackButton from '../../components/Button/BackButton';
-import swal from 'sweetalert';
-import { useState } from 'react';
-import '../../assets/css/swal.css';
-import HomeButton from '../../components/Button/HomeButton';
 
 function AnswerFeed() {
   const { subjectId } = useParams();
@@ -34,8 +34,6 @@ function AnswerFeed() {
           await deleteQuestionDetail(id);
           setRefreshKey((prevKey) => !prevKey);
         });
-      } else {
-        // 취소 버튼을 눌렀을 때는 아무 동작도 하지 않습니다.
       }
     });
   };

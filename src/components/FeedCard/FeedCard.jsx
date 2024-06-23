@@ -1,13 +1,12 @@
 import { useState, useEffect } from 'react';
 import styles from './FeedCard.module.css';
 import ReactionButton from './ReactionButton';
-import '../../global.css';
 import formatTimeDiff from '../../utils/formatTimeDiff.js';
 import KebabMenu from '../KebabMenu/KebabMenu.jsx';
+import FeedCardAnswer from './FeedCardAnswer.jsx';
 import FeedCardAnswerInput from './FeedCardAnswerInput.jsx';
 import { deleteAnswer, patchAnswer } from '../../api/answers/answersApi.js';
 import { postNewAnswer } from '../../api/questions/questionsApi.js';
-import FeedCardAnswer from './FeedCardAnswer.jsx';
 import { getCancelledReactionCount } from '../../api/supabase/reactionApi.js';
 
 const FeedCard = ({

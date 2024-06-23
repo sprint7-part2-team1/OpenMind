@@ -46,8 +46,6 @@
   display: none;
 }
 
-
-
 .back {
   width: 6rem;
   height: 7rem;
@@ -98,7 +96,7 @@
     left: 0.7rem;
     border-radius: 0.7rem;
   }
-  .home{
+  .home {
     width: 4.2rem;
     height: 4.9rem;
     font-size: 1.4rem;
@@ -106,7 +104,8 @@
     right: 0.7rem;
     border-radius: 0.7rem;
   }
-  .back:hover::before, .home:hover::before{
+  .back:hover::before,
+  .home:hover::before {
     font-size: 1.2rem;
   }
 }
