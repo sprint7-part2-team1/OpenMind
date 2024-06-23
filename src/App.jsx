@@ -30,13 +30,13 @@ const CustomAudioPlayer = ({ src }) => {
 function App() {
   return (
     <Router>
-      <CustomAudioPlayer src='/music/starTeaParty.mp3' />
       <Routes>
         <Route path='/' element={<LoginPage />} />
         <Route path='/post/:subjectId' element={<IndividualFeed />} />
         <Route path='/post/:subjectId/answer' element={<AnswerFeed />} />
         <Route path='/list' element={<List />} />
       </Routes>
+      <CustomAudioPlayer src='/music/starTeaParty.mp3' />
     </Router>
   );
 }

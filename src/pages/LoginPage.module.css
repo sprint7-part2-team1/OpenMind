@@ -108,3 +108,9 @@
     margin-top: 8rem;
   }
 }
+
+.error_message {
+  margin-top: 0.9rem;
+  color: red;
+  font-size: 1.3rem;
+}
