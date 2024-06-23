@@ -14,14 +14,12 @@ function LoginPage() {
   const uniqueNickCheck = async (name) => {
     try {
       const { results } = await getSubjects();
-      const subjects = results; // 배열 추출
-      console.log('Fetched subjects:', subjects); // 데이터 형식 확인
+      const subjects = results;
       return (
         Array.isArray(subjects) &&
         !subjects.some((subject) => subject.name === name)
       );
     } catch (error) {
-      console.error('닉네임 중복 확인에 실패했습니다:', error);
       throw new Error('닉네임 중복 확인에 실패했습니다.');
     }
   };
@@ -64,34 +62,38 @@ function LoginPage() {
   };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.header}>
-        <div className={styles.header_button}>
-          <Link to='/list'>
-            <Button text='GoQs' />
-          </Link>
+    <div className={styles.background}>
+      <div className={styles.container}>
+        <div className={styles.header}>
+          <div className={styles.header_button}>
+            <Link to='/list'>
+              <Button text='GoQs' />
+            </Link>
+          </div>
+          <div className={styles.header_logo}>
+            <LogoImg
+              className={`${styles.logo_img} animate__animated animate__flipInX`}
+              alt='Logo'
+            />
+          </div>
         </div>
-        <div className={styles.header_logo}>
-          <LogoImg
-            className={`${styles.logo_img} animate__animated animate__flipInX`}
-            alt='Logo'
-          />
-        </div>
-      </div>
 
-      <div className={styles.input_box}>
-        <input
-          className={styles.nickName_input}
-          value={nameInput}
-          placeholder='이름을 입력하세요'
-          onChange={(e) => {
-            setNameInput(e.target.value);
-            setErrorMessage(''); // 입력할 때 에러 메시지 초기화
-          }}
-          onKeyDown={handleKeyDownSubmit}
-        />
-        <Button text='TakeQs' onClick={handleOnClickSubmit} />
-        {errorMessage && <p className={styles.error_message}>{errorMessage}</p>}
+        <div className={styles.input_box}>
+          <input
+            className={styles.nickName_input}
+            value={nameInput}
+            placeholder='이름을 입력하세요'
+            onChange={(e) => {
+              setNameInput(e.target.value);
+              setErrorMessage(''); // 입력할 때 에러 메시지 초기화
+            }}
+            onKeyDown={handleKeyDownSubmit}
+          />
+          <Button text='TakeQs' onClick={handleOnClickSubmit} />
+          {errorMessage && (
+            <p className={styles.error_message}>{errorMessage}</p>
+          )}
+        </div>
       </div>
     </div>
   );
