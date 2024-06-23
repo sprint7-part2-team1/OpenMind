@@ -24,6 +24,8 @@
 -----
 ### 🔨 기술 스택
 <img src="https://img.shields.io/badge/-HTML5-E34F26?logo=html5&logoColor=white&style=for-the-badge" alt="HTML5" height="30"> <img src="https://img.shields.io/badge/-CSS-1572B6?logo=css3&logoColor=white&style=for-the-badge" alt="CSS3" height="30"> <img src="https://img.shields.io/badge/-JavaScript-F7DF1E?logo=javascript&logoColor=black&style=for-the-badge" alt="JavaScript" height="30"> <img src="https://img.shields.io/badge/-React-61DAFB?logo=react&logoColor=white&style=for-the-badge" alt="React" height="30"> <img src="https://img.shields.io/badge/-React%20Router-CA4245?logo=react-router&logoColor=white&style=for-the-badge" alt="React Router" height="30"> <img src="https://img.shields.io/badge/-GitHub-181717?logo=github&logoColor=white&style=for-the-badge" alt="GitHub" height="30"> ![Vite](https://img.shields.io/badge/-Vite-646CFF?logo=vite&logoColor=white&style=for-the-badge) ![npm](https://img.shields.io/badge/-npm-CB3837?logo=npm&logoColor=white&style=for-the-badge)
+![eslint](https://camo.githubusercontent.com/ddace5cd5e7caf773b47f87e8b6f67f1f6d02b554282c0f01b5dd190490a16ac/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f65736c696e742d3442333243333f7374796c653d666f722d7468652d6261646765266c6f676f3d65736c696e74266c6f676f436f6c6f723d7768697465)
+![prettier](https://camo.githubusercontent.com/a3ecc9358d86b77fcf4ed9382bb165f1a8516c2a9248f20e6d7690eb13d9517b/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f70726574746965722d4637423933453f7374796c653d666f722d7468652d6261646765266c6f676f3d7072657474696572266c6f676f436f6c6f723d7768697465)
 
 
 ### 💬 협업 툴
