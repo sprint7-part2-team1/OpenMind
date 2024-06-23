@@ -1,10 +1,9 @@
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import styles from './Header.module.css';
 import logo from '../assets/images/logo.png';
 import ShareLink from '../pages/IndividualFeed/ShareLink';
-import '../global.css';
 import { getSubjectDetail } from '../api/subjects/subjectsApi';
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 
 function Header({ subjectId }) {
   const [userInfo, setUserInfo] = useState({});

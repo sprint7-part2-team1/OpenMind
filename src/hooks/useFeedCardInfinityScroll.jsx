@@ -9,7 +9,6 @@ const useFeedCardInfinityScroll = (subjectId) => {
   const [error, setError] = useState(null);
   const [userInfo, setUserInfo] = useState({});
   const [offset, setOffset] = useState(0);
-  
 
   const [isMounted, setIsMounted] = useState(false);
   const limit = 4;
@@ -37,7 +36,7 @@ const useFeedCardInfinityScroll = (subjectId) => {
       const data = await response.json();
 
       const subjectDetail = await getSubjectDetail(subjectId);
-        setUserInfo(subjectDetail);
+      setUserInfo(subjectDetail);
 
       if (Array.isArray(data.results)) {
         setQuestions((prevQuestions) => [...prevQuestions, ...data.results]);

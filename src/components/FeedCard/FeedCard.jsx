@@ -1,13 +1,13 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from './FeedCard.module.css';
 import ReactionButton from './ReactionButton';
-import '../../global.css';
 import formatTimeDiff from '../../utils/formatTimeDiff.js';
 import KebabMenu from '../KebabMenu/KebabMenu.jsx';
+import FeedCardAnswer from './FeedCardAnswer.jsx';
 import FeedCardAnswerInput from './FeedCardAnswerInput.jsx';
 import { deleteAnswer, patchAnswer } from '../../api/answers/answersApi.js';
 import { postNewAnswer } from '../../api/questions/questionsApi.js';
-import FeedCardAnswer from './FeedCardAnswer.jsx';
+import { getCancelledReactionCount } from '../../api/supabase/reactionApi.js';
 
 const FeedCard = ({
   pageType,
@@ -19,8 +19,8 @@ const FeedCard = ({
   const {
     id: questionId,
     content: questionContent,
-    like: initialLikes,
-    dislike: initialDislikes,
+    like: initialLike,
+    dislike: initialDislike,
     createdAt: questionDate,
     answer: answer,
   } = questionData || {};
@@ -51,7 +51,11 @@ const FeedCard = ({
       }
       setCurrentAnswerStatus(true);
       setCurrentAnswer('거절');
-      onAnswerUpdate(questionId, { id: answerId, content: '거절', isRejected: true });
+      onAnswerUpdate(questionId, {
+        id: answerId,
+        content: '거절',
+        isRejected: true,
+      });
     } catch (error) {
       console.error(error);
     }
@@ -69,6 +73,35 @@ const FeedCard = ({
       console.error(error);
     }
   };
+
+  const [initialTotalLikeCount, setInitialTotalLikeCount] =
+    useState(initialLike);
+  const [initialTotalDislikeCount, setInitialTotalDislikeCount] =
+    useState(initialDislike);
+
+  useEffect(() => {
+    const fetchInitialCounts = async () => {
+      try {
+        const cancelledLikeCount = await getCancelledReactionCount(
+          questionId,
+          'like'
+        );
+        setInitialTotalLikeCount(initialLike - cancelledLikeCount);
+
+        const cancelledDislikeCount = await getCancelledReactionCount(
+          questionId,
+          'dislike'
+        );
+        setInitialTotalDislikeCount(initialDislike - cancelledDislikeCount);
+      } catch (error) {
+        console.error('Failed to fetch initial counts:', error);
+      }
+    };
+
+    if (initialTotalLikeCount === null && initialTotalDislikeCount === null) {
+      fetchInitialCounts();
+    }
+  }, [questionId]);
 
   return (
     <div className={styles.feedcard}>
@@ -125,15 +158,19 @@ const FeedCard = ({
       <div className={styles['feedcard-buttons']}>
         <ReactionButton
           type='like'
-          initialCount={initialLikes}
+          initialCount={initialTotalLikeCount}
           questionId={questionId}
-          countUpdate={onCountUpdate}
+          countUpdate={(type, newCount) =>
+            onCountUpdate(questionId, 'like', newCount)
+          }
         />
         <ReactionButton
           type='dislike'
-          initialCount={initialDislikes}
+          initialCount={initialTotalDislikeCount}
           questionId={questionId}
-          countUpdate={onCountUpdate}
+          countUpdate={(type, newCount) =>
+            onCountUpdate(questionId, 'dislike', newCount)
+          }
         />
       </div>
     </div>

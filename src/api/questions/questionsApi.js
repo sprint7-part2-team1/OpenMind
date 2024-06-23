@@ -1,7 +1,5 @@
 import { fetchApi } from '../instance/fetchInstance';
 
-// question api 모음
-
 export const getQuestionDetail = async (id) => {
   try {
     const response = await fetchApi(`questions/${id}/`, { method: 'GET' });

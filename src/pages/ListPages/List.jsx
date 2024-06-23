@@ -12,26 +12,22 @@ const List = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // URL 쿼리 파라미터에서 초기 상태 가져오기
   const queryParams = new URLSearchParams(location.search);
   const initialSearchValue = queryParams.get('search') || '';
   const initialSortOrder = queryParams.get('sort') || 'newest';
   const initialPage = queryParams.get('page') || 1;
 
-  // 검색어, 정렬 옵션, 리마운트, 모달 상태
   const [searchValue, setSearchValue] = useState(initialSearchValue);
   const [sortOrder, setSortOrder] = useState(initialSortOrder);
   const [onlyForMount, setOnlyForMount] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // 검색어 변경 시 URL 업데이트
   const handleInputChange = (e) => {
     const newValue = e.target.value;
     setSearchValue(newValue);
     updateURL(newValue, sortOrder, 1);
   };
 
-  // 정렬 옵션 변경 시 URL 업데이트 및 리마운트
   const handleSelectChange = (e) => {
     const newSortOrder = e.target.value;
     setSortOrder(newSortOrder);
@@ -39,7 +35,6 @@ const List = () => {
     setOnlyForMount((prevOnlyForMount) => prevOnlyForMount + 1);
   };
 
-  // URL 쿼리 파라미터 업데이트 함수
   const updateURL = (search, sort, page) => {
     navigate(`?search=${search}&sort=${sort}&page=${page}`);
   };
@@ -114,7 +109,7 @@ const List = () => {
         searchValue={searchValue}
         onlyForMount={onlyForMount}
         sortOrder={sortOrder}
-        currentPage={Number(initialPage)} // currentPage를 ListCard로 전달
+        currentPage={Number(initialPage)}
       />
       {isModalOpen && <ListModal onClose={closeModal} />}
     </div>

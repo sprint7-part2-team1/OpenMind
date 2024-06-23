@@ -1,9 +1,8 @@
-import '../global.css';
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import LogoImg from '../assets/images/logo.svg?react';
 import Button from '../components/Button/Button';
 import styles from './LoginPage.module.css';
-import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
 import { getSubjects, postSubject } from '../api/subjects/subjectsApi';
 
 function LoginPage() {
