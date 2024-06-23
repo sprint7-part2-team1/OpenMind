@@ -8,7 +8,7 @@ import FeedCardAnswerInput from './FeedCardAnswerInput.jsx';
 import { deleteAnswer, patchAnswer } from '../../api/answers/answersApi.js';
 import { postNewAnswer } from '../../api/questions/questionsApi.js';
 import FeedCardAnswer from './FeedCardAnswer.jsx';
-import { getCancelledReactionCount } from './reactionApi.js';
+import { getCancelledReactionCount } from '../../api/supabase/reactionApi.js';
 
 const FeedCard = ({
   pageType,

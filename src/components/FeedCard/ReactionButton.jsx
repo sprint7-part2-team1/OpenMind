@@ -3,7 +3,7 @@ import styles from './ReactionButton.module.css';
 import { postReaction } from '../../api/questions/questionsApi';
 import LikeIcon from '../../assets/images/thumbs_up.svg?react';
 import DislikeIcon from '../../assets/images/thumbs_down.svg?react';
-import { postSupabaseReaction, getCancelledReactionCount } from './reactionApi';
+import { postSupabaseReaction, getCancelledReactionCount } from '../../api/supabase/reactionApi';
 
 const ReactionButton = ({
   type,
