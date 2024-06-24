@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Actor&display=swap');
+
+:root {
+  /* gray */
+  --gray-10: #ffffff;
+  --gray-20: #f9f9f9;
+  --gray-30: #cfcfcf;
+  --gray-40: #818181;
+  --gray-50: #515151;
+  --gray-60: #000000;
+  /* brown */
+  --brown-10: #f5f1ee;
+  --brown-20: #e4d5c9;
+  --brown-30: #c7bbb5;
+  --brown-40: #542f1a;
+  --brown-50: #341909;
+  /* etc */
+  --blue-50: #1877f2;
+  --yellow-50: #fee500;
+  --red-50: #b93333;
+
+  /* shadow */
+  --shadow-1pt: 0 0.4rem 0.4rem 0 rgba(140, 140, 140, 0.25);
+  --shadow-2pt: 0 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.25);
+  --shadow-3pt: 0 1.6rem 2rem 0 rgba(48, 48, 48, 0.62);
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Actor', Arial, Helvetica, sans-serif;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}

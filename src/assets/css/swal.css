@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Actor&display=swap');
+
+.swal-modal {
+  border-radius: 2.4rem;
+  padding: 2rem 4rem;
+  box-shadow: 0px 16px 20px 0px #3030309e;
+}
+
+.swal-title {
+  font-family: 'Actor', Arial, Helvetica, sans-serif;
+  font-size: 2rem;
+}
+
+.swal-text {
+  font-family: 'Actor', Arial, Helvetica, sans-serif;
+  font-size: 1.6rem;
+}
+
+.swal-button--삭제할래요 {
+  background-color: var(--brown-40);
+  font-family: 'Actor', Arial, Helvetica, sans-serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  border-radius: 0.8rem;
+  width: 18rem;
+  height: 4.4rem;
+  align-items: center;
+}
+
+.swal-button--삭제할래요:not([disabled]):hover {
+  background-color: var(--brown-50);
+}
+
+.swal-button--cancel {
+  background-color: var(--brown-10);
+  font-family: 'Actor', Arial, Helvetica, sans-serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  border-radius: 0.8rem;
+  border: 0.2rem solid var(--brown-40);
+  color: var(--brown-40);
+  width: 18rem;
+  height: 4.4rem;
+  align-items: center;
+}
+
+.swal-button.swal-button--confirm {
+  background-color: var(--brown-40);
+  font-family: 'Actor', Arial, Helvetica, sans-serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  border-radius: 0.8rem;
+  width: 10rem;
+  height: 4.4rem;
+  align-items: center;
+}
+
+.swal-button--confirm:not([disabled]):hover {
+  background-color: var(--brown-50);
+}
+
+.swal-button--갈래요 {
+  background-color: var(--brown-40);
+  font-family: 'Actor', Arial, Helvetica, sans-serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  border-radius: 0.8rem;
+  width: 18rem;
+  height: 4.4rem;
+  align-items: center;
+}
+
+.swal-button--갈래요:not([disabled]):hover {
+  background-color: var(--brown-50);
+}
+
+.swal-footer {
+  display: flex;
+  justify-content: center;
+}

@@ -1,0 +1,47 @@
+.kebab-menu {
+  position: relative;
+  display: inline-block;
+}
+
+.kebab-menu-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.kebab-menu-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 0.5rem;
+  width: 10rem;
+  padding: 0.4rem 0;
+  border-radius: 0.8rem;
+  border: 0.1rem solid var(--gray-30);
+  background: var(--gray-10);
+  box-shadow: var(--shadow-1pt);
+  z-index: 1;
+}
+
+.kebab-menu-item {
+  display: flex;
+  padding: 0.6rem 1.2rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+  border: none;
+  background-color: var(--gray-10);
+  color: var(--gray-50);
+  font-family: Pretendard;
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 1.8rem;
+  align-self: stretch;
+  cursor: pointer;
+}
+
+.kebab-menu-item:hover {
+  background-color: var(--gray-30);
+}

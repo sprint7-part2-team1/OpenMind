@@ -1,0 +1,291 @@
+.body {
+  overflow: hidden;
+}
+
+@keyframes moveBackground {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 1000px 1000px;
+  }
+}
+
+.background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: url('https://www.transparenttextures.com/patterns/lined-paper-2.png');
+  animation: moveBackground 35s linear infinite;
+  z-index: -1;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 40px 40px 0px 40px;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+h1 {
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 47.73px;
+  text-align: center;
+  margin-bottom: 2rem;
+  margin-top: 20px;
+  animation: pulse 4s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.logo {
+  width: 146px;
+  height: 57px;
+  cursor: pointer;
+}
+
+.ListNav {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.ListNavInnerConatiner {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  gap: 10px;
+}
+
+.ListNavInnerConatiner > * {
+  border-radius: 10px;
+}
+
+.InputWrapper {
+  position: relative;
+  width: 460px;
+}
+
+.InputWrapper > input {
+  width: 100%;
+  padding: 10px;
+  padding-right: 40px;
+  border: 1px solid var(--gray-40);
+  border-radius: 10px;
+  font-size: 15px;
+}
+
+.InputWrapper > input:focus {
+  outline: none;
+  background-color: var(--gray-20);
+}
+
+.InputWrapper > button {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 0;
+  margin: 0;
+  font-size: 30px;
+  font-weight: 600;
+  color: var(--brown-40);
+  &:active {
+    color: var(--gray-30);
+  }
+}
+.outContainer {
+  display: flex;
+  justify-self: center;
+}
+
+.containerListCard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(1fr));
+  max-width: 940px;
+  margin: 0 auto;
+}
+.ListNav {
+  max-width: 940px;
+  margin: 0 auto;
+}
+
+.containerListCardItem {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--gray-40);
+  border-radius: 16px;
+  padding: 10px;
+  width: auto;
+  height: auto;
+  background-color: var(--gray-10);
+  cursor: pointer;
+  position: relative;
+}
+.containerListCardItem:hover {
+  border: none;
+  background-color: var(--brown-20);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-3pt);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile {
+  flex-grow: 1;
+}
+
+.nameListCardItem {
+  margin-top: 10px;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 24px;
+  position: relative;
+}
+.containerListCardItem:hover .nameListCardItem::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 3px;
+  background-color: var(--brown-50);
+  animation: underline 0.3s forwards;
+  z-index: 3;
+}
+
+@keyframes underline {
+  to {
+    width: 80%;
+  }
+}
+
+.containerListCardItem:hover::before {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: var(--brown-50);
+  z-index: -1;
+}
+
+.img {
+  width: 60px;
+  height: 60px;
+  border-radius: 99px;
+  z-index: 1;
+}
+.cardBottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.takeQs {
+  display: flex;
+  align-items: center;
+}
+
+.cardBottom > * {
+  color: var(--gray-40);
+  font-size: 16px;
+  line-height: 22px;
+}
+
+@media (min-width: 1200px) {
+  .containerListCard {
+    width: 940px;
+    gap: 20px;
+    grid-template-columns: repeat(4, minmax(220px, 1fr));
+  }
+
+  .containerListCardItem {
+    height: 187px;
+  }
+}
+
+@media (max-width: 1199px) and (min-width: 950px) {
+  .containerListCard {
+    width: auto;
+    grid-template-columns: repeat(4, minmax(186px, 220px));
+    gap: 20px;
+  }
+  .ListNav {
+    width: auto;
+  }
+  .containerListCardItem {
+    height: 187px;
+  }
+}
+
+@media (max-width: 949px) and (min-width: 768px) {
+  .containerListCard {
+    grid-template-columns: repeat(3, minmax(186px, 220px));
+    gap: 20px;
+  }
+  .containerListCardItem {
+    height: 187px;
+  }
+  .ListNav {
+    width: 700px;
+  }
+}
+
+@media (max-width: 767px) and (min-width: 375px) {
+  .containerListCard {
+    grid-template-columns: repeat(2, minmax(155.5px, 1fr));
+    gap: 16px;
+  }
+  .containerListCardItem {
+    width: 155.5px;
+    height: 168px;
+    padding: 10px;
+  }
+  header {
+    gap: 20px;
+    flex-direction: column;
+    align-items: center;
+  }
+  .ListNav {
+    width: 327px;
+  }
+  .ListNavInnerConatiner > input {
+    flex-grow: 1;
+    margin-right: 10px;
+  }
+  h1 {
+    font-size: 33px;
+    font-weight: 400;
+    line-height: 47.73px;
+    text-align: center;
+  }
+  .nameListCardItem {
+    font-size: 17px;
+    line-height: 24px;
+  }
+  .cardBottom > * {
+    color: var(--gray-40);
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 400;
+  }
+}

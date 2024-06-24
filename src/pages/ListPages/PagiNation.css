@@ -1,0 +1,68 @@
+@import url('../../global.css');
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  list-style: none;
+  padding: 0;
+  gap: 1rem;
+}
+
+.pagination .page-item {
+  margin: 0 0.5rem;
+}
+
+.pagination .page-item .page-link {
+  display: block;
+  padding: 1rem 1.5rem;
+  text-decoration: none;
+  font-size: 2rem;
+  color: var(--brown-40);
+  border-radius: 0.5rem;
+  margin-bottom: 3rem;
+}
+
+.pagination .page-item .page-link:hover {
+  background-color: #e9ecef;
+  color: black;
+}
+
+.pagination .page-item.active .page-link {
+  background-color: var(--brown-30);
+  border-color: var(--gray-30);
+  color: var(--gray-10);
+  border-radius: 50%;
+}
+
+.pagination .page-item.disabled .page-link {
+  color: transparent;
+  pointer-events: none;
+  background-color: none;
+  border-color: none;
+}
+
+@media (max-width: 949px) and (min-width: 768px) {
+  .pagination {
+    flex-wrap: wrap;
+  }
+  .pagination .page-item {
+    margin: 0 0.3rem;
+  }
+  .pagination .page-item .page-link {
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+  }
+}
+@media (max-width: 767px) and (min-width: 375px) {
+  .pagination {
+    flex-wrap: wrap;
+  }
+  .pagination .page-item {
+    margin: 0 0.2rem;
+  }
+  .pagination .page-item .page-link {
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+  }
+}

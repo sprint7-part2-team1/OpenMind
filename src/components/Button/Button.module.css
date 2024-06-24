@@ -1,0 +1,302 @@
+.Button {
+  box-sizing: border-box;
+  padding: 1.2rem 2.4rem;
+  border-radius: 0.8rem;
+  cursor: pointer;
+}
+
+.home {
+  width: 6rem;
+  height: 7rem;
+  position: fixed;
+  font-size: 2.3rem;
+  top: 1rem;
+  right: 1rem;
+  background-color: var(--gray-10);
+  cursor: pointer;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+  z-index: 10005;
+}
+
+.home::before {
+  content: '';
+  color: var(--gray-10);
+  font-size: 3rem;
+  font-weight: bold;
+  transition: content 0.2s ease-in-out;
+}
+
+.home:hover {
+  background-color: var(--brown-20);
+  transform: scale(1.1);
+}
+
+.home:hover::before {
+  content: 'Go home?';
+  font-size: 1.6rem;
+  color: black;
+  font-weight: 600;
+}
+
+.home:hover > span {
+  display: none;
+}
+
+.back {
+  width: 6rem;
+  height: 7rem;
+  position: fixed;
+  font-size: 2.3rem;
+  top: 1rem;
+  left: 1rem;
+  background-color: var(--gray-10);
+  cursor: pointer;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+  z-index: 10005;
+}
+
+.back::before {
+  content: '';
+  color: var(--gray-10);
+  font-size: 3rem;
+  font-weight: bold;
+  transition: content 0.2s ease-in-out;
+}
+
+.back:hover {
+  background-color: var(--brown-20);
+  transform: scale(1.1);
+}
+
+.back:hover::before {
+  content: 'Go back?';
+  font-size: 1.6rem;
+  color: black;
+  font-weight: 600;
+}
+
+.back:hover > span {
+  display: none;
+}
+
+@media (max-width: 500px) {
+  .back {
+    width: 4.2rem;
+    height: 4.9rem;
+    font-size: 1.4rem;
+    top: 0.7rem;
+    left: 0.7rem;
+    border-radius: 0.7rem;
+  }
+  .home {
+    width: 4.2rem;
+    height: 4.9rem;
+    font-size: 1.4rem;
+    top: 0.7rem;
+    right: 0.7rem;
+    border-radius: 0.7rem;
+  }
+  .back:hover::before,
+  .home:hover::before {
+    font-size: 1.2rem;
+  }
+}
+
+.Button_TakeQs {
+  width: 100%;
+  background-color: var(--brown-40);
+  color: var(--gray-10);
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 2.2rem;
+  border: 0.2rem solid transparent;
+  &:hover {
+    background-color: var(--brown-10);
+    color: var(--brown-40);
+    border: 0.2rem solid var(--brown-40);
+  }
+  &:active {
+    background-color: var(--brown-50);
+    color: var(--gray-10);
+  }
+  &:disabled {
+    background-color: var(--brown-30);
+    cursor: not-allowed;
+  }
+  &:hover:disabled {
+    color: var(--gray-10);
+    border: 0.2rem solid transparent;
+  }
+}
+
+.Button_GoQs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16.1rem;
+  height: 4.6rem;
+  border: 0.1rem solid var(--brown-40);
+  background-color: var(--brown-10);
+  color: var(--brown-40);
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 2.2rem;
+  &.mobile {
+    width: 12.7rem;
+    height: 3.4rem;
+    padding: 0.8rem 1.2rem;
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+  }
+  &:hover {
+    background-color: var(--brown-40);
+    color: var(--gray-10);
+  }
+  &:active {
+    background-color: var(--brown-50);
+    color: var(--gray-10);
+  }
+  &:disabled {
+    background-color: var(--brown-10);
+    cursor: not-allowed;
+  }
+  &:hover:disabled {
+    color: var(--brown-40);
+    border: 0.2rem solid var(--brown-40);
+  }
+}
+
+.Button_Delete {
+  border-radius: 20rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 10rem;
+  height: 3.5rem;
+  font-size: 1.2rem;
+  line-height: 2.5rem;
+  color: var(--gray-10);
+  background-color: var(--brown-40);
+  border: 0.2rem solid transparent;
+  padding: 1.2rem 2.4rem;
+  box-shadow: var(--shadow-2pt);
+  &.mobile {
+    justify-content: center;
+    width: 7rem;
+    height: 2.5rem;
+    font-size: 1rem;
+    padding: 0;
+    text-align: center;
+  }
+  &:hover {
+    background-color: var(--brown-10);
+    color: var(--brown-50);
+    border: 0.1rem solid var(--brown-40);
+  }
+  &:active {
+    background-color: #542f1a;
+    color: var(--gray-10);
+  }
+}
+
+.Button_GoAs {
+  width: 16.1rem;
+  height: 4.6rem;
+  border: 0.1rem solid var(--brown-40);
+  background-color: var(--brown-10);
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 2.2rem;
+  color: var(--brown-40);
+  &.mobile {
+    width: 12.7rem;
+    height: 3.4rem;
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+    padding: 0.8rem 1.2rem;
+  }
+  &:hover {
+    background-color: var(--brown-40);
+    color: var(--gray-10);
+  }
+  &:active {
+    background-color: var(--brown-50);
+    color: var(--gray-10);
+  }
+  &:disabled {
+    background-color: var(--brown-10);
+    cursor: not-allowed;
+  }
+  &:hover:disabled {
+    color: var(--brown-40);
+    border: 0.2rem solid var(--brown-40);
+  }
+}
+
+.Button_WriteQs {
+  border-radius: 20rem;
+  border: none;
+  width: 20.8rem;
+  height: 5.4rem;
+  padding: 1.2rem 2.4rem;
+  background-color: var(--brown-40);
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 2.5rem;
+  color: var(--gray-10);
+  box-shadow: var(--shadow-3pt);
+  position: fixed;
+  right: 3.84rem;
+  bottom: 3.84rem;
+  z-index: 1000;
+  &:hover {
+    background-color: var(--brown-10);
+    color: var(--brown-50);
+    border: 0.2rem solid var(--brown-40);
+  }
+  &:active {
+    background-color: var(--brown-40);
+    color: var(--gray-10);
+  }
+  &.mobile {
+    width: 12.3rem;
+    font-size: 1.7rem;
+  }
+}
+
+.Button_SendQs,
+.Button_DoneAs,
+.Button_DoneFix {
+  width: 100%;
+  background-color: var(--brown-40);
+  color: var(--gray-10);
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 2.2rem;
+  border: 0.2rem solid transparent;
+  &:hover {
+    background-color: var(--brown-10);
+    color: var(--brown-40);
+    border: 0.2rem solid var(--brown-40);
+  }
+  &:active {
+    background-color: var(--brown-50);
+    color: var(--gray-10);
+  }
+  &:disabled {
+    background-color: var(--brown-30);
+    cursor: not-allowed;
+  }
+  &:hover:disabled {
+    color: var(--gray-10);
+    border: 0.2rem solid transparent;
+  }
+}
