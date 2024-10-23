@@ -1,3 +1,4 @@
+
 import { useInfiniteQuery, useQuery } from '@tanstack/react-query';
 import { getSubjectDetail } from '../api/subjects/subjectsApi';
 import { fetchApi } from '../api/instance/fetchInstance';
@@ -45,16 +46,19 @@ const useFeedCardInfinityScroll = (subjectId) => {
   const questions = data?.pages.flatMap((page) => page.results) ?? [];
   const questionCount = data?.pages[0]?.count ?? 0;
 
+
   return {
     questions,
     questionCount,
     isLoading,
+
 
     error: error?.message,
     userInfo,
     loadMoreQuestions: fetchNextPage,
     hasNextPage, // hasNextPage 추가
     setQuestions: () => {},
+
   };
 };
 
