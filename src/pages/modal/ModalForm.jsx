@@ -3,12 +3,15 @@ import style from './Modal.module.css';
 import { useEffect, useState } from 'react';
 import { createQuestion } from '../../api/subjects/subjectsApi';
 import buttonStyle from '../../components/Button/Button.module.css';
+import { useCreateQuestionMutation } from '../../queries/individualFedds';
 
 function ModalForm({ subjectId, onClose }) {
   const [content, setContent] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submittingError, setSubmittingError] = useState(null);
   const [hasContent, setHasContent] = useState(false);
+
+  const createQuestionMutation = useCreateQuestionMutation();
 
   const handleContentChange = (e) => {
     setContent(e.target.value);
@@ -22,18 +25,15 @@ function ModalForm({ subjectId, onClose }) {
     };
 
     try {
-      setSubmittingError(null);
-      setIsSubmitting(true);
-      await createQuestion(formData, subjectId);
+      await createQuestionMutation.mutateAsync({
+        subjectId,
+        content,
+      });
       setContent('');
       onClose();
     } catch (error) {
-      setSubmittingError(error);
-      return;
-    } finally {
-      setIsSubmitting(false);
+      console.error('전송 실패', error);
     }
-    window.location.reload();
   };
 
   const contentButtonOnOff = () => {
@@ -69,7 +69,7 @@ function ModalForm({ subjectId, onClose }) {
       <button
         className={`${style.button} ${buttonStyle.Button_SendQs}`}
         type='submit'
-        disabled={isSubmitting || !hasContent}
+        disabled={createQuestionMutation.isPending.isPending || !hasContent}
       >
         질문 보내기
       </button>

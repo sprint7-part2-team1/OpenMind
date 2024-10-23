@@ -8,7 +8,9 @@ export const deleteSubjects = async (id) => {
       throw new Error('fetch failed');
     }
 
-    return response.json();
+    const text = await response.text();
+
+    return text ? JSON.parse(text) : {};
   } catch (error) {
     console.error(error);
   }
