@@ -24,19 +24,6 @@ function ModalForm({ subjectId, onClose }) {
       content,
     };
 
-    // try {
-    //   setSubmittingError(null);
-    //   setIsSubmitting(true);
-    //   await createQuestion(formData, subjectId);
-    //   setContent('');
-    //   onClose();
-    // } catch (error) {
-    //   setSubmittingError(error);
-    //   return;
-    // } finally {
-    //   setIsSubmitting(false);
-    // }
-    // useQuestionQuery(subjectId);
     try {
       await createQuestionMutation.mutateAsync({
         subjectId,
